@@ -2,63 +2,82 @@
 @section('title', 'Portofolio')
 @section('content')
 
-  <header>
-    <h1>Project <span>{{ $nama }}</span></h1>
-    <p>
-      Kumpulan project yang pernah saya kerjakan, mulai dari website sederhana
-      hingga aplikasi berbasis Laravel.
-    </p>
-  </header>
+<header>
+  <div>
+    <div class="profile-photo">
+      <img src="roblox.png" alt="Foto Farrel">
+    </div>
+    <h1>Halo, Saya <span>Farrel</span></h1>
+    <p>Pelajar • Web Developer • Laravel</p>
+  </div>
+</header>
 
-  <section>
-    <div class="projects">
+<section>
+  <h2>Tentang Saya</h2>
+  <p class="about">
+    Saya adalah pelajar yang fokus pada web development modern menggunakan
+    HTML, CSS, JavaScript, dan Laravel.
+  </p>
+</section>
 
+<section>
+  <h2>Skill</h2>
+  <div class="skills">
+    <div class="skill-card">HTML</div>
+    <div class="skill-card">CSS</div>
+    <div class="skill-card">JavaScript</div>
+    <div class="skill-card">Laravel</div>
+    <div class="skill-card">MySQL</div>
+    <div class="skill-card">Git</div>
+  </div>
+</section>
+
+<section id="project">
+  <h2>Project</h2>
+  <div class="projects">
+
+    <div class="project-item">
       <div class="project-card">
         <h3>Website Portofolio</h3>
-        <p>Website personal dengan desain modern dan responsif.</p>
-        <div class="tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-        </div>
-        <a href="#" class="btn">Lihat Detail</a>
+        <p>Website personal modern dengan desain bersih.</p>
       </div>
-
-      <div class="project-card">
-        <h3>Web Rental Mobil</h3>
-        <p>Aplikasi manajemen data dengan Laravel dan MySQL.</p>
-        <div class="tags">
-          <span class="tag">Laravel</span>
-          <span class="tag">MySQL</span>
-        </div>
-        <a href="#" class="btn">Lihat Detail</a>
-      </div>
-
-      <div class="project-card">
-        <h3>Landing Page Produk</h3>
-        <p>Landing page fokus UI/UX untuk meningkatkan konversi.</p>
-        <div class="tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">UI/UX</span>
-        </div>
-        <a href="#" class="btn">Lihat Detail</a>
-      </div>
-
-      <div class="project-card">
-        <h3>Sistem Login</h3>
-        <p>Sistem login & register sederhana dengan validasi.</p>
-        <div class="tags">
-          <span class="tag">PHP</span>
-          <span class="tag">MySQL</span>
-        </div>
-        <a href="#" class="btn">Lihat Detail</a>
-      </div>
-
     </div>
-  </section>
 
-  <footer>
-    <p>© 2026 Farrel • All Projects</p>
-  </footer>
+    <div class="project-item">
+      <div class="project-card">
+        <h3>Aplikasi CRUD Laravel</h3>
+        <p>Aplikasi manajemen data menggunakan Laravel</p>
+      </div>
+      <a href="Project" class="project-btn">Lihat Detail Project</a>
+    </div>
 
+    <div class="project-item">
+      <div class="project-card">
+        <h3>Landing Page</h3>
+        <p>Landing page profesional dengan fokus UI/UX.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Kontak Saya</h2>
+  <div class="contact-box">
+    <p>Jika tertarik bekerja sama atau ingin menghubungi saya:</p>
+
+    <div class="contact-links">
+      <a href="mailto:emailkamu@gmail.com" class="contact-item">📧 Email</a>
+      <a href="https://wa.me/628351408541" class="contact-item">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/farctyl" class="contact-item">📷 Instagram</a>
+      <a href="#" class="contact-item">💻 GitHub</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>© 2026 Farrel • Dark Modern Portfolio</p>
+</footer>
 @endsection
+
+
+

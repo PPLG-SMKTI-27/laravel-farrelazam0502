@@ -20,4 +20,3 @@ Route::get('/', function () {
 
 
 Route::get('Project', [ProjectController::class, 'index']);
-Route::get('/', [ProjectController::class, 'index']);
