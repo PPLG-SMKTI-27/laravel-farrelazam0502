@@ -9,7 +9,7 @@ Route::get('w', function () {
 });
 
 Route::get('/', function () {
-    return view('Portofolio');
+    return view('pages.Portofolio');
 });
 
 
@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 
 Route::get('Project', [ProjectController::class, 'index']);
+Route::get('/', [ProjectController::class, 'index']);
