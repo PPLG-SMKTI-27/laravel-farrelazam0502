@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="container">
+        <x-navbar />
         @yield('content')
+        <x-footer />
     </div>
 </body>
 </html>

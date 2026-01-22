@@ -19,4 +19,4 @@ Route::get('/', function () {
 // });
 
 
-Route::get('Project', [ProjectController::class, 'index']);
+Route::get('/Project', [ProjectController::class, 'index']);

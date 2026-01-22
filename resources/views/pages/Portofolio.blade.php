@@ -2,17 +2,20 @@
 @section('title', 'Portofolio')
 @section('content')
 
+
+
+
 <header>
-  <div>
+  <section id="home">
     <div class="profile-photo">
       <img src="roblox.png" alt="Foto Farrel">
     </div>
     <h1>Halo, Saya <span>Farrel</span></h1>
     <p>Pelajar • Web Developer • Laravel</p>
-  </div>
+  </section>
 </header>
 
-<section>
+<section id ="about">
   <h2>Tentang Saya</h2>
   <p class="about">
     Saya adalah pelajar yang fokus pada web development modern menggunakan
@@ -20,7 +23,7 @@
   </p>
 </section>
 
-<section>
+<section id="skill">
   <h2>Skill</h2>
   <div class="skills">
     <div class="skill-card">HTML</div>
@@ -53,8 +56,8 @@
 
     <div class="project-item">
       <div class="project-card">
-        <h3>Landing Page</h3>
-        <p>Landing page profesional dengan fokus UI/UX.</p>
+        <h3>Web cylc Rent Car</h3>
+        <p>Buat Web menggunakan native</p>
       </div>
     </div>
 
@@ -74,9 +77,7 @@
     </div>
   </div>
 </section>
-<footer>
-  <p>© 2026 Farrel • Dark Modern Portfolio</p>
-</footer>
+
 @endsection
 
 
