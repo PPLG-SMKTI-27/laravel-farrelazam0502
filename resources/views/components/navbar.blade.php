@@ -7,6 +7,7 @@
       <li><a href="#skill">Skill</a></li>
       <li><a href="#project">Project</a></li>
       <li><a href="#contact">Kontak</a></li>
+      <li><a href="/login">Login</a></li>
     </ul>
   </div>
-</nav>
+</nav>  
