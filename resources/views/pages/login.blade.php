@@ -36,7 +36,7 @@
       color: var(--text-main);
     }
 
-    /* Card Login */
+    
     .login-card {
       width: 100%;
       max-width: 380px;
@@ -55,7 +55,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Input */
+    
     .form-group {
       margin-bottom: 18px;
     }
@@ -99,7 +99,7 @@
 
     button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(96,165,250,0.4);
+      box-shadow: 0 12px 30px rgba(111, 250, 96, 0.4);
     }
 
     /* Footer text */
@@ -114,6 +114,65 @@
       color: var(--primary);
       text-decoration: none;
     }
+
+    
+.error-alert {
+  position: fixed;
+  top: 17px;
+  right: 20px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 18px;
+  max-width: 320px;
+
+  background: #e70909;
+  color: white;
+
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  animation: slideIn 0.35s ease-out;
+  transition: 0.3s;
+}
+
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+  opacity: 0.8;
+
+  position: relative;
+  top: -8px; 
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.error-alert.hide {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
   </style>
 </head>
 <body>
@@ -121,6 +180,29 @@
   <form class="login-card" action="/login" method="POST">
 
     @csrf
+
+    
+@if ($errors->has('login'))
+<div id="error-alert" class="error-alert">
+    <span>{{ $errors->first('login') }}</span>
+
+    <button onclick="closeError()" class="close-btn">
+        ✕
+    </button>
+</div>
+
+<script>
+    const errorEl = document.getElementById('error-alert');
+
+    function closeError() {
+        errorEl.classList.add('hide');
+        setTimeout(() => errorEl.remove(), 300);
+    }
+
+    setTimeout(closeError, 3000);
+</script>
+@endif
+
 
     <h2>Login</h2>
 

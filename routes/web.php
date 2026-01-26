@@ -23,3 +23,5 @@ Route::get('/Project', [ProjectController::class, 'index']);
 Route::get('/login', [AuthController::class, 'showLogin']);
 
 Route::post('/login', [AuthController::class, 'storeLogin']);
+
+Route::post('/logout', [AuthController::class, 'logout']);

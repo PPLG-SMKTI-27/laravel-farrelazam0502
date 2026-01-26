@@ -87,6 +87,7 @@
     }
 
     setTimeout(closeAlert, 3000);
+    
 </script>
 @endif
 
