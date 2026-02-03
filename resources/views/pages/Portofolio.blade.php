@@ -57,7 +57,7 @@
     <div class="project-item">
       <div class="project-card">
         <h3>Web cylc Rent Car</h3>
-        <p>Buat Web menggunakan native</p>
+        <p>Buat Web menggunakan native dan MySQL</p>
       </div>
     </div>
 

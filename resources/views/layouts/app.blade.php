@@ -3,98 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-.success-alert {
-  position: fixed;
-  top: 17px;
-  right: 20px;
-  z-index: 9999;
+    .success-alert {
+      position: fixed;
+      top: 17px;
+      right: 20px;
+      z-index: 9999;
+      padding: 12px 18px;
+      background: #22c55e;
+      color: white;
+      border-radius: 12px;
+    }
 
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 12px 18px;
-  max-width: 320px;
-
-  background: #22c55e;
-  color: white;
-
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-
-  font-size: 14px;
-  font-weight: 500;
-
-  animation: slideIn 0.35s ease-out;
-  transition: 0.3s;
-}
-
-
-.close-btn {
-  background: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  opacity: 0.8;
-}
-
-.close-btn:hover {
-  opacity: 1;
-}
-
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
-.success-alert.hide {
-  opacity: 0;
-  transform: translateX(20px);
-}
-</style>
+    .container, header, section, footer, nav {
+      position: relative;
+      z-index: 1;
+    }
+    </style>
 </head>
-<body>
-   @if (session('success'))
-<div id="success-alert" class="success-alert">
-    <span>
-        {{ session('success') }}
-    </span>
 
-    <button onclick="closeAlert()" class="close-btn">
-        ✕
-    </button>
+<body>
+
+@if (session('success'))
+<div id="success-alert" class="success-alert">
+    {{ session('success') }}
+</div>
+@endif
+
+<div class="container">
+    <x-navbar />
+    @yield('content')
+    <x-footer />
 </div>
 
 <script>
-    const alertEl = document.getElementById('success-alert');
+document.addEventListener("DOMContentLoaded", () => {
 
-    function closeAlert() {
-        alertEl.classList.add('hide');
-        setTimeout(() => alertEl.remove(), 300);
+  const canvas = document.createElement("canvas");
+
+  Object.assign(canvas.style, {
+    position: "fixed",
+    inset: 0,
+    zIndex: 0,
+    pointerEvents: "none"
+  });
+
+  document.body.prepend(canvas);
+
+  const ctx = canvas.getContext("2d");
+
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const drops = Array.from({length: 350}, () => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    s: 4+Math.random()*5,
+    l: 10+Math.random()*15
+  }));
+
+  function rain(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle="rgba(255,255,255,0.3)";
+
+    for(const d of drops){
+      ctx.beginPath();
+      ctx.moveTo(d.x,d.y);
+      ctx.lineTo(d.x+2,d.y+d.l);
+      ctx.stroke();
+
+      d.y+=d.s;
+
+      if(d.y>canvas.height){
+        d.y=-20;
+        d.x=Math.random()*canvas.width;
+      }
     }
 
-    setTimeout(closeAlert, 3000);
-    
-</script>
-@endif
+    requestAnimationFrame(rain);
+  }
 
-    <div class="container">
-        <x-navbar />
-        @yield('content')
-        <x-footer />
-    </div>
+  rain();
+});
+</script>
+
+@stack('scripts')
+
 </body>
 </html>

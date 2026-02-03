@@ -78,7 +78,84 @@
   </div>
 </section>
 
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const canvas = document.createElement("canvas");
+
+  Object.assign(canvas.style, {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    zIndex: 0,
+    pointerEvents: "none"
+  });
+
+  document.body.prepend(canvas);
+
+  const ctx = canvas.getContext("2d");
+
+  let w, h;
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const drops = [];
+
+  for (let i = 0; i < 400; i++) {
+    drops.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      len: 12 + Math.random() * 20,
+      speed: 5 + Math.random() * 6
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    ctx.strokeStyle = "rgba(255,255,255,0.35)";
+    ctx.lineWidth = 1;
+
+    for (let d of drops) {
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x + 2, d.y + d.len);
+      ctx.stroke();
+
+      d.y += d.speed;
+      d.x += 0.5;
+
+      if (d.y > h) {
+        d.y = -20;
+        d.x = Math.random() * w;
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+});
+</script>
+
+<style>
+header, section, footer, .navbar {
+  position: relative;
+  z-index: 1;
+}
+</style>
+@endpush
+
+
 @endsection
+
 
 
 
