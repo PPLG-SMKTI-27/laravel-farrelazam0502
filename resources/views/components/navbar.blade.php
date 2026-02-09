@@ -1,118 +1,98 @@
+  {{-- NAVBAR --}}
+  <nav class="sticky top-0 z-50 backdrop-blur-md
+              bg-slate-950/70 border-b border-white/5">
 
-<style>/* RESET KECIL */
-* {
-  box-sizing: border-box;
-}
+      <div class="max-w-6xl mx-auto px-8 py-5
+                  flex items-center justify-between">
 
-/* BASE NAVBAR */
-#mainNav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+          {{-- LOGO --}}
+          <a href="{{ route('home') }}"
+            class="text-xl font-bold
+                    bg-gradient-to-r from-emerald-400 to-blue-400
+                    bg-clip-text text-transparent">
+              Farrel
+          </a>
 
-  width: 100%;
-  margin: 0 auto;
+          {{-- MENU --}}
+          <ul class="flex items-center gap-7 text-sm font-medium text-slate-300">
 
-  padding: 20px 32px;
-  background: transparent;
-
-  transition:
-    width 0.45s cubic-bezier(.4,0,.2,1),
-    padding 0.35s cubic-bezier(.4,0,.2,1),
-    border-radius 0.35s ease,
-    background 0.35s ease,
-    box-shadow 0.35s ease,
-    top 0.35s ease;
-}
-
-/* ISI NAV */
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* MENU */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-li .link {
-  text-decoration: none;
-  color: #0bfa96;
-}
-
-/* LOGO */
-.logo {
-  font-weight: 600;
-  font-size: 18px;
-}
-
-/* BUTTON */
-.cta-btn {
-  padding: 6px 14px;
-  border-radius: 6px;
-  background: #0bfa96;
-  color: #000000;
-  text-decoration: none;
-}
-
-/* FLOAT STATE (SCROLL) */
-#mainNav.is-float {
-  position: fixed;
-  top: 1.5rem;
-  left: 0;
-  right: 0;
-
-  width: calc(100% - 4rem);
-  max-width: 64rem;
-  margin: 0 auto;
-
-  padding: 10px 20px;
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-}</style>
-
-<nav id="mainNav">
-  <div class="nav-container">
-    <div class="logo">Farrel</div>
-
-    <ul class="nav-menu">
-      <li><a class="link" href="#home">Home</a></li>
-      <li><a class="link" href="#about">Tentang</a></li>
-      <li><a class="link" href="#skill">Skill</a></li>
-      <li><a class="link" href="#project">Project</a></li>
-      <li><a class="link" href="#contact">Kontak</a></li>
- 
-      <li>
-        <a href="/login" class="cta-btn">Login</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+              <li>
+    <a href="{{ route('home') }}"
+       class="hover:text-emerald-400 transition">
+       Home
+    </a>
+</li>
 
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const nav = document.getElementById('mainNav');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      nav.classList.add('is-float');
-    } else {
-      nav.classList.remove('is-float');
-    }
-  });
-});
-</script>
+
+              <li>
+                  <a href="{{ route('home') }}#about"
+                    class="hover:text-emerald-400 transition">
+                    Tentang
+                  </a>
+              </li>
+
+              <li>
+                  <a href="{{ route('home') }}#skill"
+                    class="hover:text-emerald-400 transition">
+                    Skill
+                  </a>
+              </li>
+
+              <li>
+                  <a href="{{ route('home') }}#project"
+                    class="hover:text-emerald-400 transition">
+                    Project
+                  </a>
+              </li>
+
+              <li>
+                  <a href="{{ route('home') }}#contact"
+                    class="hover:text-emerald-400 transition">
+                    Kontak
+                  </a>
+              </li>
+
+
+              {{-- AUTH --}}
+              @guest
+                  <li>
+                      <a href="{{ route('login') }}"
+                        class="px-5 py-2 rounded-full
+                                bg-gradient-to-r from-emerald-400 to-blue-400
+                                text-slate-900 font-semibold
+                                hover:scale-105 hover:shadow-lg
+                                hover:shadow-emerald-400/30 transition">
+                          Login
+                      </a>
+                  </li>
+              @endguest
+
+
+              @auth
+                  <li>
+                      <a href="{{ route('dashboard') }}"
+                        class="hover:text-emerald-400 transition">
+                          Dashboard
+                      </a>
+                  </li>
+
+                  <li>
+                      <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+                          <button
+                              class="px-5 py-2 rounded-full
+                                    bg-gradient-to-r from-red-500 to-pink-500
+                                    text-white font-semibold
+                                    hover:scale-105 transition">
+                              Logout
+                          </button>
+                      </form>
+                  </li>
+              @endauth
+
+          </ul>
+
+      </div>
+  </nav>

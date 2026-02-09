@@ -14,7 +14,7 @@ class ProjectController extends Controller
         $nama = 'Farrel';   
         $umur = "20 Tahun";
 
-        return view('pages.Project',[
+        return view('section.Project',[
             'projects' => $projects,
             'nama' => $nama,
             'umur' => $umur
