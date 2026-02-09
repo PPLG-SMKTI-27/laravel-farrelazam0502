@@ -2,9 +2,6 @@
 @section('title', 'Portofolio')
 @section('content')
 
-
-
-
 <header>
   <section id="home">
     <div class="profile-photo">
@@ -51,7 +48,7 @@
         <h3>Aplikasi CRUD Laravel</h3>
         <p>Aplikasi manajemen data menggunakan Laravel</p>
       </div>
-      <a href="Project" class="project-btn">Lihat Detail Project</a>
+      <a href="/Project" class="project-btn">Lihat Detail Project</a>
     </div>
 
     <div class="project-item">

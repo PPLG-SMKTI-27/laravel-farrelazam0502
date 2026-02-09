@@ -12,11 +12,15 @@
 
   <section>
     <div class="projects">
-      @foreach($project as $p)
+      @if ($projects->isEmpty())
+    <p>Data project belum tersedia</p>
+@else
+
+      @foreach($projects as $p)
 
       <div class="project-card">
-        <h3>{{ $p['project'] }}</h3>
-        <p>Website personal dengan desain modern dan responsif.</p>
+        <h3>{{ $p->title }}</h3>
+        <p>{{ $p->description}}</p>
         <div class="tags">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
@@ -24,6 +28,7 @@
         <a href="#" class="btn">Lihat Detail</a>
       </div>
       @endforeach
+      @endif
   </section>
 @endsection
 
