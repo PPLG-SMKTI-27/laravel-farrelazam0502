@@ -17,13 +17,12 @@
           <ul class="flex items-center gap-7 text-sm font-medium text-slate-300">
 
               <li>
-    <a href="{{ route('home') }}"
-       class="hover:text-emerald-400 transition">
-       Home
-    </a>
-</li>
-
-
+                <a href="{{ route('home') }}"
+                class="hover:text-emerald-400 transition">
+                Home
+            </a>
+            
+            </li>
 
 
               <li>
@@ -96,3 +95,28 @@
 
       </div>
   </nav>
+
+
+  <script>
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault(); 
+
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        gsap.to(window, {
+          scrollTo: {
+            y: target,
+            offsetY: 70 
+          },
+          duration: 1, 
+          ease: "power2.out"
+        });
+      }
+    });
+  });
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>

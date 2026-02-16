@@ -9,18 +9,23 @@ class ProjectController extends Controller
 {
     public function index()
     {
-    //    $projects = Project::all();
-       $projects = collect([]);
-        $nama = 'Farrel';   
+        $projects = Project::all();
+        $nama = 'Farrel';
         $umur = "20 Tahun";
 
-        return view('section.Project',[
+        return view('pages.Portofolio', [
             'projects' => $projects,
             'nama' => $nama,
             'umur' => $umur
         ]);
-        
+    }
+
+    // ✅ HARUS di dalam class
+    // ✅ nama harus sama dengan route (detail)
+    public function detail()
+    {
+        $projects = Project::all();
+
+        return view('pages.project_detail', compact('projects'));
     }
 }
-
-
