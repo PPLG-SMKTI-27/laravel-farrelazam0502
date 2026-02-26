@@ -5,16 +5,27 @@
     <div class="max-w-7xl mx-auto px-6">
 
         {{-- Title --}}
-        <div class="flex justify-between items-center mb-12">
-            <h1 class="text-4xl font-extrabold text-white tracking-tight">
-                Dashboard
-            </h1>
-            {{-- Edit Profile --}}
+    <div class="flex justify-between items-center mb-12">
+
+        {{-- Kiri --}}
+        <h1 class="text-4xl font-extrabold text-white tracking-tight">
+            Dashboard
+        </h1>
+
+        {{-- Kanan (Group Tombol) --}}
+        <div class="flex items-center gap-4">
             <a href="{{ route('profile.edit') }}" 
-               class="bg-blue-600 hover:bg-blue-500 transition px-5 py-2 rounded-lg text-white font-medium shadow">
+            class="bg-blue-600 hover:bg-blue-500 transition px-5 py-2 rounded-lg text-white font-medium shadow">
                 Edit Profile
             </a>
+            
+           <a href="{{ route('project.editForm', $project->id) }}">
+            class="bg-purple-600 hover:bg-purple-500 transition px-5 py-2 rounded-lg text-white font-medium shadow">
+                Edit Project
+            </a>
         </div>
+
+    </div>
 
         {{-- Welcome Card --}}
         <div class="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-10 shadow-2xl mb-14 text-white relative overflow-hidden">

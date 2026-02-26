@@ -20,12 +20,30 @@ class ProjectController extends Controller
         ]);
     }
 
-    // ✅ HARUS di dalam class
-    // ✅ nama harus sama dengan route (detail)
-    public function detail()
-    {
-        $projects = Project::all();
+    public function editList()
+{
+    $projects = Project::all();
+    return view('edit_project.partials.edit', compact('project'));
+}
 
-        return view('pages.project_detail', compact('projects'));
-    }
+public function editForm($id = null)
+{
+    $projects = Project::all(); // semua data
+    $project = $id ? Project::findOrFail($id) : null; // yang dipilih
+
+    return view('edit_project.partials.edit', compact('projects', 'project'));
+}
+
+public function update(Request $request, $id)
+{
+    $project = Project::findOrFail($id);
+
+    $project->update([
+        'name' => $request->name,
+    ]);
+
+    return redirect()->route('dashboard')
+                     ->with('success', 'Project berhasil diupdate!');
+}
+
 }
