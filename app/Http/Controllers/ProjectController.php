@@ -20,30 +20,52 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function editList()
-{
-    $projects = Project::all();
-    return view('edit_project.partials.edit', compact('project'));
-}
+    public function editForm($id = null)
+    {
+        $projects = Project::all();
+        $project = $id ? Project::findOrFail($id) : new Project();
 
-public function editForm($id = null)
-{
-    $projects = Project::all(); // semua data
-    $project = $id ? Project::findOrFail($id) : null; // yang dipilih
+        return view('edit_project.partials.edit', compact('projects', 'project'));
+    }
 
-    return view('edit_project.partials.edit', compact('projects', 'project'));
-}
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'technology' => 'required|string',
+            'demo_link' => 'nullable|url',
+        ]);
 
-public function update(Request $request, $id)
-{
-    $project = Project::findOrFail($id);
+        Project::create($request->all());
 
-    $project->update([
-        'name' => $request->name,
-    ]);
+        return redirect()->route('dashboard')
+            ->with('success', 'Project berhasil ditambahkan!');
+    }
 
-    return redirect()->route('dashboard')
-                     ->with('success', 'Project berhasil diupdate!');
-}
+    public function update(Request $request, $id)
+    {
+        $project = Project::findOrFail($id);
 
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'technology' => 'required|string',
+            'demo_link' => 'nullable|url',
+        ]);
+
+        $project->update($request->all());
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Project berhasil diupdate!');
+    }
+
+    public function destroy($id)
+    {
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Project berhasil dihapus!');
+    }
 }

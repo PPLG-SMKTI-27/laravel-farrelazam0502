@@ -38,6 +38,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/project/edit/{id?}', [ProjectController::class, 'editForm'])
     ->name('project.editForm');
 
+Route::post('/project', [ProjectController::class, 'store'])
+    ->name('project.store');
+
 Route::put('/project/{id}', [ProjectController::class, 'update'])
     ->name('project.update');
+
+Route::delete('/project/{id}', [ProjectController::class, 'destroy'])
+    ->name('project.destroy');
+
 require __DIR__.'/auth.php';

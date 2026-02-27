@@ -19,7 +19,7 @@
                 Edit Profile
             </a>
             
-           <a href="{{ route('project.editForm', $project->id) }}">
+            <a href="{{ route('project.editForm') }}" 
             class="bg-purple-600 hover:bg-purple-500 transition px-5 py-2 rounded-lg text-white font-medium shadow">
                 Edit Project
             </a>
@@ -42,6 +42,12 @@
             <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse-slow"></div>
         </div>
 
+        @if(session('success'))
+        <div class="max-w-5xl mx-auto mb-8 bg-green-500/20 border border-green-500/50 text-green-400 p-4 rounded-2xl">
+            {{ session('success') }}
+        </div>
+        @endif
+
         {{-- Statistik --}}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
 
@@ -58,7 +64,7 @@
                         Total Project
                     </h4>
                 </div>
-                <p class="text-5xl font-extrabold text-cyan-400 mt-6 count" data-target="12">0</p>
+                <p class="text-5xl font-extrabold text-cyan-400 mt-6 count" data-target="{{ $projects->count() }}">0</p>
                 <div class="mt-4 h-1 w-16 bg-cyan-400 rounded-full"></div>
             </div>
 
@@ -102,29 +108,52 @@
 
         {{-- Latest Projects Table --}}
         <div class="mt-16 max-w-5xl mx-auto bg-[#111827]/80 backdrop-blur-md rounded-3xl p-6 shadow-lg">
-            <h3 class="text-white font-bold text-xl mb-4">Latest Projects</h3>
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-white font-bold text-xl">Recent Projects</h3>
+                <a href="{{ route('project.editForm') }}" class="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition">Manage All</a>
+            </div>
             <table class="min-w-full table-auto text-white">
                 <thead>
                     <tr class="border-b border-gray-700">
-                        <th class="px-4 py-2 text-left text-gray-400">Project</th>
-                        <th class="px-4 py-2 text-left text-gray-400">Status</th>
-                        <th class="px-4 py-2 text-left text-gray-400">Deadline</th>
+                        <th class="px-4 py-3 text-left text-gray-400 uppercase text-xs tracking-wider">Project</th>
+                        <th class="px-4 py-3 text-left text-gray-400 uppercase text-xs tracking-wider">Technology</th>
+                        <th class="px-4 py-3 text-right text-gray-400 uppercase text-xs tracking-wider">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b border-gray-700 hover:bg-gray-800 transition">
-                        <td class="px-4 py-2">Website Redesign</td>
-                        <td class="px-4 py-2">In Progress</td>
-                        <td class="px-4 py-2">2026-03-01</td>
+                    @forelse($projects as $item)
+                    <tr class="border-b border-gray-700 hover:bg-gray-800/50 transition">
+                        <td class="px-4 py-4">
+                            <div class="font-medium">{{ $item->title }}</div>
+                            <div class="text-xs text-gray-500 truncate max-w-xs">{{ Str::limit($item->description, 50) }}</div>
+                        </td>
+                        <td class="px-4 py-4">
+                            <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-semibold border border-blue-500/20">
+                                {{ $item->technology }}
+                            </span>
+                        </td>
+                        <td class="px-4 py-4 text-right flex justify-end gap-2">
+                            <a href="{{ route('project.editForm', $item->id) }}" class="text-purple-400 hover:text-purple-300 transition">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form action="{{ route('project.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus project ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-400 hover:text-red-300 transition">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                    <tr class="border-b border-gray-700 hover:bg-gray-800 transition">
-                        <td class="px-4 py-2">Mobile App</td>
-                        <td class="px-4 py-2">Completed</td>
-                        <td class="px-4 py-2">2026-02-15</td>
+                    @empty
+                    <tr>
+                        <td colspan="3" class="px-4 py-8 text-center text-gray-500 italic">No projects found. Start by adding one!</td>
                     </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
+
 
     </div>
 </div>
