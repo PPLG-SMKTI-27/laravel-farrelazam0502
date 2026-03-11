@@ -6,7 +6,7 @@ class="relative min-h-screen flex items-center justify-center px-5 overflow-hidd
 <!-- CONTENT -->
 <div class="relative z-10 max-w-6xl w-full">
 
-<h2 class="text-3xl md:text-4xl font-bold text-center mb-12
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-12 pb-2
 bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
 Skill
 </h2>

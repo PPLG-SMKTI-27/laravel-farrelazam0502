@@ -13,7 +13,9 @@
 <body class="font-sans antialiased bg-slate-950 text-slate-200 overflow-x-hidden">
     
     <div class="min-h-screen bg-slate-950">
-        @include('components.navbar')
+        @if(!Route::is('dashboard'))
+            @include('components.navbar')
+        @endif
 
         @isset($header)
             <header class="bg-slate-900 shadow">

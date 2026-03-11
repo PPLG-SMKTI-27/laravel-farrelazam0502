@@ -1,7 +1,7 @@
   {{-- NAVBAR --}}
-  <nav id="main-nav" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-500 opacity-100">
-      <div class="relative backdrop-blur-xl bg-slate-950/40 border border-white/10 rounded-full px-8 py-3 
-                  flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+  <nav id="main-nav" class="{{ isset($inline) && $inline ? 'relative' : 'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl' }} transition-all duration-500 opacity-100">
+      <div class="relative backdrop-blur-xl bg-slate-950/40 border border-white/10 rounded-full {{ isset($inline) && $inline ? 'px-6 py-2' : 'px-5 py-2 md:px-8 md:py-3' }} 
+                  flex items-center {{ isset($inline) && $inline ? 'justify-center' : 'justify-between' }} shadow-[0_8px_32px_rgba(0,0,0,0.5)]
                   group hover:bg-slate-950/80 hover:border-white/20 transition-all duration-500">
 
           {{-- Bottom Glow Line --}}
@@ -10,15 +10,17 @@
                       group-hover:w-1/2 group-hover:via-emerald-400 transition-all duration-700"></div>
 
           {{-- LOGO --}}
+          @if(!(isset($inline) && $inline))
           <a href="{{ route('home') }}"
             class="text-2xl font-black
                     bg-gradient-to-r from-emerald-400 to-blue-400
                     bg-clip-text text-transparent hover:scale-105 transition duration-300">
               Farrel
           </a>
+          @endif
 
           {{-- MENU --}}
-          <ul class="flex items-center gap-7 text-sm font-medium text-slate-300">
+          <ul class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
 
               <li>
                 <a href="{{ route('home') }}"
@@ -74,22 +76,25 @@
 
 
               @auth
+                  @if(!(isset($inline) && $inline))
                   <li>
                       <a href="{{ route('dashboard') }}"
                         class="hover:text-emerald-400 transition">
                           Dashboard
                       </a>
                   </li>
+                  @endif
 
-                  <li>
-                      <form method="POST" action="{{ route('logout') }}">
+                  <li class="flex items-center">
+                      <form method="POST" action="{{ route('logout') }}" class="m-0 flex items-center">
                           @csrf
-                          <button
-                              class="px-5 py-2 rounded-full
-                                    bg-gradient-to-r from-red-500 to-pink-500
-                                    text-white font-semibold
-                                    hover:scale-105 transition">
-                              Logout
+                          <button type="submit"
+                                class="px-5 py-2 rounded-full
+                                      bg-gradient-to-r from-red-500 to-pink-500
+                                      text-sm font-semibold text-white
+                                      hover:scale-105 transition shadow-lg
+                                      flex items-center justify-center leading-none">
+                                Logout
                           </button>
                       </form>
                   </li>
@@ -97,6 +102,25 @@
 
           </ul>
 
+          {{-- MOBILE MENU BUTTON --}}
+          <button id="menu-toggle" class="md:hidden text-slate-300 hover:text-emerald-400 transition p-2 relative z-50">
+              <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+
+      </div>
+
+      {{-- MOBILE MENU DROPDOWN --}}
+      <div id="mobile-menu" class="hidden md:hidden absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-[90%] transition-all duration-300">
+          <ul class="backdrop-blur-2xl bg-slate-950/95 border border-white/10 rounded-2xl p-6 flex flex-col gap-4 text-center text-slate-300 font-medium shadow-2xl">
+              <li><a href="{{ route('home') }}" class="hover:text-emerald-400 block py-2">Home</a></li>
+              <li><a href="{{ route('home') }}#about" class="hover:text-emerald-400 block py-2">Tentang Saya</a></li>
+              <li><a href="{{ route('home') }}#skill" class="hover:text-emerald-400 block py-2">Skill</a></li>
+              <li><a href="{{ route('home') }}#project" class="hover:text-emerald-400 block py-2">Project</a></li>
+              <li><a href="{{ route('home') }}#contact" class="hover:text-emerald-400 block py-2">Kontak</a></li>
+              @auth
+              <li><a href="{{ route('dashboard') }}" class="hover:text-emerald-400 block py-2">Dashboard</a></li>
+              @endauth
+          </ul>
       </div>
   </nav>
 
@@ -104,6 +128,9 @@
   <script>
   // Navbar Scroll Logic
   const nav = document.getElementById('main-nav');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
       nav.classList.remove('opacity-100');
@@ -114,9 +141,14 @@
     }
   });
 
+  menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault(); 
+      mobileMenu.classList.add('hidden');
 
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {

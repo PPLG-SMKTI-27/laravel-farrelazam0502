@@ -28,7 +28,12 @@
                         @forelse($projects as $item)
                         <div class="group flex justify-between items-center p-4 rounded-2xl bg-[#1f2937]/50 border border-transparent hover:border-purple-500/50 hover:bg-[#1f2937] transition duration-300 {{ isset($project) && $project->id == $item->id ? 'border-purple-500 bg-[#1f2937]' : '' }}">
                             <div class="flex-1">
-                                <h4 class="text-white font-medium group-hover:text-purple-400 transition">{{ $item->title }}</h4>
+                                <h4 class="text-white font-medium group-hover:text-purple-400 transition flex items-center gap-2">
+                                    {{ $item->title }}
+                                    @if($item->is_featured)
+                                        <i class="fas fa-star text-yellow-500 text-[10px]" title="Featured"></i>
+                                    @endif
+                                </h4>
                                 <p class="text-gray-500 text-xs truncate max-w-[150px]">{{ $item->technology }}</p>
                             </div>
                             <div class="flex gap-2">
@@ -90,6 +95,17 @@
                             <label class="text-gray-400 text-sm font-medium ml-1">Demo link (Optional)</label>
                             <input type="url" name="demo_link" value="{{ old('demo_link', $project->demo_link) }}" placeholder="https://example.com"
                                 class="w-full bg-[#1f2937] border border-gray-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-300">
+                        </div>
+
+                        <div class="flex items-center gap-3 p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl">
+                            <div class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" name="is_featured" id="is_featured" value="1" {{ old('is_featured', $project->is_featured) ? 'checked' : '' }}
+                                    class="w-5 h-5 bg-[#1f2937] border-gray-700 rounded text-purple-600 focus:ring-purple-500 focus:ring-offset-[#111827]">
+                                <label for="is_featured" class="ml-3 text-white font-medium cursor-pointer">
+                                    Featured Project
+                                    <span class="block text-xs text-gray-500 font-normal">Tampilkan project ini di halaman utama (Maksimal 3)</span>
+                                </label>
+                            </div>
                         </div>
 
                         <div class="flex justify-between items-center pt-4">

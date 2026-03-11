@@ -1,15 +1,15 @@
 <section id="about"
-class="relative min-h-screen flex flex-col justify-center items-center text-center px-5 overflow-hidden">
+class="relative min-h-[150vh] md:min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden pt-24 pb-20">
 
 <!-- Background handled globally by Starry Sky Canvas -->
 
 <!-- CONTENT -->
 <div class="relative z-20">
-<h2 class="text-3xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+<h2 class="text-3xl md:text-5xl font-bold mb-6 pb-2 bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
 Tentang Saya
 </h2>
 
-<p class="text-indigo-200 max-w-2xl leading-relaxed mb-10">
+<p class="text-indigo-200 text-sm md:text-lg max-w-xl leading-relaxed mb-10 px-4">
 Saya adalah pelajar yang fokus pada web development modern menggunakan
 HTML, CSS, JavaScript, dan Laravel.
 </p>
@@ -150,6 +150,13 @@ HTML, CSS, JavaScript, dan Laravel.
     letter-spacing: 0.05em;
     white-space: nowrap;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .planet-label span {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+    }
 }
 
 .planet:hover {
@@ -342,14 +349,26 @@ let positions = [];
 function calculateFormation() {
     const w = about.offsetWidth;
     const h = about.offsetHeight;
-    const rx = w * 0.35;
-    const ry = h * 0.35;
+    
+    // Portrait-friendly ellipse for mobile
+    const isMobile = window.innerWidth < 768;
+    const rx = isMobile ? w * 0.40 : w * 0.35;
+    const ry = isMobile ? h * 0.38 : h * 0.35; // Taller orbit for vertical screens
+    
     const cx = w / 2;
     const cy = h / 2;
 
     planets.forEach((el, i) => {
         const a = (i / planets.length) * Math.PI * 2;
         const elementRadius = el.offsetWidth / 2;
+        
+        // Even smaller on mobile to feel less cramped
+        if (isMobile) {
+            el.style.transform = "scale(0.4)"; 
+        } else {
+            el.style.transform = "scale(1)";
+        }
+
         const l = cx + rx * Math.cos(a) - elementRadius;
         const t = cy + ry * Math.sin(a) - elementRadius;
 
@@ -377,12 +396,13 @@ function calculateFormation() {
 function rotatePlanets() {
     const w = about.offsetWidth;
     const h = about.offsetHeight;
-    const rx = w * 0.35;
-    const ry = h * 0.35;
-    const cx = w / 2;
-    const cy = h / 2;
 
     const isMobile = window.innerWidth < 768;
+    const rx = isMobile ? w * 0.40 : w * 0.35;
+    const ry = isMobile ? h * 0.38 : h * 0.35;
+    
+    const cx = w / 2;
+    const cy = h / 2;
 
     planets.forEach((el, i) => {
         if(!positions[i] || positions[i].isHovered) return;

@@ -14,7 +14,8 @@ class Project extends Model
         'image',
         'technology',   
         'demo_link',
-        'name'
+        'name',
+        'is_featured'
     ];
 
 

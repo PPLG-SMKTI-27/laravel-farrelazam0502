@@ -9,7 +9,14 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        // Ambil 3 project yang ditandai sebagai featured
+        $projects = Project::where('is_featured', true)->latest()->take(3)->get();
+        
+        // Fallback: Jika tidak ada featured, ambil 3 terbaru saja
+        if ($projects->isEmpty()) {
+            $projects = Project::latest()->take(3)->get();
+        }
+
         $nama = 'Farrel';
         $umur = "20 Tahun";
 
@@ -43,7 +50,10 @@ class ProjectController extends Controller
             'demo_link' => 'nullable|url',
         ]);
 
-        Project::create($request->all());
+        $data = $request->all();
+        $data['is_featured'] = $request->has('is_featured');
+
+        Project::create($data);
 
         return redirect()->route('dashboard')
             ->with('success', 'Project berhasil ditambahkan!');
@@ -60,7 +70,10 @@ class ProjectController extends Controller
             'demo_link' => 'nullable|url',
         ]);
 
-        $project->update($request->all());
+        $data = $request->all();
+        $data['is_featured'] = $request->has('is_featured');
+
+        $project->update($data);
 
         return redirect()->route('dashboard')
             ->with('success', 'Project berhasil diupdate!');

@@ -4,28 +4,33 @@
 <div class="min-h-screen bg-[#0b1120] py-12">
     <div class="max-w-7xl mx-auto px-6">
 
-        {{-- Title --}}
-    <div class="flex justify-between items-center mb-12">
-
-        {{-- Kiri --}}
-        <h1 class="text-4xl font-extrabold text-white tracking-tight">
-            Dashboard
-        </h1>
-
-        {{-- Kanan (Group Tombol) --}}
-        <div class="flex items-center gap-4">
-            <a href="{{ route('profile.edit') }}" 
-            class="bg-blue-600 hover:bg-blue-500 transition px-5 py-2 rounded-lg text-white font-medium shadow">
-                Edit Profile
-            </a>
+        {{-- NEW INTEGRATED HEADER --}}
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
             
-            <a href="{{ route('project.editForm') }}" 
-            class="bg-purple-600 hover:bg-purple-500 transition px-5 py-2 rounded-lg text-white font-medium shadow">
-                Edit Project
-            </a>
-        </div>
+            {{-- Kiri: Title --}}
+            <h1 class="text-4xl font-extrabold text-white tracking-tight shrink-0">
+                Dashboard
+            </h1>
 
-    </div>
+            {{-- Tengah: Integrated Navbar --}}
+            <div class="flex-1 max-w-2xl w-full">
+                @include('components.navbar', ['inline' => true])
+            </div>
+
+            {{-- Kanan: Action Buttons --}}
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="{{ route('profile.edit') }}" 
+                class="bg-blue-600/20 hover:bg-blue-600 border border-blue-500/50 transition px-4 py-2 rounded-xl text-blue-100 text-sm font-medium shadow-lg">
+                    Edit Profile
+                </a>
+                
+                <a href="{{ route('project.editForm') }}" 
+                class="bg-purple-600/20 hover:bg-purple-600 border border-purple-500/50 transition px-4 py-2 rounded-xl text-purple-100 text-sm font-medium shadow-lg">
+                    Edit Project
+                </a>
+            </div>
+
+        </div>
 
         {{-- Welcome Card --}}
         <div class="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-10 shadow-2xl mb-14 text-white relative overflow-hidden">
