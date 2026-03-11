@@ -15,8 +15,120 @@ HTML, CSS, JavaScript, dan Laravel.
 </p>
 </div>
 
-<!-- FLOATING ICONS -->
-<div class="absolute inset-0 pointer-events-none z-20">
+<!-- MOBILE CAROUSEL (visible only on mobile) -->
+<div id="mobile-planets" class="block md:hidden relative z-20 w-full mt-6 mb-4 space-y-6">
+
+    <!-- PENDIDIKAN ROW -->
+    <div>
+        <div class="flex items-center gap-3 px-6 mb-1">
+            <i class="fa-solid fa-graduation-cap text-emerald-400/70 text-xs"></i>
+            <span class="text-[11px] text-emerald-400/70 font-semibold tracking-widest uppercase">Pendidikan</span>
+            <div class="flex-1 h-px bg-gradient-to-r from-emerald-400/30 to-transparent"></div>
+        </div>
+        <p class="text-[10px] text-gray-500 px-6 mb-3">← Geser untuk lihat semua →</p>
+        <div class="relative">
+            <!-- Right fade hint -->
+            <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0f172a] to-transparent z-10 pointer-events-none rounded-r-lg"></div>
+        <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-6 scrollbar-hide">
+            <a href="#tk" class="mobile-planet-card snap-center" data-glow="#9e9e9e">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-mercury"></div>
+                    <span class="mobile-planet-name">TK</span>
+                    <span class="mobile-planet-desc">Taman Kanak</span>
+                </div>
+            </a>
+            <a href="#sd" class="mobile-planet-card snap-center" data-glow="#ffab40">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-venus"></div>
+                    <span class="mobile-planet-name">SD</span>
+                    <span class="mobile-planet-desc">Sekolah Dasar</span>
+                </div>
+            </a>
+            <a href="#smp" class="mobile-planet-card snap-center" data-glow="#4facfe">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-earth"></div>
+                    <span class="mobile-planet-name">SMP</span>
+                    <span class="mobile-planet-desc">Menengah Pertama</span>
+                </div>
+            </a>
+            <a href="#smk" class="mobile-planet-card snap-center" data-glow="#ff5252">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-mars"></div>
+                    <span class="mobile-planet-name">SMK</span>
+                    <span class="mobile-planet-desc">Kejuruan</span>
+                </div>
+            </a>
+            <a href="#smp2" class="mobile-planet-card snap-center" data-glow="#d4a373">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-jupiter"></div>
+                    <span class="mobile-planet-name">SMP2</span>
+                    <span class="mobile-planet-desc">Menengah 2</span>
+                </div>
+            </a>
+            <a href="#sd2" class="mobile-planet-card snap-center" data-glow="#e2b143">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-saturn"></div>
+                    <span class="mobile-planet-name">SD2</span>
+                    <span class="mobile-planet-desc">Sekolah Dasar 2</span>
+                </div>
+            </a>
+            <a href="#tk2" class="mobile-planet-card snap-center" data-glow="#80deea">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-uranus"></div>
+                    <span class="mobile-planet-name">TK2</span>
+                    <span class="mobile-planet-desc">Taman Kanak 2</span>
+                </div>
+            </a>
+        </div>
+        </div> <!-- end relative -->
+    </div>
+
+    <!-- KONTAK ROW -->
+    <div>
+        <div class="flex items-center gap-3 px-6 mb-3">
+            <i class="fa-solid fa-paper-plane text-indigo-400/70 text-xs"></i>
+            <span class="text-[11px] text-indigo-400/70 font-semibold tracking-widest uppercase">Kontak</span>
+            <div class="flex-1 h-px bg-gradient-to-r from-indigo-400/30 to-transparent"></div>
+        </div>
+        <div class="flex gap-4 justify-center pb-4 px-6">
+            <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="mobile-planet-card" data-glow="#25d366">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-neptune"></div>
+                    <span class="mobile-planet-name"><i class="fa-brands fa-whatsapp"></i> WA</span>
+                    <span class="mobile-planet-desc">WhatsApp</span>
+                </div>
+            </a>
+            <a href="https://instagram.com/username" target="_blank" class="mobile-planet-card" data-glow="#e1306c">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-moon"></div>
+                    <span class="mobile-planet-name"><i class="fa-brands fa-instagram"></i> IG</span>
+                    <span class="mobile-planet-desc">Instagram</span>
+                </div>
+            </a>
+            <a href="mailto:emailkamu@gmail.com" class="mobile-planet-card" data-glow="#ffb300">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="mobile-planet-orb planet-sun"></div>
+                    <span class="mobile-planet-name"><i class="fa-solid fa-envelope"></i></span>
+                    <span class="mobile-planet-desc">Email</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- FLOATING ICONS (desktop only) -->
+<div class="absolute inset-0 pointer-events-none z-20 hidden md:block">
 
 <a href="#tk" class="planet planet-mercury">
     <div class="planet-label">
@@ -88,6 +200,107 @@ HTML, CSS, JavaScript, dan Laravel.
 </section>
 
 <style>
+
+/* ===== MOBILE PLANET CAROUSEL ===== */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.mobile-planet-card {
+    flex: 0 0 auto;
+    position: relative;
+    text-decoration: none;
+    min-width: 100px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 0;
+}
+
+.card-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 14px 16px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    transition: all 0.5s;
+    width: 100px;
+    min-height: 130px;
+    justify-content: center;
+}
+
+.mobile-planet-card:active .card-inner {
+    transform: scale(0.95);
+}
+
+.mobile-planet-card.active .card-glow {
+    opacity: 1;
+    filter: blur(15px);
+}
+
+.mobile-planet-card.active .card-inner {
+    border-color: rgba(255,255,255,0.25);
+    transform: scale(1.08);
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+}
+
+.mobile-planet-orb {
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    box-shadow: 
+        inset -10px -10px 20px rgba(0,0,0,0.9), 
+        inset 4px 4px 10px rgba(255,255,255,0.3),
+        0 0 15px rgba(255,255,255,0.1) !important;
+    transition: box-shadow 0.5s;
+}
+
+.mobile-planet-card.active .mobile-planet-orb {
+    box-shadow: 
+        inset -10px -10px 20px rgba(0,0,0,0.9), 
+        inset 4px 4px 10px rgba(255,255,255,0.3),
+        0 0 25px var(--planet-glow, rgba(255,255,255,0.3)) !important;
+}
+
+.mobile-planet-name {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mobile-planet-desc {
+    color: rgba(148, 163, 184, 0.7);
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-top: -4px;
+}
+
+.mobile-planet-card.active .mobile-planet-name {
+    background: linear-gradient(90deg, #34d399, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mobile-planet-card.active .mobile-planet-desc {
+    color: rgba(148, 163, 184, 1);
+}
+
+/* ===== END MOBILE CAROUSEL ===== */
 
 /* Base Realistic Planet */
 .planet {
@@ -425,8 +638,42 @@ function rotatePlanets() {
     requestAnimationFrame(rotatePlanets);
 }
 
-calculateFormation();
-rotatePlanets();
-window.addEventListener("resize", calculateFormation);
+// Only run orbit animation on desktop
+if (window.innerWidth >= 768) {
+    calculateFormation();
+    rotatePlanets();
+}
+window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+        calculateFormation();
+    }
+});
+
+// ===== MOBILE CAROUSEL CLICK HANDLER =====
+document.querySelectorAll('.mobile-planet-card').forEach(card => {
+    const glowColor = card.dataset.glow || '#34d399';
+    const glowEl = card.querySelector('.card-glow');
+    const orbEl = card.querySelector('.mobile-planet-orb');
+    
+    // Set glow color for this card
+    if (glowEl) glowEl.style.background = glowColor;
+    if (orbEl) orbEl.style.setProperty('--planet-glow', glowColor + '80');
+    
+    card.addEventListener('click', (e) => {
+        // Don't prevent default for external links
+        if (!card.getAttribute('href').startsWith('http') && !card.getAttribute('href').startsWith('mailto:')) {
+            e.preventDefault();
+        }
+        
+        // Toggle active state
+        const wasActive = card.classList.contains('active');
+        document.querySelectorAll('.mobile-planet-card').forEach(c => c.classList.remove('active'));
+        
+        if (!wasActive) {
+            card.classList.add('active');
+            card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+    });
+});
 
 </script>

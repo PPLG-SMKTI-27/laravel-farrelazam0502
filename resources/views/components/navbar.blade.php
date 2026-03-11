@@ -110,7 +110,7 @@
       </div>
 
       {{-- MOBILE MENU DROPDOWN --}}
-      <div id="mobile-menu" class="hidden md:hidden absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-[90%] transition-all duration-300">
+      <div id="mobile-menu" class="hidden md:hidden absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-[90%] z-50 transition-all duration-300">
           <ul class="backdrop-blur-2xl bg-slate-950/95 border border-white/10 rounded-2xl p-6 flex flex-col gap-4 text-center text-slate-300 font-medium shadow-2xl">
               <li><a href="{{ route('home') }}" class="hover:text-emerald-400 block py-2">Home</a></li>
               <li><a href="{{ route('home') }}#about" class="hover:text-emerald-400 block py-2">Tentang Saya</a></li>
@@ -124,46 +124,75 @@
       </div>
   </nav>
 
+  {{-- SCRIPTS --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
   <script>
-  // Navbar Scroll Logic
-  const nav = document.getElementById('main-nav');
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
+  document.addEventListener('DOMContentLoaded', () => {
+    // Register GSAP Plugin
+    gsap.registerPlugin(ScrollToPlugin);
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      nav.classList.remove('opacity-100');
-      nav.classList.add('opacity-40', 'hover:opacity-100');
-    } else {
-      nav.classList.add('opacity-100');
-      nav.classList.remove('opacity-40', 'hover:opacity-100');
-    }
-  });
+    // Navbar Elements
+    const nav = document.getElementById('main-nav');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-  menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault(); 
-      mobileMenu.classList.add('hidden');
-
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        gsap.to(window, {
-          scrollTo: {
-            y: target,
-            offsetY: 120 
-          },
-          duration: 1, 
-          ease: "power2.out"
-        });
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.classList.remove('opacity-100');
+        nav.classList.add('opacity-40', 'hover:opacity-100');
+      } else {
+        nav.classList.add('opacity-100');
+        nav.classList.remove('opacity-40', 'hover:opacity-100');
       }
     });
+
+    // Mobile Menu Toggle
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when ANY link inside is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth Scroll Logic
+    if (typeof gsap !== 'undefined') {
+      document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const hash = this.hash;
+          if (!hash || hash === '#') return;
+
+          const target = document.querySelector(hash);
+          if (!target) return;
+
+          // Normalize paths for comparison (handle subfolders and trailing slashes)
+          const normalize = p => p.replace(/\/$/, "") || "/";
+          const isSamePage = normalize(this.pathname) === normalize(window.location.pathname);
+
+          if (isSamePage) {
+            e.preventDefault();
+            
+            // Ensure mobile menu is closed
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+
+            gsap.to(window, {
+              scrollTo: {
+                y: target,
+                autoKill: true,
+                offsetY: 80
+              },
+              duration: 0.8,
+              ease: "power2.inOut"
+            });
+          }
+        });
+      });
+    }
   });
-</script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
+  </script>

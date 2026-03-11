@@ -5,41 +5,41 @@
     <div class="max-w-7xl mx-auto px-6">
 
         {{-- NEW INTEGRATED HEADER --}}
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-16 relative z-30">
             
             {{-- Kiri: Title --}}
-            <h1 class="text-4xl font-extrabold text-white tracking-tight shrink-0">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight shrink-0 text-center md:text-left">
                 Dashboard
             </h1>
 
             {{-- Tengah: Integrated Navbar --}}
-            <div class="flex-1 max-w-2xl w-full">
+            <div class="flex-1 max-w-2xl w-full order-3 md:order-2">
                 @include('components.navbar', ['inline' => true])
             </div>
 
             {{-- Kanan: Action Buttons --}}
-            <div class="flex items-center gap-3 shrink-0">
+            <div class="flex items-center justify-center gap-3 shrink-0 order-2 md:order-3 w-full md:w-auto">
                 <a href="{{ route('profile.edit') }}" 
-                class="bg-blue-600/20 hover:bg-blue-600 border border-blue-500/50 transition px-4 py-2 rounded-xl text-blue-100 text-sm font-medium shadow-lg">
-                    Edit Profile
+                class="flex-1 md:flex-initial text-center bg-blue-600/20 hover:bg-blue-600 border border-blue-500/50 transition px-4 py-2 rounded-xl text-blue-100 text-sm font-medium shadow-lg">
+                    Profile
                 </a>
                 
                 <a href="{{ route('project.editForm') }}" 
-                class="bg-purple-600/20 hover:bg-purple-600 border border-purple-500/50 transition px-4 py-2 rounded-xl text-purple-100 text-sm font-medium shadow-lg">
-                    Edit Project
+                class="flex-1 md:flex-initial text-center bg-purple-600/20 hover:bg-purple-600 border border-purple-500/50 transition px-4 py-2 rounded-xl text-purple-100 text-sm font-medium shadow-lg">
+                    Project
                 </a>
             </div>
 
         </div>
 
         {{-- Welcome Card --}}
-        <div class="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-10 shadow-2xl mb-14 text-white relative overflow-hidden">
-            <div class="relative z-10">
-                <h2 class="text-3xl font-bold">
+        <div class="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-6 md:p-10 shadow-2xl mb-10 md:mb-14 text-white relative overflow-hidden">
+            <div class="relative z-10 text-center md:text-left">
+                <h2 class="text-2xl md:text-3xl font-bold">
                     Halo, {{ Auth::user()->name }} 👋
                 </h2>
-                <p class="mt-3 text-blue-100 text-lg">
-                    Selamat datang kembali di dashboard kamu. Lihat statistik dan progress terbaru di bawah!
+                <p class="mt-2 text-blue-100 text-sm md:text-lg">
+                    Selamat datang kembali. Lihat statistik dan progress terbaru di bawah!
                 </p>
             </div>
             {{-- Glow circles --}}
@@ -54,56 +54,56 @@
         @endif
 
         {{-- Statistik --}}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-5xl mx-auto">
 
-            <div class="stat-card bg-[#111827]/80 backdrop-blur-md p-8 rounded-3xl border border-gray-700 shadow-lg transition duration-500">
+            <div class="stat-card bg-[#111827]/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-gray-700 shadow-lg transition duration-500">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-cyan-500/20 p-3 rounded-full text-cyan-400">
+                    <div class="bg-cyan-500/20 p-2 md:p-3 rounded-full text-cyan-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M9 17v-6h6v6M12 7v2M5 12h14"/>
                         </svg>
                     </div>
-                    <h4 class="text-gray-400 text-sm uppercase tracking-widest font-semibold">
+                    <h4 class="text-gray-400 text-[10px] md:text-sm uppercase tracking-widest font-semibold">
                         Total Project
                     </h4>
                 </div>
-                <p class="text-5xl font-extrabold text-cyan-400 mt-6 count" data-target="{{ $projects->count() }}">0</p>
+                <p class="text-3xl md:text-5xl font-extrabold text-cyan-400 mt-4 md:mt-6 count" data-target="{{ $projects->count() }}">0</p>
                 <div class="mt-4 h-1 w-16 bg-cyan-400 rounded-full"></div>
             </div>
 
-            <div class="stat-card bg-[#111827]/80 backdrop-blur-md p-8 rounded-3xl border border-gray-700 shadow-lg transition duration-500">
+            <div class="stat-card bg-[#111827]/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-gray-700 shadow-lg transition duration-500">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-pink-500/20 p-3 rounded-full text-pink-400">
+                    <div class="bg-pink-500/20 p-2 md:p-3 rounded-full text-pink-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 14l9-5-9-5-9 5 9 5zM12 14l6.16-3.422M12 14v7m0 0l-6.16-3.422M12 21l6.16-3.422M6 10v7"/>
                         </svg>
                     </div>
-                    <h4 class="text-gray-400 text-sm uppercase tracking-widest font-semibold">
+                    <h4 class="text-gray-400 text-[10px] md:text-sm uppercase tracking-widest font-semibold">
                         Skills
                     </h4>
                 </div>
-                <p class="text-5xl font-extrabold text-pink-400 mt-6 count" data-target="8">0</p>
+                <p class="text-3xl md:text-5xl font-extrabold text-pink-400 mt-4 md:mt-6 count" data-target="8">0</p>
                 <div class="mt-4 h-1 w-16 bg-pink-400 rounded-full"></div>
             </div>
 
-            <div class="stat-card bg-[#111827]/80 backdrop-blur-md p-8 rounded-3xl border border-gray-700 shadow-lg transition duration-500">
+            <div class="stat-card bg-[#111827]/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-gray-700 shadow-lg transition duration-500">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-yellow-500/20 p-3 rounded-full text-yellow-400">
+                    <div class="bg-yellow-500/20 p-2 md:p-3 rounded-full text-yellow-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M3 7v4a1 1 0 001 1h3m10 0h3a1 1 0 001-1V7m-5 10v-4a1 1 0 00-1-1h-4a1 1 0 00-1 1v4"/>
                         </svg>
                     </div>
-                    <h4 class="text-gray-400 text-sm uppercase tracking-widest font-semibold">
+                    <h4 class="text-gray-400 text-[10px] md:text-sm uppercase tracking-widest font-semibold">
                         Contacts
                     </h4>
                 </div>
-                <p class="text-5xl font-extrabold text-yellow-400 mt-6 count" data-target="5">0</p>
+                <p class="text-3xl md:text-5xl font-extrabold text-yellow-400 mt-4 md:mt-6 count" data-target="5">0</p>
                 <div class="mt-4 h-1 w-16 bg-yellow-400 rounded-full"></div>
             </div>
 
@@ -113,50 +113,55 @@
 
         {{-- Latest Projects Table --}}
         <div class="mt-16 max-w-5xl mx-auto bg-[#111827]/80 backdrop-blur-md rounded-3xl p-6 shadow-lg">
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
                 <h3 class="text-white font-bold text-xl">Recent Projects</h3>
-                <a href="{{ route('project.editForm') }}" class="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition">Manage All</a>
+                <a href="{{ route('project.editForm') }}" class="w-full sm:w-auto text-center px-4 py-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-xl hover:bg-cyan-500/20 text-sm font-semibold transition">Manage All</a>
             </div>
-            <table class="min-w-full table-auto text-white">
-                <thead>
-                    <tr class="border-b border-gray-700">
-                        <th class="px-4 py-3 text-left text-gray-400 uppercase text-xs tracking-wider">Project</th>
-                        <th class="px-4 py-3 text-left text-gray-400 uppercase text-xs tracking-wider">Technology</th>
-                        <th class="px-4 py-3 text-right text-gray-400 uppercase text-xs tracking-wider">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($projects as $item)
-                    <tr class="border-b border-gray-700 hover:bg-gray-800/50 transition">
-                        <td class="px-4 py-4">
-                            <div class="font-medium">{{ $item->title }}</div>
-                            <div class="text-xs text-gray-500 truncate max-w-xs">{{ Str::limit($item->description, 50) }}</div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-semibold border border-blue-500/20">
-                                {{ $item->technology }}
-                            </span>
-                        </td>
-                        <td class="px-4 py-4 text-right flex justify-end gap-2">
-                            <a href="{{ route('project.editForm', $item->id) }}" class="text-purple-400 hover:text-purple-300 transition">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <form action="{{ route('project.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus project ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-400 hover:text-red-300 transition">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="3" class="px-4 py-8 text-center text-gray-500 italic">No projects found. Start by adding one!</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
+            
+            <div class="overflow-x-auto pb-2 scrollbar-hide">
+                <table class="min-w-full table-auto text-white">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="px-2 md:px-4 py-3 text-left text-gray-400 uppercase text-[10px] md:text-xs tracking-wider whitespace-nowrap">Project</th>
+                            <th class="px-2 md:px-4 py-3 text-left text-gray-400 uppercase text-[10px] md:text-xs tracking-wider whitespace-nowrap">Tech</th>
+                            <th class="px-2 md:px-4 py-3 text-right text-gray-400 uppercase text-[10px] md:text-xs tracking-wider whitespace-nowrap">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($projects as $item)
+                        <tr class="border-b border-gray-700 hover:bg-gray-800/50 transition">
+                            <td class="px-2 md:px-4 py-4 min-w-[150px]">
+                                <div class="font-medium text-sm md:text-base leading-tight">{{ $item->title }}</div>
+                                <div class="text-[10px] md:text-xs text-gray-500 mt-1 truncate max-w-[180px] md:max-w-xs">{{ Str::limit($item->description, 30) }}</div>
+                            </td>
+                            <td class="px-2 md:px-4 py-4">
+                                <span class="bg-blue-500/10 text-blue-400 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-semibold border border-blue-500/20 whitespace-nowrap">
+                                    {{ $item->technology }}
+                                </span>
+                            </td>
+                            <td class="px-2 md:px-4 py-4 text-right">
+                                <div class="flex justify-end gap-3 md:gap-4">
+                                    <a href="{{ route('project.editForm', $item->id) }}" class="text-purple-400 hover:text-purple-300 transition text-sm md:text-base">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form action="{{ route('project.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus project ini?')" class="m-0">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-400 hover:text-red-300 transition text-sm md:text-base">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="3" class="px-4 py-8 text-center text-gray-500 italic">No projects found.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 

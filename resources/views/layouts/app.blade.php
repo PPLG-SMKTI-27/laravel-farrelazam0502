@@ -11,8 +11,9 @@
 
 </head>
 <body class="font-sans antialiased bg-slate-950 text-slate-200 overflow-x-hidden">
+    @include('components.preloader')
     
-    <div class="min-h-screen bg-slate-950">
+    <div id="content-wrapper" class="opacity-0 transition-opacity duration-1000 min-h-screen bg-slate-950">
         @if(!Route::is('dashboard'))
             @include('components.navbar')
         @endif
@@ -30,11 +31,19 @@
         </main>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
   
 
     <script>
+      // Reveal page after preloader
+      window.addEventListener('load', () => {
+          setTimeout(() => {
+              const wrapper = document.getElementById('content-wrapper');
+              if (wrapper) wrapper.classList.remove('opacity-0');
+          }, 3800); // Matches the 'Singularity' multi-phase sequence
+      });
+
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray("section").forEach(section => {
         gsap.from(section, {
