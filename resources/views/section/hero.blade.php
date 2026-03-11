@@ -1,5 +1,5 @@
 <header id="home"
-class="min-h-screen relative bg-cover bg-center bg-no-repeat"
+class="min-h-screen relative bg-cover bg-center bg-no-repeat bg-fixed"
 style="background-image: url('/backgroundbulan.png');">
 
 <!-- overlay -->
@@ -12,14 +12,14 @@ style="background-image: url('/backgroundbulan.png');">
         <img src="roblox.png" class="w-full h-full rounded-full object-cover">
     </div>
 
-    <h1 class="text-4xl md:text-5xl font-bold mb-3 text-white">
+    <h1 class="text-3xl md:text-5xl font-bold mb-3 text-white">
         Halo, Saya
         <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
             Farrel
         </span>
     </h1>
 
-    <p class="text-indigo-200">Pelajar • Web Developer • Laravel</p>
+    <p class="text-indigo-200 text-sm md:text-base">Pelajar • Web Developer • Laravel</p>
 
 </div>
 </header>

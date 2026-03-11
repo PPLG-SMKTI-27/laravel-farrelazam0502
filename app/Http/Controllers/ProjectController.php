@@ -20,6 +20,12 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function detail()
+    {
+        $projects = Project::all();
+        return view('pages.project_detail', compact('projects'));
+    }
+
     public function editForm($id = null)
     {
         $projects = Project::all();

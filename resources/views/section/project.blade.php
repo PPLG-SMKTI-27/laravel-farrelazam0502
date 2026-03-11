@@ -1,15 +1,7 @@
 <section id="project"
     class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
 
-    <!-- BACKGROUND IMAGE -->
-    <div class="absolute inset-0">
-        <div class="w-full h-full bg-cover bg-center bg-no-repeat"
-             style="background-image: url('/backgroundproject.png');">
-        </div>
-
-        <!-- DARK OVERLAY -->
-        <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-[2px]"></div>
-    </div>
+    <!-- Background handled globally by Starry Sky Canvas -->
 
 
     <!-- CONTENT -->

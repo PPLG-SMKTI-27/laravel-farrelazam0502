@@ -1,15 +1,19 @@
   {{-- NAVBAR --}}
-  <nav class="sticky top-0 z-50 backdrop-blur-md
-              bg-slate-950/70 border-b border-white/5">
+  <nav id="main-nav" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-500 opacity-100">
+      <div class="relative backdrop-blur-xl bg-slate-950/40 border border-white/10 rounded-full px-8 py-3 
+                  flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+                  group hover:bg-slate-950/80 hover:border-white/20 transition-all duration-500">
 
-      <div class="max-w-6xl mx-auto px-8 py-5
-                  flex items-center justify-between">
+          {{-- Bottom Glow Line --}}
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] 
+                      bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent 
+                      group-hover:w-1/2 group-hover:via-emerald-400 transition-all duration-700"></div>
 
           {{-- LOGO --}}
           <a href="{{ route('home') }}"
-            class="text-xl font-bold
+            class="text-2xl font-black
                     bg-gradient-to-r from-emerald-400 to-blue-400
-                    bg-clip-text text-transparent">
+                    bg-clip-text text-transparent hover:scale-105 transition duration-300">
               Farrel
           </a>
 
@@ -98,6 +102,17 @@
 
 
   <script>
+  // Navbar Scroll Logic
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      nav.classList.remove('opacity-100');
+      nav.classList.add('opacity-40', 'hover:opacity-100');
+    } else {
+      nav.classList.add('opacity-100');
+      nav.classList.remove('opacity-40', 'hover:opacity-100');
+    }
+  });
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -108,7 +123,7 @@
         gsap.to(window, {
           scrollTo: {
             y: target,
-            offsetY: 70 
+            offsetY: 120 
           },
           duration: 1, 
           ease: "power2.out"
