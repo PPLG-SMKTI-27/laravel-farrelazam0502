@@ -12,6 +12,7 @@
 </head>
 <body class="font-sans antialiased bg-slate-950 text-slate-200 overflow-x-hidden">
     @include('components.preloader')
+    @include('components.page-transition')
     
     <div id="content-wrapper" class="opacity-0 transition-opacity duration-1000 min-h-screen bg-slate-950">
         @if(!Route::is('dashboard'))
@@ -36,12 +37,13 @@
   
 
     <script>
-      // Reveal page after preloader
+      // Reveal page after big bang preloader finishes
       window.addEventListener('load', () => {
+          const wrapper = document.getElementById('content-wrapper');
+          if (!wrapper) return;
           setTimeout(() => {
-              const wrapper = document.getElementById('content-wrapper');
-              if (wrapper) wrapper.classList.remove('opacity-0');
-          }, 3800); // Matches the 'Singularity' multi-phase sequence
+              wrapper.classList.remove('opacity-0');
+          }, 3800);
       });
 
       gsap.registerPlugin(ScrollTrigger);
