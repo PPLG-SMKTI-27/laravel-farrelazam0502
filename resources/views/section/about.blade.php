@@ -1,22 +1,57 @@
 <section id="about"
-class="relative min-h-[150vh] md:min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden pt-24 pb-20">
+class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 overflow-hidden pt-24 pb-20">
 
 <!-- Background handled globally by Starry Sky Canvas -->
 
 <!-- CONTENT -->
-<div class="relative z-20">
-<h2 class="text-3xl md:text-5xl font-bold mb-6 pb-2 bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-Tentang Saya
-</h2>
+<div class="relative z-20 w-full max-w-2xl mx-auto px-4 mt-8 md:mt-0">
+    <div class="flex flex-col items-center justify-center gap-6 md:gap-8">
+        
+        <!-- Profile Image/Avatar (Engaging Element) -->
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div class="relative w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-slate-700/50 p-1 bg-slate-900/80 backdrop-blur-sm overflow-hidden flex items-center justify-center mx-auto">
+                <!-- Fallback to a cool icon if no image is available yet -->
+                <i class="fa-solid fa-user-astronaut text-4xl md:text-5xl text-emerald-400/80 group-hover:scale-110 transition-transform duration-500"></i>
+                <!-- Or put an actual img tag here later: <img src="profile.jpg" class="w-full h-full object-cover rounded-full" /> -->
+            </div>
+            
+            <!-- Floating Tech Badge -->
+            <div class="absolute -bottom-2 -right-2 bg-slate-800 border border-slate-700 text-red-500 p-2 rounded-xl shadow-lg transform rotate-6 hover:rotate-0 transition-transform hidden md:block">
+                <i class="fa-brands fa-laravel text-lg"></i>
+            </div>
+        </div>
 
-<p class="text-indigo-200 text-sm md:text-lg max-w-xl leading-relaxed mb-10 px-4">
-Saya adalah pelajar yang fokus pada web development modern menggunakan
-HTML, CSS, JavaScript, dan Laravel.
-</p>
+        <!-- Text Content -->
+        <div class="text-center flex-1 w-full max-w-lg">
+            <h2 class="text-xs md:text-sm text-emerald-400 font-semibold tracking-widest uppercase mb-3 text-center">Tentang Saya</h2>
+            
+            <p class="text-slate-300 md:text-indigo-200 text-sm md:text-base leading-relaxed mb-6 font-light text-center">
+                Seorang pelajar yang sangat antusias dan fokus pada <strong class="text-white font-medium">web development modern</strong>. Saya suka mengubah ide kompleks menjadi tampilan yang interaktif dan mudah digunakan.
+            </p>
+
+            <!-- Tech Stack Pills -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-4">
+                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-orange-400 backdrop-blur-sm flex items-center gap-1">
+                    <i class="fa-brands fa-html5"></i> HTML
+                </span>
+                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-blue-400 backdrop-blur-sm flex items-center gap-1">
+                    <i class="fa-brands fa-css3-alt"></i> CSS
+                </span>
+                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-yellow-400 backdrop-blur-sm flex items-center gap-1">
+                    <i class="fa-brands fa-js"></i> JavaScript
+                </span>
+                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-red-400 backdrop-blur-sm flex items-center gap-1">
+                    <i class="fa-brands fa-laravel"></i> Laravel
+                </span>
+            </div>
+        </div>
+        
+    </div>
 </div>
 
 <!-- MOBILE CAROUSEL (visible only on mobile) -->
-<div id="mobile-planets" class="block md:hidden relative z-20 w-full mt-6 mb-4 space-y-6">
+<div id="mobile-planets" class="block md:hidden relative z-20 w-full mt-4 mb-4 space-y-8">
 
     <!-- PENDIDIKAN ROW -->
     <div>
