@@ -41,9 +41,16 @@
       window.addEventListener('load', () => {
           const wrapper = document.getElementById('content-wrapper');
           if (!wrapper) return;
-          setTimeout(() => {
+          
+          if (sessionStorage.getItem('preloader_played')) {
+              // Preloader already played, show content immediately
               wrapper.classList.remove('opacity-0');
-          }, 3800);
+          } else {
+              // Wait for preloader animation (3.8s is the calculated end)
+              setTimeout(() => {
+                  wrapper.classList.remove('opacity-0');
+              }, 3800);
+          }
       });
 
       gsap.registerPlugin(ScrollTrigger);

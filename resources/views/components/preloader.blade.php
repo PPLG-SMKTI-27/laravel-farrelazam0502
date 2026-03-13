@@ -17,7 +17,16 @@
 </style>
 
 <script>
+// Check if preloader already played in this session BEFORE anything else
+if (sessionStorage.getItem('preloader_played')) {
+    document.getElementById('preloader').style.display = 'none';
+    document.body.classList.remove('overflow-hidden');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // If skipped, don't run the rest of the initialization
+    if (sessionStorage.getItem('preloader_played')) return;
+
     const preloader = document.getElementById('preloader');
     const canvas = document.getElementById('preloader-canvas');
     const ctx = canvas.getContext('2d');
@@ -199,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         onComplete: () => {
             cancelAnimationFrame(animationId);
             preloader.classList.add('opacity-0');
+            sessionStorage.setItem('preloader_played', 'true');
             setTimeout(() => {
                 preloader.style.display = 'none';
                 document.body.classList.remove('overflow-hidden');

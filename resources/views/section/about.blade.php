@@ -678,6 +678,7 @@ if (window.innerWidth >= 768) {
     calculateFormation();
     rotatePlanets();
 }
+
 window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
         calculateFormation();

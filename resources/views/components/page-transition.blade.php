@@ -39,10 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Skip same-page anchor links (smooth scroll)
+            // Same-page links: scroll instead of launching rocket
             try {
                 const linkUrl = new URL(href, window.location.origin);
-                if (linkUrl.pathname === window.location.pathname && linkUrl.hash) {
+                if (linkUrl.pathname === window.location.pathname) {
+                    e.preventDefault();
+                    // Scroll to top smoothly if no hash, otherwise let anchor scroll handle it
+                    if (!linkUrl.hash) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                     return;
                 }
             } catch(err) {
