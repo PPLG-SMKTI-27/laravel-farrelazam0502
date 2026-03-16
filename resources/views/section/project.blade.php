@@ -1,5 +1,5 @@
 <section id="project"
-    class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+    class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden py-20">
 
     <!-- Background handled globally by Starry Sky Canvas -->
     
@@ -13,31 +13,45 @@
             Project
         </h2>
 
-        <!-- GRID -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full pb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 w-full pb-8">
 
             @foreach($projects as $index => $p)
-                <div class="group relative bg-slate-900/60 backdrop-blur-md rounded-3xl p-6 md:p-8 
-                            border border-white/5 hover:-translate-y-3 
-                            hover:border-emerald-400/50 transition-all duration-500 text-left 
-                            hover:shadow-[0_0_30px_rgba(52,211,153,0.15)] overflow-hidden flex flex-col h-full min-h-[250px]">
+                <div class="project-card group relative bg-slate-900/40 backdrop-blur-xl rounded-[2rem] border border-white/5 hover:border-emerald-500/30 transition-all duration-500 flex flex-col h-full overflow-hidden shadow-2xl">
                     
-                    <!-- Subtle Gradient background on hover -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
-                    
-                    <!-- Decorative Number/Index Watermark -->
-                    <div class="absolute top-4 right-6 text-6xl font-black text-slate-800/30 group-hover:text-emerald-500/10 transition-colors pointer-events-none z-0">
-                        0{{ $index + 1 }}
+                    <!-- Visual Header / Thumbnail Placeholder -->
+                    <div class="relative h-48 w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-blue-500/20 to-purple-500/20 group-hover:scale-110 transition-transform duration-700"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
+                            <i class="fa-solid fa-rocket text-6xl text-white"></i>
+                        </div>
+                        <!-- Glass Overlay on Thumbnail -->
+                        <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-slate-950 to-transparent"></div>
+                        
+                        <!-- Tech Badges -->
+                        <div class="absolute top-4 left-4 flex flex-wrap gap-2 z-20">
+                            <span class="px-3 py-1 bg-emerald-500/20 backdrop-blur-md border border-emerald-500/30 rounded-full text-[10px] font-bold text-emerald-400 tracking-tighter uppercase">Laravel</span>
+                            <span class="px-3 py-1 bg-blue-500/20 backdrop-blur-md border border-blue-500/30 rounded-full text-[10px] font-bold text-blue-400 tracking-tighter uppercase">Tailwind</span>
+                        </div>
                     </div>
 
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-100 group-hover:text-emerald-400 transition duration-300 mb-3 relative z-10 line-clamp-2 mt-4 text-center md:text-left">
-                        {{ $p->title }}
-                    </h3>
+                    <!-- Content Body -->
+                    <div class="p-8 flex flex-col flex-grow relative">
+                        <!-- Number Watermark (Strategically Placed) -->
+                        <div class="absolute bottom-4 right-6 text-8xl font-black text-white/[0.03] group-hover:text-emerald-500/10 transition-all duration-700 pointer-events-none tracking-tighter">
+                            0{{ $index + 1 }}
+                        </div>
 
-                    <p class="text-indigo-200/80 leading-relaxed text-sm line-clamp-3 md:line-clamp-4 relative z-10 flex-grow text-center md:text-left">
-                        {{ $p->description }}
-                    </p>
+                        <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors duration-300">
+                            {{ $p->title }}
+                        </h3>
 
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+                            {{ $p->description }}
+                        </p>
+                    </div>
+
+                    <!-- Card Glow Effect (Hover) -->
+                    <div class="absolute -inset-px bg-gradient-to-br from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
             @endforeach
 

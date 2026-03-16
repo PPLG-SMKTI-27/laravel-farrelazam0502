@@ -32,7 +32,7 @@
 
 
               <li>
-                  <a href="{{ route('home') }}#about"
+                  <a href="{{ route('home') }}#tentang-saya"
                     class="hover:text-emerald-400 transition">
                     Tentang
                   </a>
@@ -113,7 +113,7 @@
       <div id="mobile-menu" class="hidden md:hidden absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-[90%] z-50 transition-all duration-300">
           <ul class="backdrop-blur-2xl bg-slate-950/95 border border-white/10 rounded-2xl p-6 flex flex-col gap-4 text-center text-slate-300 font-medium shadow-2xl">
               <li><a href="{{ route('home') }}" class="hover:text-emerald-400 block py-2">Home</a></li>
-              <li><a href="{{ route('home') }}#about" class="hover:text-emerald-400 block py-2">Tentang Saya</a></li>
+              <li><a href="{{ route('home') }}#tentang-saya" class="hover:text-emerald-400 block py-2">Tentang Saya</a></li>
               <li><a href="{{ route('home') }}#skill" class="hover:text-emerald-400 block py-2">Skill</a></li>
               <li><a href="{{ route('home') }}#project" class="hover:text-emerald-400 block py-2">Project</a></li>
               <li><a href="{{ route('home') }}#contact" class="hover:text-emerald-400 block py-2">Kontak</a></li>

@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = this.getAttribute('href');
             const target = this.getAttribute('target');
             
-            // Skip anchors, external links, mailto, whatsapp, blank targets
-            if (!href || href.startsWith('#') || href.includes('mailto:') || href.includes('wa.me') || target === '_blank') {
+            // Skip anchors, external links, mailto, whatsapp, blank targets, and direct google mail links
+            if (!href || href.startsWith('#') || href.includes('mailto:') || href.includes('wa.me') || href.includes('mail.google.com') || target === '_blank') {
                 return;
             }
 

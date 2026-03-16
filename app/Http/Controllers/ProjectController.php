@@ -9,21 +9,23 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        // Ambil 3 project yang ditandai sebagai featured
-        $projects = Project::where('is_featured', true)->latest()->take(3)->get();
+        // Ambil semua project yang ditandai sebagai featured
+        $projects = Project::where('is_featured', true)->latest()->get();
         
-        // Fallback: Jika tidak ada featured, ambil 3 terbaru saja
+        // Fallback: Jika tidak ada featured, ambil semua project terbaru
         if ($projects->isEmpty()) {
-            $projects = Project::latest()->take(3)->get();
+            $projects = Project::latest()->get();
         }
 
         $nama = 'Farrel';
         $umur = "20 Tahun";
+        $totalProjects = Project::count();
 
         return view('pages.Portofolio', [
             'projects' => $projects,
             'nama' => $nama,
-            'umur' => $umur
+            'umur' => $umur,
+            'totalProjects' => $totalProjects
         ]);
     }
 

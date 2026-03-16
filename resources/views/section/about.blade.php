@@ -1,3 +1,321 @@
+<!-- ===================== TENTANG SAYA SECTION ===================== -->
+<section id="tentang-saya"
+    class="relative flex flex-col items-center px-5 md:px-6 overflow-hidden pt-24 md:pt-28 pb-14 md:pb-20">
+
+    <!-- Section Title -->
+    <div class="relative z-20 mb-8 md:mb-14">
+        <h3 class="text-xl md:text-3xl font-bold text-white text-center">About Me</h3>
+        <div class="mt-2 md:mt-3 mx-auto w-12 md:w-16 h-1 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-full"></div>
+    </div>
+
+    <div class="relative z-20 w-full max-w-4xl mx-auto">
+
+        <!-- TOP: Centered Profile Photo + Name -->
+        <div class="flex flex-col items-center mb-8 md:mb-12">
+            <!-- Floating Glass Frame Photo -->
+            <div class="tentang-avatar-frame mb-5 md:mb-8 group">
+                <div class="tentang-frame-border"></div>
+                <div class="tentang-frame-img">
+                    <img src="/profile.png" alt="Farrel" class="w-full h-full object-cover rounded-2xl md:rounded-3xl" />
+                </div>
+            </div>
+            <!-- Name & Title -->
+            <h3 class="text-xl md:text-3xl font-bold text-white mb-1">Farrel Azam</h3>
+            <p class="text-emerald-400 text-xs md:text-sm font-medium tracking-wide">Pelajar &bull; Web Developer &bull; Laravel</p>
+            
+            <!-- Social Icons Row -->
+            <div class="flex items-center gap-2.5 md:gap-3 mt-4 md:mt-5">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=farrelazam64@gmail.com" target="_blank" class="tentang-social-icon" title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/6281351408541" target="_blank" class="tentang-social-icon" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://github.com/PPLG-SMKTI-27/laravel-farrelazam0502" target="_blank" class="tentang-social-icon" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://instagram.com/farctyl" target="_blank" class="tentang-social-icon" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- STATS BAR (moved up for mobile visual hierarchy) -->
+        <div class="tentang-stats-bar rounded-xl md:rounded-2xl p-1 flex flex-row mb-6 md:mb-10">
+            <div class="tentang-stat-item flex-1 py-3 md:py-5 px-2 md:px-4 text-center">
+                <div class="text-xl md:text-4xl font-black text-white mb-0.5 md:mb-1">1<span class="text-emerald-400">+</span></div>
+                <div class="text-[8px] md:text-xs text-slate-400 uppercase tracking-wider md:tracking-widest font-semibold leading-tight">Tahun<br class="md:hidden"> Pengalaman</div>
+            </div>
+            <div class="tentang-stat-divider"></div>
+            <div class="tentang-stat-item flex-1 py-3 md:py-5 px-2 md:px-4 text-center">
+                <div class="text-xl md:text-4xl font-black text-white mb-0.5 md:mb-1">{{ $totalProjects }}</div>
+                <div class="text-[8px] md:text-xs text-slate-400 uppercase tracking-wider md:tracking-widest font-semibold">Project</div>
+            </div>
+            <div class="tentang-stat-divider"></div>
+            <div class="tentang-stat-item flex-1 py-3 md:py-5 px-2 md:px-4 text-center">
+                <div class="text-xl md:text-4xl font-black text-white mb-0.5 md:mb-1">3<span class="text-purple-400">+</span></div>
+                <div class="text-[8px] md:text-xs text-slate-400 uppercase tracking-wider md:tracking-widest font-semibold">Sertifikasi</div>
+            </div>
+        </div>
+
+        <!-- MIDDLE: Two-column layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+
+            <!-- Info Cards Grid (shows first on mobile) -->
+            <div class="grid grid-cols-2 gap-2.5 md:gap-3 order-1 md:order-2">
+                <div class="tentang-info-card rounded-xl p-3 md:p-4">
+                    <i class="fa-solid fa-user text-emerald-400 text-base md:text-lg mb-1.5 md:mb-2"></i>
+                    <span class="tentang-info-label">Nama</span>
+                    <span class="tentang-info-value">Farrel Azam Kahupati</span>
+                </div>
+                <div class="tentang-info-card rounded-xl p-3 md:p-4">
+                    <i class="fa-solid fa-cake-candles text-blue-400 text-base md:text-lg mb-1.5 md:mb-2"></i>
+                    <span class="tentang-info-label">Lahir</span>
+                    <span class="tentang-info-value">Samarinda, 05/07/2009</span>
+                </div>
+                <div class="tentang-info-card rounded-xl p-3 md:p-4">
+                    <i class="fa-solid fa-graduation-cap text-purple-400 text-base md:text-lg mb-1.5 md:mb-2"></i>
+                    <span class="tentang-info-label">Pendidikan</span>
+                    <span class="tentang-info-value">SMK TI Airlangga</span>
+                </div>
+                <div class="tentang-info-card rounded-xl p-3 md:p-4">
+                    <i class="fa-solid fa-location-dot text-pink-400 text-base md:text-lg mb-1.5 md:mb-2"></i>
+                    <span class="tentang-info-label">Lokasi</span>
+                    <span class="tentang-info-value">Samarinda, Kaltim</span>
+                </div>
+            </div>
+
+            <!-- Bio Panel -->
+            <div class="tentang-glass-panel p-5 md:p-7 rounded-xl md:rounded-2xl order-2 md:order-1">
+                <div class="flex items-center gap-1.5 md:gap-2 mb-3 md:mb-4">
+                    <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-emerald-400"></div>
+                    <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-blue-400"></div>
+                    <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-400"></div>
+                    <span class="text-[10px] md:text-xs text-slate-500 ml-1.5 md:ml-2 font-mono">tentang_saya.md</span>
+                </div>
+                <p class="text-slate-300 text-xs md:text-base leading-relaxed font-light">
+                    Saya seorang siswa di <strong class="text-white font-medium">SMK TI Airlangga</strong> yang memiliki ketertarikan besar 
+                    di dunia teknologi, khususnya <strong class="text-emerald-400 font-medium">Web Development</strong>. 
+                    Saya terbiasa mengembangkan website dari sisi frontend maupun backend, serta terus belajar teknologi baru 
+                    untuk meningkatkan kemampuan saya.
+                </p>
+                <p class="text-slate-400 text-xs md:text-sm leading-relaxed font-light mt-2 md:mt-3">
+                    Tujuan saya adalah menciptakan produk/website digital yang tidak hanya berfungsi dengan baik, tetapi juga memiliki 
+                    desain yang menarik dan pengalaman pengguna yang nyaman.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* ===== TENTANG SAYA STYLES ===== */
+
+/* Floating Glass Frame (Rectangle) */
+.tentang-avatar-frame {
+    position: relative;
+    width: 130px;
+    height: 170px; /* Vertical aspect ratio */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (min-width: 768px) {
+    .tentang-avatar-frame {
+        width: 180px;
+        height: 240px;
+    }
+}
+
+.tentang-avatar-frame:hover {
+    transform: translateY(-8px) rotate(1deg);
+}
+
+.tentang-frame-border {
+    position: absolute;
+    inset: -2px;
+    border-radius: 1.2rem;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.5), rgba(59, 130, 246, 0.5));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    z-index: 0;
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3));
+}
+
+@media (min-width: 768px) {
+    .tentang-frame-border {
+        border-radius: 2rem;
+        padding: 3px;
+    }
+}
+
+.tentang-frame-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    z-index: 1;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px -5px rgba(0,0,0,0.5);
+}
+
+@media (min-width: 768px) {
+    .tentang-frame-img {
+        border-radius: 1.8rem;
+    }
+}
+
+.tentang-frame-img img {
+    object-position: center 20%;
+    transition: transform 0.8s ease;
+}
+
+.tentang-avatar-frame:hover .tentang-frame-img img {
+    transform: scale(1.05);
+}
+
+/* Social Icons */
+.tentang-social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #94a3b8;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(8px);
+    position: relative;
+    z-index: 60;
+}
+
+@media (min-width: 768px) {
+    .tentang-social-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+}
+
+.tentang-social-icon:hover,
+.tentang-social-icon:active {
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.5);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px -5px rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+/* Glass Panel (Bio) */
+.tentang-glass-panel {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.4));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px);
+    transition: all 0.4s ease;
+}
+
+.tentang-glass-panel:hover {
+    border-color: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.1);
+}
+
+/* Info Cards */
+.tentang-info-card {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.4));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.tentang-info-card:hover,
+.tentang-info-card:active {
+    border-color: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(0,0,0,0.5);
+}
+
+.tentang-info-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 1px;
+}
+
+@media (min-width: 768px) {
+    .tentang-info-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 2px;
+    }
+}
+
+.tentang-info-value {
+    color: #e2e8f0;
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+    .tentang-info-value {
+        font-size: 0.8rem;
+    }
+}
+
+/* Stats Bar */
+.tentang-stats-bar {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.5));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px);
+    position: relative;
+    overflow: hidden;
+}
+
+.tentang-stats-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+}
+
+.tentang-stat-item {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+@media (min-width: 768px) {
+    .tentang-stat-item {
+        border-radius: 16px;
+    }
+}
+
+.tentang-stat-item:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.tentang-stat-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.08);
+    align-self: stretch;
+    margin: 10px 0;
+}
+</style>
+
+<!-- ===================== PERJALANAN KARIR SECTION ===================== -->
 <section id="about"
 class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 overflow-hidden pt-24 pb-20">
 
@@ -24,10 +342,10 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
 
         <!-- Text Content -->
         <div class="text-center flex-1 w-full max-w-lg mt-4 md:mt-0">
-            <h2 class="text-xs md:text-sm text-emerald-400 font-semibold tracking-widest uppercase mb-3 text-center">Tentang Saya</h2>
+            <h2 class="text-xs md:text-sm text-emerald-400 font-semibold tracking-widest uppercase mb-3 text-center">Perjalanan Karir</h2>
             
             <p class="text-slate-300 md:text-indigo-200 text-sm md:text-base leading-relaxed mb-6 font-light text-center">
-                Seorang pelajar yang sangat antusias dan fokus pada <strong class="text-white font-medium">web development modern</strong>. Saya suka mengubah ide kompleks menjadi tampilan yang interaktif dan mudah digunakan.
+                Jadi inilah Perjalanan karir saya selama 11 tahun di <strong class="text-white font-medium">PENDIDIKAN</strong>.
             </p>
 
             <!-- Tech Stack Pills -->
@@ -50,116 +368,43 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
     </div>
 </div>
 
-<!-- MOBILE CAROUSEL (visible only on mobile) -->
-<div id="mobile-planets" class="block md:hidden relative z-20 w-full mt-4 mb-4 space-y-8">
-
-    <!-- PENDIDIKAN ROW -->
-    <div>
-        <div class="flex items-center gap-3 px-6 mb-1">
-            <i class="fa-solid fa-graduation-cap text-emerald-400/70 text-xs"></i>
-            <span class="text-[11px] text-emerald-400/70 font-semibold tracking-widest uppercase">Pendidikan</span>
-            <div class="flex-1 h-px bg-gradient-to-r from-emerald-400/30 to-transparent"></div>
-        </div>
-        <p class="text-[10px] text-gray-500 px-6 mb-3">← Geser untuk lihat semua →</p>
-        <div class="relative">
-            <!-- Right fade hint -->
-            <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0f172a] to-transparent z-10 pointer-events-none rounded-r-lg"></div>
-        <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-6 scrollbar-hide">
-            <a href="#tk" class="mobile-planet-card snap-center" data-glow="#9e9e9e">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-mercury"></div>
-                    <span class="mobile-planet-name">TK</span>
-                    <span class="mobile-planet-desc">Taman Kanak</span>
-                </div>
-            </a>
-            <a href="#sd" class="mobile-planet-card snap-center" data-glow="#ffab40">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-venus"></div>
-                    <span class="mobile-planet-name">SD</span>
-                    <span class="mobile-planet-desc">Sekolah Dasar</span>
-                </div>
-            </a>
-            <a href="#smp" class="mobile-planet-card snap-center" data-glow="#4facfe">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-earth"></div>
-                    <span class="mobile-planet-name">SMP</span>
-                    <span class="mobile-planet-desc">Menengah Pertama</span>
-                </div>
-            </a>
-            <a href="#smk" class="mobile-planet-card snap-center" data-glow="#ff5252">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-mars"></div>
-                    <span class="mobile-planet-name">SMK</span>
-                    <span class="mobile-planet-desc">Kejuruan</span>
-                </div>
-            </a>
-            <a href="#smp2" class="mobile-planet-card snap-center" data-glow="#d4a373">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-jupiter"></div>
-                    <span class="mobile-planet-name">SMP2</span>
-                    <span class="mobile-planet-desc">Menengah 2</span>
-                </div>
-            </a>
-            <a href="#sd2" class="mobile-planet-card snap-center" data-glow="#e2b143">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-saturn"></div>
-                    <span class="mobile-planet-name">SD2</span>
-                    <span class="mobile-planet-desc">Sekolah Dasar 2</span>
-                </div>
-            </a>
-            <a href="#tk2" class="mobile-planet-card snap-center" data-glow="#80deea">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-uranus"></div>
-                    <span class="mobile-planet-name">TK2</span>
-                    <span class="mobile-planet-desc">Taman Kanak 2</span>
-                </div>
-            </a>
-        </div>
-        </div> <!-- end relative -->
+<!-- GALACTIC ASCENT TIMELINE (Mobile Only) -->
+<div id="mobile-galactic-timeline" class="block md:hidden relative z-20 w-full mt-8 px-6 pb-20">
+    
+    <!-- Central Glowing Trail -->
+    <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500/0 via-emerald-500/30 to-blue-500/0 z-0">
+        <div class="absolute inset-0 bg-emerald-400/20 blur-[2px] animate-pulse"></div>
     </div>
 
-    <!-- KONTAK ROW -->
-    <div>
-        <div class="flex items-center gap-3 px-6 mb-3">
-            <i class="fa-solid fa-paper-plane text-indigo-400/70 text-xs"></i>
-            <span class="text-[11px] text-indigo-400/70 font-semibold tracking-widest uppercase">Kontak</span>
-            <div class="flex-1 h-px bg-gradient-to-r from-indigo-400/30 to-transparent"></div>
-        </div>
-        <div class="flex gap-4 justify-center pb-4 px-6">
-            <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="mobile-planet-card" data-glow="#25d366">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-neptune"></div>
-                    <span class="mobile-planet-name"><i class="fa-brands fa-whatsapp"></i> WA</span>
-                    <span class="mobile-planet-desc">WhatsApp</span>
-                </div>
-            </a>
-            <a href="https://instagram.com/username" target="_blank" class="mobile-planet-card" data-glow="#e1306c">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-moon"></div>
-                    <span class="mobile-planet-name"><i class="fa-brands fa-instagram"></i> IG</span>
-                    <span class="mobile-planet-desc">Instagram</span>
-                </div>
-            </a>
-            <a href="mailto:emailkamu@gmail.com" class="mobile-planet-card" data-glow="#ffb300">
-                <div class="card-glow"></div>
-                <div class="card-inner">
-                    <div class="mobile-planet-orb planet-sun"></div>
-                    <span class="mobile-planet-name"><i class="fa-solid fa-envelope"></i></span>
-                    <span class="mobile-planet-desc">Email</span>
-                </div>
-            </a>
-        </div>
-    </div>
+    @php
+        $education = [
+            ['id' => 'tk', 'name' => 'TK', 'desc' => 'Handayani', 'year' => '2013 - 2015', 'glow' => '#9e9e9e', 'planet' => 'mercury'],
+            ['id' => 'sd', 'name' => 'SD', 'desc' => 'Muhammadiyah 1', 'year' => '2015 - 2021', 'glow' => '#ffab40', 'planet' => 'venus'],
+            ['id' => 'smp', 'name' => 'SMP', 'desc' => 'SMP 1 DAN MTS MODEL', 'year' => '2021 - 2024', 'glow' => '#4facfe', 'planet' => 'earth'],
+            ['id' => 'smk', 'name' => 'SMK', 'desc' => 'SMKTI AIRLANGGA (PPLG)', 'year' => '2025-2026 - Sekarang', 'glow' => '#ff5252', 'planet' => 'mars'],
+        ];
+    @endphp
 
+    <div class="space-y-12 relative z-10">
+        @foreach($education as $index => $edu)
+            <div class="timeline-item flex items-start gap-6 opacity-0 translate-y-8 transition-all duration-700" data-index="{{ $index }}">
+                <!-- Planet Node -->
+                <div class="relative flex-shrink-0 mt-2">
+                    <div class="timeline-planet-orb planet-{{ $edu['planet'] }} w-12 h-12 rounded-full border border-white/10 shadow-lg relative z-10"></div>
+                    <div class="absolute inset-0 bg-{{ $edu['planet'] === 'mercury' ? '[#9e9e9e]' : ($edu['planet'] === 'venus' ? '[#ffab40]' : ($edu['planet'] === 'earth' ? '[#4facfe]' : '[#ff5252]')) }}/20 blur-xl rounded-full animate-pulse"></div>
+                </div>
+
+                <!-- Info Card -->
+                <div class="flex-1 bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-2xl p-5 hover:border-emerald-500/30 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">{{ $edu['year'] }}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">{{ $edu['name'] }}</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">{{ $edu['desc'] }}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
 </div>
 
 <!-- FLOATING ICONS (desktop only) -->
@@ -168,66 +413,45 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
 <a href="#tk" class="planet planet-mercury">
     <div class="planet-label">
         <div class="line"></div>
-        <span>TK</span>
+        <span>TK Handayani</span>
     </div>
 </a>
 <a href="#sd" class="planet planet-venus">
     <div class="planet-label">
         <div class="line"></div>
-        <span>SD</span>
+        <span>SD Tarakan</span>
     </div>
 </a>
 <a href="#smp" class="planet planet-earth">
     <div class="planet-label">
         <div class="line"></div>
-        <span>SMP</span>
+        <span>SMP 1 Samarinda</span>
     </div>
 </a>
 
 <a href="#smk" class="planet planet-mars">
     <div class="planet-label">
         <div class="line"></div>
-        <span>SMK</span>
+        <span>SMKTI Airlangga (PPLG)</span>
     </div>
 </a>
 <a href="#smp2" class="planet planet-jupiter">
     <div class="planet-label">
         <div class="line"></div>
-        <span>SMP2</span>
+        <span>Mts Model Samarinda</span>
     </div>
 </a>
 <a href="#sd2" class="planet planet-saturn">
     <div class="planet-label">
         <div class="line"></div>
-        <span>SD2</span>
+        <span>SD Muhammadiyah 1</span>
     </div>
 </a>
 
 <a href="#tk2" class="planet planet-uranus">
     <div class="planet-label">
         <div class="line"></div>
-        <span>TK2</span>
-    </div>
-</a>
-
-<a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="planet planet-neptune">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span><i class="fa-brands fa-whatsapp"></i></span>
-    </div>
-</a>
-
-<a href="https://instagram.com/username" target="_blank" class="planet planet-moon">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span><i class="fa-brands fa-instagram"></i></span>
-    </div>
-</a>
-
-<a href="mailto:emailkamu@gmail.com" class="planet planet-sun">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span><i class="fa-solid fa-envelope"></i></span>
+        <span>TK Tarakan</span>
     </div>
 </a>
 
@@ -337,34 +561,44 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
 
 /* ===== END MOBILE CAROUSEL ===== */
 
-/* Base Realistic Planet */
-.planet {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.95);
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 4px rgba(0,0,0,1), -1px -1px 4px rgba(0,0,0,1);
-    pointer-events: auto;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-    text-decoration: none;
-    z-index: 10;
-    /* Create a 3D Base volume shadow so all planets look like spheres */
-    box-shadow: 
-        inset -15px -15px 25px rgba(0,0,0,0.9), 
-        inset 5px 5px 15px rgba(255,255,255,0.3);
+
+/* Scroll Progress Line Styling */
+#scroll-progress {
+    transition: width 0.1s ease-out;
 }
 
-/* Sleek Planet Labels */
+/* Bounce Animation for Hint */
+@keyframes finger-bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+.fa-hand-pointer {
+    animation: finger-bounce 1.5s infinite;
+}
+/* Vertical Timeline Styling */
+.timeline-item.revealed {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.timeline-planet-orb {
+    box-shadow: 
+        inset -8px -8px 15px rgba(0,0,0,0.8), 
+        inset 3px 3px 10px rgba(255,255,255,0.2),
+        0 0 15px currentColor;
+}
+
+.timeline-planet-orb.planet-mercury { background: #8e8e8e; color: rgba(142, 142, 142, 0.4); }
+.timeline-planet-orb.planet-venus { background: #ffab40; color: rgba(255, 171, 64, 0.4); }
+.timeline-planet-orb.planet-earth { background: #1b5b9c; color: rgba(27, 91, 156, 0.4); }
+.timeline-planet-orb.planet-mars { background: #bc5e3a; color: rgba(188, 94, 58, 0.4); }
+
+/* Planet Labels on Desktop */
 .planet-label {
     position: absolute;
-    top: -20px; /* Position slightly above */
-    left: 100%; /* Position to the right */
+    top: -20px;
+    left: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -378,7 +612,6 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
     opacity: 1;
     transform: translateX(15px);
 }
-
 
 .planet-label .line {
     width: 30px;
@@ -397,14 +630,26 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
     font-weight: 600;
     letter-spacing: 0.05em;
     white-space: nowrap;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 768px) {
-    .planet-label span {
-        font-size: 0.65rem;
-        padding: 3px 8px;
-    }
+/* Base Realistic Planet CSS */
+.planet {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.95);
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,1);
+    pointer-events: auto;
+    transition: transform 0.4s, box-shadow 0.4s;
+    text-decoration: none;
+    z-index: 10;
+    box-shadow: inset -15px -15px 25px rgba(0,0,0,0.9), inset 5px 5px 15px rgba(255,255,255,0.3);
 }
 
 .planet:hover {
@@ -412,176 +657,14 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
     z-index: 20;
 }
 
-/* EARTH (Blue marble with atmosphere & land) */
-.planet-earth {
-    background: 
-        radial-gradient(circle at 40% 40%, rgba(255,255,255,0.2) 0%, transparent 40%), /* cloud */
-        radial-gradient(circle at 20% 70%, rgba(255,255,255,0.3) 10%, transparent 30%), /* cloud */
-        radial-gradient(ellipse at 70% 30%, #2f6a3b 10%, transparent 40%), /* land */
-        radial-gradient(ellipse at 30% 60%, #2f6a3b 20%, transparent 50%), /* land */
-        #1b5b9c; /* ocean */
-    box-shadow: 
-        inset -15px -15px 25px rgba(0,0,0,0.9), 
-        inset 5px 5px 15px rgba(255,255,255,0.3),
-        0 0 20px rgba(79, 172, 254, 0.5); /* blue atmosphere glow */
-}
-
-/* MARS (Rusty red with dark spots) */
-.planet-mars {
-    background: 
-        radial-gradient(circle at 60% 40%, rgba(0,0,0,0.3) 10%, transparent 30%),
-        radial-gradient(circle at 30% 70%, rgba(0,0,0,0.2) 15%, transparent 40%),
-        #bc5e3a; /* rust base */
-    box-shadow: 
-        inset -15px -15px 25px rgba(0,0,0,0.9), 
-        inset 5px 5px 15px rgba(255,255,255,0.3),
-        0 0 15px rgba(188, 94, 58, 0.4);
-}
-
-/* MOON (Rocky grey) */
-.planet-moon {
-    width: 50px;
-    height: 50px;
-    background: 
-        radial-gradient(circle at 30% 20%, rgba(0,0,0,0.2) 10%, transparent 20%),
-        radial-gradient(circle at 60% 70%, rgba(0,0,0,0.25) 15%, transparent 30%),
-        radial-gradient(circle at 70% 30%, rgba(0,0,0,0.2) 8%, transparent 15%),
-        #d4d4d4;
-    box-shadow: 
-        inset -10px -10px 15px rgba(0,0,0,0.9), 
-        inset 3px 3px 10px rgba(255,255,255,0.3),
-        0 0 15px rgba(255, 255, 255, 0.2);
-}
-
-/* JUPITER (Gas giant bands) */
-.planet-jupiter {
-    width: 85px;
-    height: 85px;
-    background: repeating-linear-gradient(
-        170deg,
-        #c3a171 0%, #c3a171 10%,
-        #e3cdb0 10%, #e3cdb0 20%,
-        #a57c5b 20%, #a57c5b 25%,
-        #d1b48c 25%, #d1b48c 35%,
-        #8b5a2b 35%, #8b5a2b 40%,
-        #e3cdb0 40%, #e3cdb0 50%
-    );
-    box-shadow: 
-        inset -20px -20px 30px rgba(0,0,0,0.9), 
-        inset 5px 5px 15px rgba(255,255,255,0.3),
-        0 0 20px rgba(195, 161, 113, 0.3);
-}
-
-/* SATURN (Gas giant with ring) */
-.planet-saturn {
-    width: 75px;
-    height: 75px;
-    background: repeating-linear-gradient(
-        160deg,
-        #e2c286 0%, #e2c286 15%,
-        #d3b071 15%, #d3b071 25%,
-        #f4d799 25%, #f4d799 40%
-    );
-    box-shadow: 
-        inset -15px -15px 25px rgba(0,0,0,0.9), 
-        inset 5px 5px 15px rgba(255,255,255,0.3),
-        0 0 20px rgba(226, 194, 134, 0.3);
-    /* Make sure ring stays underneath pseudo-highlight/shadows by using transform-style */
-    transform-style: preserve-3d;
-}
-/* Saturn's Realistic Ring */
-.planet-saturn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 220%;
-    height: 30%;
-    border-radius: 50%;
-    /* Multiple box shadows to create complex ring system */
-    box-shadow: 
-        inset 0 0 0 5px rgba(192, 172, 126, 0.8),
-        inset 0 0 0 10px rgba(220, 201, 154, 0.6),
-        inset 0 0 0 15px rgba(154, 132, 90, 0.4),
-        0 0 8px rgba(255,255,255,0.2);
-    /* Tilted backward */
-    transform: translate(-50%, -50%) rotate(-20deg) translateZ(-1px);
-    z-index: -1; 
-    pointer-events: none;
-}
-
-/* NEPTUNE (Deep icy blue gas) */
-.planet-neptune {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(160deg, #3d5afe, #1a237e);
-    box-shadow: 
-        inset -15px -15px 30px rgba(0,0,0,0.9), 
-        inset 5px 5px 20px rgba(128, 208, 199, 0.5),
-        0 0 25px rgba(61, 90, 254, 0.5);
-}
-
-/* VENUS (Thick glowing clouds) */
-.planet-venus {
-    background: radial-gradient(circle at 40% 40%, #ffd180, #ffab40);
-    box-shadow: 
-        inset -15px -15px 25px rgba(0,0,0,0.8), 
-        inset 5px 5px 15px rgba(255,255,255,0.4),
-        0 0 20px rgba(255, 171, 64, 0.4);
-}
-
-/* MERCURY (Small rocky cratered) */
-.planet-mercury {
-    width: 55px;
-    height: 55px;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(0,0,0,0.3) 5%, transparent 15%),
-        radial-gradient(circle at 70% 60%, rgba(0,0,0,0.4) 10%, transparent 25%),
-        radial-gradient(circle at 40% 80%, rgba(0,0,0,0.3) 8%, transparent 20%),
-        #8e8e8e;
-    box-shadow: 
-        inset -12px -12px 20px rgba(0,0,0,0.9), 
-        inset 4px 4px 12px rgba(255,255,255,0.3),
-        0 0 10px rgba(142, 142, 142, 0.3);
-}
-
-/* URANUS (Featureless cyan, sideways tilt) */
-.planet-uranus {
-    width: 75px;
-    height: 75px;
-    background: radial-gradient(circle at 40% 40%, #84ffff, #00bada);
-    box-shadow: 
-        inset -15px -15px 25px rgba(0,0,0,0.9), 
-        inset 5px 5px 15px rgba(255,255,255,0.4),
-        0 0 20px rgba(132, 255, 255, 0.4);
-    transform-style: preserve-3d;
-}
-/* Faint sideways ring */
-.planet-uranus::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 170%;
-    height: 6%;
-    border-radius: 50%;
-    border-top: 2px solid rgba(255,255,255,0.5);
-    border-bottom: 2px solid rgba(255,255,255,0.1);
-    transform: translate(-50%, -50%) rotate(70deg) translateZ(-1px);
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* SUN (Glowing star, no dark shadows) */
-.planet-sun {
-    width: 95px;
-    height: 95px;
-    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fff176 20%, #ffb300 60%, #ff6f00 100%);
-    box-shadow: 
-        inset 0 0 20px rgba(255,255,255,0.8),
-        0 0 40px 10px rgba(255, 179, 0, 0.6),
-        0 0 60px 20px rgba(255, 111, 0, 0.4);
-}
+/* Planet variations */
+.planet-mercury { background: #8e8e8e; width: 55px; height: 55px; }
+.planet-venus { background: #ffab40; }
+.planet-earth { background: #1b5b9c; box-shadow: inset -15px -15px 25px rgba(0,0,0,0.9), inset 5px 5px 15px rgba(255,255,255,0.3), 0 0 20px rgba(79, 172, 254, 0.5); }
+.planet-mars { background: #bc5e3a; }
+.planet-jupiter { background: #c3a171; width: 85px; height: 85px; }
+.planet-saturn { background: #e2c286; width: 75px; height: 75px; }
+.planet-uranus { background: #84ffff; width: 75px; height: 75px; }
 
 </style>
 
@@ -589,7 +672,6 @@ class="relative min-h-screen flex flex-col justify-center items-center text-cent
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 <script>
-
 const planets = document.querySelectorAll(".planet");
 const about = document.querySelector("#about");
 let positions = [];
@@ -597,119 +679,69 @@ let positions = [];
 function calculateFormation() {
     const w = about.offsetWidth;
     const h = about.offsetHeight;
-    
-    // Portrait-friendly ellipse for mobile
     const isMobile = window.innerWidth < 768;
     const rx = isMobile ? w * 0.40 : w * 0.35;
-    const ry = isMobile ? h * 0.38 : h * 0.35; // Taller orbit for vertical screens
-    
+    const ry = isMobile ? h * 0.38 : h * 0.35;
     const cx = w / 2;
     const cy = h / 2;
 
     planets.forEach((el, i) => {
         const a = (i / planets.length) * Math.PI * 2;
         const elementRadius = el.offsetWidth / 2;
-        
-        // Even smaller on mobile to feel less cramped
-        if (isMobile) {
-            el.style.transform = "scale(0.4)"; 
-        } else {
-            el.style.transform = "scale(1)";
-        }
+        if (isMobile) el.style.transform = "scale(0.4)";
+        else el.style.transform = "scale(1)";
 
         const l = cx + rx * Math.cos(a) - elementRadius;
         const t = cy + ry * Math.sin(a) - elementRadius;
-
-        positions[i] = { 
-            angle: a, 
-            left: l, 
-            top: t, 
-            radius: elementRadius,
-            isHovered: false 
-        };
-
+        positions[i] = { angle: a, left: l, top: t, radius: elementRadius, isHovered: false };
         el.style.left = l + "px";
         el.style.top = t + "px";
 
-        // Add Hover Listeners
-        el.addEventListener('mouseenter', () => {
-            positions[i].isHovered = true;
-        });
-        el.addEventListener('mouseleave', () => {
-            positions[i].isHovered = false;
-        });
+        el.addEventListener('mouseenter', () => { positions[i].isHovered = true; });
+        el.addEventListener('mouseleave', () => { positions[i].isHovered = false; });
     });
 }
 
 function rotatePlanets() {
     const w = about.offsetWidth;
     const h = about.offsetHeight;
-
     const isMobile = window.innerWidth < 768;
     const rx = isMobile ? w * 0.40 : w * 0.35;
     const ry = isMobile ? h * 0.38 : h * 0.35;
-    
     const cx = w / 2;
     const cy = h / 2;
 
     planets.forEach((el, i) => {
         if(!positions[i] || positions[i].isHovered) return;
-        
-        // Slightly faster rotation on mobile to feel more dynamic
         positions[i].angle += isMobile ? 0.0004 : 0.0002;
-
         const radius = positions[i].radius;
         const l = cx + rx * Math.cos(positions[i].angle) - radius;
         const t = cy + ry * Math.sin(positions[i].angle) - radius;
-
-        gsap.to(el, {
-            x: l - positions[i].left,
-            y: t - positions[i].top,
-            duration: 0.3,
-            ease: "none"
-        });
+        gsap.to(el, { x: l - positions[i].left, y: t - positions[i].top, duration: 0.3, ease: "none" });
     });
-
     requestAnimationFrame(rotatePlanets);
 }
 
-// Only run orbit animation on desktop
 if (window.innerWidth >= 768) {
     calculateFormation();
     rotatePlanets();
 }
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth >= 768) {
-        calculateFormation();
-    }
+    if (window.innerWidth >= 768) calculateFormation();
 });
 
-// ===== MOBILE CAROUSEL CLICK HANDLER =====
-document.querySelectorAll('.mobile-planet-card').forEach(card => {
-    const glowColor = card.dataset.glow || '#34d399';
-    const glowEl = card.querySelector('.card-glow');
-    const orbEl = card.querySelector('.mobile-planet-orb');
-    
-    // Set glow color for this card
-    if (glowEl) glowEl.style.background = glowColor;
-    if (orbEl) orbEl.style.setProperty('--planet-glow', glowColor + '80');
-    
-    card.addEventListener('click', (e) => {
-        // Don't prevent default for external links
-        if (!card.getAttribute('href').startsWith('http') && !card.getAttribute('href').startsWith('mailto:')) {
-            e.preventDefault();
-        }
-        
-        // Toggle active state
-        const wasActive = card.classList.contains('active');
-        document.querySelectorAll('.mobile-planet-card').forEach(c => c.classList.remove('active'));
-        
-        if (!wasActive) {
-            card.classList.add('active');
-            card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
-    });
-});
+// Vertical Timeline Intersection Observer
+const timelineItems = document.querySelectorAll('.timeline-item');
+if (timelineItems.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.2 });
 
+    timelineItems.forEach(item => observer.observe(item));
+}
 </script>
