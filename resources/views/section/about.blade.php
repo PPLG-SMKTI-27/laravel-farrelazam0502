@@ -21,7 +21,7 @@
 
                 <div class="tentang-frame-border"></div>
                 <div class="tentang-frame-img">
-                    <img src="/profile.png" alt="Farrel" class="w-full h-full object-cover rounded-2xl md:rounded-3xl" />
+                    <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover rounded-2xl md:rounded-3xl" />
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
                         <i class="fa-solid fa-times"></i>
                     </div>
                     <div class="reveal-img-wrapper">
-                        <img src="/profile.png" alt="Full Photo" class="object-cover" />
+                        <img src="/profile.png?v=2" alt="Full Photo" class="object-cover" />
                     </div>
                     <div class="reveal-badge mt-4 cursor-pointer hover:scale-105 transition-transform" id="reveal-music-badge">
                         <i class="fa-solid fa-music mr-2"></i> <span id="music-status-text">Loading music...</span>
