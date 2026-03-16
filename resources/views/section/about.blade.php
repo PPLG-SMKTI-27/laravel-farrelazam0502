@@ -13,12 +13,37 @@
         <!-- TOP: Centered Profile Photo + Name -->
         <div class="flex flex-col items-center mb-8 md:mb-12">
             <!-- Floating Glass Frame Photo -->
-            <div class="tentang-avatar-frame mb-5 md:mb-8 group">
+            <div class="tentang-avatar-frame mb-5 md:mb-8 group cursor-pointer relative" id="photo-trigger">
+                <!-- Hover Hint (Optional) -->
+                <div class="absolute -bottom-2 -right-2 bg-emerald-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] shadow-lg z-10 animate-pulse">
+                    <i class="fa-solid fa-expand"></i>
+                </div>
+
                 <div class="tentang-frame-border"></div>
                 <div class="tentang-frame-img">
                     <img src="/profile.png" alt="Farrel" class="w-full h-full object-cover rounded-2xl md:rounded-3xl" />
                 </div>
             </div>
+
+            <!-- PHOTO REVEAL OVERLAY -->
+            <div id="photo-reveal-overlay">
+                <div class="reveal-container">
+                    <div class="close-reveal" id="close-reveal">
+                        <i class="fa-solid fa-times"></i>
+                    </div>
+                    <div class="reveal-img-wrapper">
+                        <img src="/profile.png" alt="Full Photo" class="object-cover" />
+                    </div>
+                    <div class="reveal-badge mt-4 cursor-pointer hover:scale-105 transition-transform" id="reveal-music-badge">
+                        <i class="fa-solid fa-music mr-2"></i> <span id="music-status-text">Loading music...</span>
+                    </div>
+                </div>  
+            </div>
+
+            <!-- Local Audio Player -->
+            <audio id="local-music-player" preload="auto" style="display:none;">
+                <source src="{{ asset('audio/dhruv  double take (Lyrics).mp3') }}" type="audio/mpeg">
+            </audio>
             <!-- Name & Title -->
             <h3 class="text-xl md:text-3xl font-bold text-white mb-1">Farrel Azam</h3>
             <p class="text-emerald-400 text-xs md:text-sm font-medium tracking-wide">Pelajar &bull; Web Developer &bull; Laravel</p>
@@ -120,11 +145,106 @@
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.tentang-avatar-frame:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
 @media (min-width: 768px) {
     .tentang-avatar-frame {
         width: 180px;
         height: 240px;
     }
+}
+
+/* Photo Reveal Overlay */
+#photo-reveal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+#photo-reveal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.reveal-container {
+    position: relative;
+    width: 80%; 
+    max-width: 280px; 
+    aspect-ratio: 9/16;
+    transform: scale(0.9);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#photo-reveal-overlay.active .reveal-container {
+    transform: scale(1);
+}
+
+.reveal-img-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    overflow: hidden;
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 50px rgba(16, 185, 129, 0.2);
+}
+
+.reveal-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-position: center 20%;
+}
+
+.close-reveal {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-reveal:hover {
+    background: rgba(16, 185, 129, 0.3);
+    transform: rotate(90deg);
+}
+
+.reveal-badge {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
 }
 
 .tentang-avatar-frame:hover {
@@ -741,7 +861,67 @@ if (timelineItems.length > 0) {
             }
         });
     }, { threshold: 0.2 });
-
     timelineItems.forEach(item => observer.observe(item));
+}
+
+// ===================== INTERACTIVE PHOTO & MUSIC (GUARANTEED SEEK) =====================
+const photoTrigger = document.getElementById('photo-trigger');
+const closeReveal = document.getElementById('close-reveal');
+const photoRevealOverlay = document.getElementById('photo-reveal-overlay');
+const musicStatusText = document.getElementById('music-status-text');
+const musicBadge = document.getElementById('reveal-music-badge');
+const localPlayer = document.getElementById('local-music-player');
+
+function openReveal() {
+    if (!photoRevealOverlay) return;
+    
+    // Show UI
+    photoRevealOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+    
+    // Simple Play from Start (Restart every time)
+    if (localPlayer) {
+        localPlayer.currentTime = 0; 
+        localPlayer.play().then(() => {
+            if (musicStatusText) musicStatusText.innerText = "Double Take 🎵";
+            if (musicBadge) musicBadge.classList.remove('animate-pulse');
+        }).catch(err => {
+            console.warn("Autoplay blocked:", err);
+            if (musicStatusText) musicStatusText.innerHTML = "Tap to Play Music <i class='fa-solid fa-play ml-1'></i>";
+            if (musicBadge) musicBadge.classList.remove('animate-pulse');
+        });
+    }
+}
+
+function closeRevealAction() {
+    if (!photoRevealOverlay) return;
+    photoRevealOverlay.classList.remove('active');
+    document.body.style.overflow = ''; 
+    if (localPlayer) localPlayer.pause();
+}
+
+// Event Listeners
+if (photoTrigger) photoTrigger.addEventListener('click', openReveal);
+if (closeReveal) {
+    closeReveal.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeRevealAction();
+    });
+}
+if (photoRevealOverlay) {
+    photoRevealOverlay.addEventListener('click', (e) => {
+        if (e.target === photoRevealOverlay) closeRevealAction();
+    });
+}
+
+// Manual Play Fallback Trigger
+if (musicBadge) {
+    musicBadge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (localPlayer && localPlayer.paused) {
+            localPlayer.play();
+            if (musicStatusText) musicStatusText.innerText = "Double Take 🎵";
+        }
+    });
 }
 </script>
