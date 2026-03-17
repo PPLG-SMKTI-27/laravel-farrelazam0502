@@ -1,8 +1,8 @@
   {{-- NAVBAR --}}
   <nav id="main-nav" class="{{ isset($inline) && $inline ? 'relative' : 'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl' }} transition-all duration-500 opacity-100">
       <div class="relative backdrop-blur-xl bg-slate-950/40 border border-white/10 rounded-full {{ isset($inline) && $inline ? 'px-6 py-2' : 'px-5 py-2 md:px-8 md:py-3' }} 
-                  flex items-center {{ isset($inline) && $inline ? 'justify-center' : 'justify-between' }} shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-                  group hover:bg-slate-950/80 hover:border-white/20 transition-all duration-500">
+                   flex items-center {{ isset($inline) && $inline ? 'justify-center' : 'justify-between' }} shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+                   group hover:bg-slate-950/80 hover:border-white/20 transition-all duration-500">
 
           {{-- Bottom Glow Line --}}
           <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] 

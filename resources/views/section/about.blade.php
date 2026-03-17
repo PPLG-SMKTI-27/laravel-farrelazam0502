@@ -327,442 +327,200 @@
 }
 </style>
 
-<!-- ===================== PERJALANAN KARIR SECTION ===================== -->
-<section id="about"
-class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 overflow-hidden pt-24 pb-20">
-
-<!-- Background handled globally by Starry Sky Canvas -->
-
-<!-- CONTENT -->
-<div class="relative z-20 w-full max-w-2xl mx-auto px-4 mt-8 md:mt-0">
-    <div class="flex flex-col items-center justify-center gap-6 md:gap-8">
-        
-        <!-- Profile Image/Avatar (Engaging Element) -->
-        <div class="relative group mt-10 md:mt-0">
-            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <div class="relative w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-slate-700/50 p-1 bg-slate-900/80 backdrop-blur-sm overflow-hidden flex items-center justify-center mx-auto">
-                <!-- Fallback to a cool icon if no image is available yet -->
-                <i class="fa-solid fa-user-astronaut text-4xl md:text-5xl text-emerald-400/80 group-hover:scale-110 transition-transform duration-500"></i>
-                <!-- Or put an actual img tag here later: <img src="profile.jpg" class="w-full h-full object-cover rounded-full" /> -->
-            </div>
-            
-            <!-- Floating Tech Badge -->
-            <div class="absolute -bottom-4 md:-bottom-2 -right-4 md:-right-2 bg-slate-800 border border-slate-700 text-red-500 p-2 md:p-3 rounded-xl shadow-lg transform rotate-6 hover:rotate-0 transition-transform hidden sm:block">
-                <i class="fa-brands fa-laravel text-lg md:text-xl"></i>
-            </div>
-        </div>
-
-        <!-- Text Content -->
-        <div class="text-center flex-1 w-full max-w-lg mt-4 md:mt-0">
-            <h2 class="text-xs md:text-sm text-emerald-400 font-semibold tracking-widest uppercase mb-3 text-center">Perjalanan Karir</h2>
-            
-            <p class="text-slate-300 md:text-indigo-200 text-sm md:text-base leading-relaxed mb-6 font-light text-center">
-                Jadi inilah Perjalanan karir saya selama 11 tahun di <strong class="text-white font-medium">PENDIDIKAN</strong>.
-            </p>
-
-            <!-- Tech Stack Pills -->
-            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-4">
-                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-orange-400 backdrop-blur-sm flex items-center gap-1">
-                    <i class="fa-brands fa-html5"></i> HTML
-                </span>
-                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-blue-400 backdrop-blur-sm flex items-center gap-1">
-                    <i class="fa-brands fa-css3-alt"></i> CSS
-                </span>
-                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-yellow-400 backdrop-blur-sm flex items-center gap-1">
-                    <i class="fa-brands fa-js"></i> JavaScript
-                </span>
-                <span class="px-3 py-1 bg-slate-800/50 border border-slate-700 rounded-full text-xs text-red-400 backdrop-blur-sm flex items-center gap-1">
-                    <i class="fa-brands fa-laravel"></i> Laravel
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</div>
-
-<!-- GALACTIC ASCENT TIMELINE (Mobile Only) -->
-<div id="mobile-galactic-timeline" class="block md:hidden relative z-20 w-full mt-8 px-6 pb-20">
+<!-- ===================== PERJALANAN KARIR: COSMIC LIFT ===================== -->
+<section id="tentang-saya" class="relative min-h-screen overflow-hidden pt-32 pb-20">
     
-    <!-- Central Glowing Trail -->
-    <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500/0 via-emerald-500/30 to-blue-500/0 z-0">
-        <div class="absolute inset-0 bg-emerald-400/20 blur-[2px] animate-pulse"></div>
+    <!-- SECTION HEADER -->
+    <div class="relative z-20 max-w-6xl mx-auto px-6 mb-16 md:mb-24">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-white mb-6">Perjalanan <span class="text-emerald-500 italic">Karir</span></h1>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base font-light px-4">
+                Melihat kembali lintasan pendidikan saya selama 11 tahun terakhir melalui Digital Star-Log.
+            </p>
+        </div>
     </div>
 
     @php
         $education = [
-            ['id' => 'tk', 'name' => 'TK', 'desc' => 'Handayani', 'year' => '2013 - 2015', 'glow' => '#9e9e9e', 'planet' => 'mercury'],
-            ['id' => 'sd', 'name' => 'SD', 'desc' => 'Muhammadiyah 1', 'year' => '2015 - 2021', 'glow' => '#ffab40', 'planet' => 'venus'],
-            ['id' => 'smp', 'name' => 'SMP', 'desc' => 'SMP 1 DAN MTS MODEL', 'year' => '2021 - 2024', 'glow' => '#4facfe', 'planet' => 'earth'],
-            ['id' => 'smk', 'name' => 'SMK', 'desc' => 'SMKTI AIRLANGGA (PPLG)', 'year' => '2025-2026 - Sekarang', 'glow' => '#ff5252', 'planet' => 'mars'],
+            [
+                'name' => 'SMKTI AIRLANGGA',
+                'year' => '2025 - Sekarang',
+                'desc' => 'Fokus pada pengembangan perangkat lunak dan gim (PPLG). Mempelajari Laravel, UI/UX, dan arsitektur web modern.',
+                'color' => 'emerald',
+                'logo' => 'Screenshot 2026-03-18 020016.png'
+            ],
+            [
+                'name' => 'MTsN MODEL SAMARINDA',
+                'year' => '2021 - 2024',
+                'desc' => 'Fase eksplorasi awal di dunia digital dan pengembangan logika dasar. Membangun fondasi akademik di sekolah teladan.',
+                'color' => 'blue',
+                'logo' => 'Screenshot 2026-03-18 015959.png'
+            ],
+            [
+                'name' => 'SD MUHAMMADIYAH 1',
+                'year' => '2015 - 2021',
+                'desc' => 'Membangun disiplin dan fondasi pengetahuan akademik yang kuat di Samarinda.',
+                'color' => 'orange',
+                'logo' => 'Screenshot 2026-03-18 015930.png'
+            ],
+            [
+                'name' => 'TK HANDAYANI',
+                'year' => '2013 - 2015',
+                'desc' => 'Titik awal perjalanan di dunia pendidikan dengan keceriaan dan belajar dasar.',
+                'color' => 'purple',
+                'logo' => 'Screenshot 2026-03-18 020149.png'
+            ],
         ];
     @endphp
 
-    <div class="space-y-12 relative z-10">
-        @foreach($education as $index => $edu)
-            <div class="timeline-item flex items-start gap-6 opacity-0 translate-y-8 transition-all duration-700" data-index="{{ $index }}">
-                <!-- Planet Node -->
-                <div class="relative flex-shrink-0 mt-2">
-                    <div class="timeline-planet-orb planet-{{ $edu['planet'] }} w-12 h-12 rounded-full border border-white/10 shadow-lg relative z-10"></div>
-                    <div class="absolute inset-0 bg-{{ $edu['planet'] === 'mercury' ? '[#9e9e9e]' : ($edu['planet'] === 'venus' ? '[#ffab40]' : ($edu['planet'] === 'earth' ? '[#4facfe]' : '[#ff5252]')) }}/20 blur-xl rounded-full animate-pulse"></div>
-                </div>
+    <!-- [ DESKTOP LAYOUT ] -->
+    <div class="hidden md:block relative z-20 max-w-6xl mx-auto px-6">
+        <!-- CENTRAL ENERGY RAIL -->
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-emerald-500/40 to-transparent z-10">
+            <div class="absolute inset-0 bg-emerald-400/20 blur-md"></div>
+        </div>
 
-                <!-- Info Card -->
-                <div class="flex-1 bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-2xl p-5 hover:border-emerald-500/30 transition-all duration-300">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">{{ $edu['year'] }}</span>
+        <div class="space-y-64 relative">
+            @foreach($education as $index => $edu)
+            <div class="lift-deck flex {{ $index % 2 == 0 ? 'flex-row' : 'flex-row-reverse' }} items-center gap-24 opacity-0 scale-95 transition-all duration-1000">
+                <!-- GLASS TERMINAL -->
+                <div class="flex-1 relative">
+                    <div class="glass-terminal group relative p-10 rounded-3xl bg-slate-950/40 backdrop-blur-2xl border border-white/10 hover:border-{{ $edu['color'] }}-500/40 transition-all duration-500 shadow-2xl">
+                        <div class="relative z-10">
+                            <span class="block text-{{ $edu['color'] }}-400 text-[10px] font-bold tracking-[0.3em] uppercase mb-4">{{ $edu['year'] }}</span>
+                            <h3 class="text-3xl font-black text-white mb-4 tracking-tight group-hover:text-{{ $edu['color'] }}-400 transition-colors">{{ $edu['name'] }}</h3>
+                            <p class="text-slate-400 text-base leading-relaxed font-light">{{ $edu['desc'] }}</p>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-white/5 flex items-center gap-6">
+                            <div class="flex-1 h-[2px] bg-gradient-to-r from-{{ $edu['color'] }}-500/20 to-transparent"></div>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-1">{{ $edu['name'] }}</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">{{ $edu['desc'] }}</p>
+                </div>
+                <!-- INDICATOR NODE -->
+                <div class="relative z-30 w-12 h-12 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-{{ $edu['color'] }}-500/10 blur-xl rounded-full scale-150"></div>
+                    <div class="node-ring w-8 h-8 rounded-full border-2 border-{{ $edu['color'] }}-500/30 flex items-center justify-center bg-slate-950">
+                        <div class="w-2 h-2 rounded-full bg-{{ $edu['color'] }}-500 shadow-[0_0_10px_currentColor]"></div>
+                    </div>
+                </div>
+                <!-- COSMIC VISUAL -->
+                <div class="flex-1 flex justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="relative w-64 h-64 rounded-full border border-white/10 flex items-center justify-center group/porthole">
+                        <!-- Orbiting Rings (Holographic) -->
+                        <div class="absolute inset-0 border border-{{ $edu['color'] }}-500/20 rounded-full animate-[spin_15s_linear_infinite]"></div>
+                        <div class="absolute inset-4 border border-white/5 rounded-full animate-[spin_20s_linear_reverse_infinite]"></div>
+                        
+                        <!-- Porthole Glass -->
+                        <div class="absolute inset-2 bg-gradient-to-b from-white/5 to-transparent rounded-full backdrop-blur-md border border-white/10 shadow-2xl"></div>
+
+                        <!-- School Logo (Floating Central Circle) -->
+                        <div class="relative z-10 w-40 h-40 flex items-center justify-center overflow-hidden rounded-full bg-white shadow-xl">
+                            <img src="/{{ $edu['logo'] }}" class="w-full h-full object-contain p-4 scale-105 transition-transform duration-1000 group-hover/porthole:scale-110" />
+                        </div>
+                    </div>
                 </div>
             </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
-</div>
 
-<!-- FLOATING ICONS (desktop only) -->
-<div class="absolute inset-0 pointer-events-none z-20 hidden md:block">
+    <!-- [ MOBILE LAYOUT ] -->
+    <div class="md:hidden relative z-20 px-6">
+        <!-- Vertical Holographic Line -->
+        <div class="absolute left-8 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent"></div>
+        
+        <div class="space-y-16">
+            @foreach($education as $edu)
+            @php
+                $nodeColors = [
+                    'emerald' => 'bg-emerald-500 border-emerald-500/50 shadow-emerald-500/50',
+                    'blue' => 'bg-blue-500 border-blue-500/50 shadow-blue-500/50',
+                    'orange' => 'bg-orange-500 border-orange-500/50 shadow-orange-500/50',
+                    'purple' => 'bg-purple-500 border-purple-500/50 shadow-purple-500/50',
+                ];
+                $colorClasses = $nodeColors[$edu['color']] ?? $nodeColors['emerald'];
+            @endphp
+            <div class="mobile-deck flex gap-8 opacity-0 translate-x-4 transition-all duration-700">
+                <!-- Glowing Node -->
+                <div class="relative flex-shrink-0 mt-2">
+                    <div class="w-5 h-5 rounded-full bg-slate-950 border {{ explode(' ', $colorClasses)[1] }} flex items-center justify-center">
+                        <div class="w-2 h-2 rounded-full {{ explode(' ', $colorClasses)[0] }} animate-pulse"></div>
+                    </div>
+                    <div class="absolute inset-0 {{ explode(' ', $colorClasses)[0] }} opacity-40 blur-lg rounded-full"></div>
+                </div>
 
-<a href="#tk" class="planet planet-mercury">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span>TK Handayani</span>
-    </div>
-</a>
-<a href="#sd" class="planet planet-venus">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span>SD Tarakan</span>
-    </div>
-</a>
-<a href="#smp" class="planet planet-earth">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span>SMP 1 Samarinda</span>
-    </div>
-</a>
+                <!-- Content Card -->
+                <div class="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-xl relative overflow-hidden group">
+                    <!-- Accent Line -->
+                    <div class="absolute left-0 top-0 bottom-0 w-1 {{ explode(' ', $colorClasses)[0] }} opacity-30"></div>
 
-<a href="#smk" class="planet planet-mars">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span>SMKTI Airlangga (PPLG)</span>
+                    <span class="block text-{{ $edu['color'] }}-400 text-[10px] font-mono font-bold tracking-widest uppercase mb-2">{{ $edu['year'] }}</span>
+                    <h3 class="text-lg font-bold text-white mb-2 leading-tight group-hover:text-{{ $edu['color'] }}-400 transition-colors">{{ $edu['name'] }}</h3>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">{{ $edu['desc'] }}</p>
+                    
+                    <div class="flex items-center justify-between text-slate-600">
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
-</a>
-<a href="#smp2" class="planet planet-jupiter">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span>Mts Model Samarinda</span>
-    </div>
-</a>
-<a href="#sd2" class="planet planet-saturn">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span>SD Muhammadiyah 1</span>
-    </div>
-</a>
 
-<a href="#tk2" class="planet planet-uranus">
-    <div class="planet-label">
-        <div class="line"></div>
-        <span>TK Tarakan</span>
-    </div>
-</a>
-
-</div>
 </section>
 
 <style>
+.glass-terminal { box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5); }
+.lift-deck.active { opacity: 1 !important; transform: scale(1) translateY(0) !important; }
+.mobile-deck.revealed { opacity: 1 !important; transform: translateX(0) !important; }
 
-/* ===== MOBILE PLANET CAROUSEL ===== */
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
-.mobile-planet-card {
-    flex: 0 0 auto;
-    position: relative;
-    text-decoration: none;
-    min-width: 100px;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+@keyframes node-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.1; }
 }
-
-.card-glow {
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    opacity: 0;
-    transition: opacity 0.5s;
-    z-index: 0;
+.node-ring::before {
+    content: ''; position: absolute; inset: -10px; border-radius: 50%; border: 1px solid currentColor;
+    opacity: 0.1; animation: node-pulse 2s infinite;
 }
-
-.card-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 20px 14px 16px;
-    border-radius: 24px;
-    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    transition: all 0.5s;
-    width: 100px;
-    min-height: 130px;
-    justify-content: center;
-}
-
-.mobile-planet-card:active .card-inner {
-    transform: scale(0.95);
-}
-
-.mobile-planet-card.active .card-glow {
-    opacity: 1;
-    filter: blur(15px);
-}
-
-.mobile-planet-card.active .card-inner {
-    border-color: rgba(255,255,255,0.25);
-    transform: scale(1.08);
-    background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
-}
-
-.mobile-planet-orb {
-    width: 55px !important;
-    height: 55px !important;
-    border-radius: 50% !important;
-    box-shadow: 
-        inset -10px -10px 20px rgba(0,0,0,0.9), 
-        inset 4px 4px 10px rgba(255,255,255,0.3),
-        0 0 15px rgba(255,255,255,0.1) !important;
-    transition: box-shadow 0.5s;
-}
-
-.mobile-planet-card.active .mobile-planet-orb {
-    box-shadow: 
-        inset -10px -10px 20px rgba(0,0,0,0.9), 
-        inset 4px 4px 10px rgba(255,255,255,0.3),
-        0 0 25px var(--planet-glow, rgba(255,255,255,0.3)) !important;
-}
-
-.mobile-planet-name {
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.mobile-planet-desc {
-    color: rgba(148, 163, 184, 0.7);
-    font-size: 0.6rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    margin-top: -4px;
-}
-
-.mobile-planet-card.active .mobile-planet-name {
-    background: linear-gradient(90deg, #34d399, #60a5fa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.mobile-planet-card.active .mobile-planet-desc {
-    color: rgba(148, 163, 184, 1);
-}
-
-/* ===== END MOBILE CAROUSEL ===== */
-
-
-/* Scroll Progress Line Styling */
-#scroll-progress {
-    transition: width 0.1s ease-out;
-}
-
-/* Bounce Animation for Hint */
-@keyframes finger-bounce {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
-}
-
-.fa-hand-pointer {
-    animation: finger-bounce 1.5s infinite;
-}
-/* Vertical Timeline Styling */
-.timeline-item.revealed {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-.timeline-planet-orb {
-    box-shadow: 
-        inset -8px -8px 15px rgba(0,0,0,0.8), 
-        inset 3px 3px 10px rgba(255,255,255,0.2),
-        0 0 15px currentColor;
-}
-
-.timeline-planet-orb.planet-mercury { background: #8e8e8e; color: rgba(142, 142, 142, 0.4); }
-.timeline-planet-orb.planet-venus { background: #ffab40; color: rgba(255, 171, 64, 0.4); }
-.timeline-planet-orb.planet-earth { background: #1b5b9c; color: rgba(27, 91, 156, 0.4); }
-.timeline-planet-orb.planet-mars { background: #bc5e3a; color: rgba(188, 94, 58, 0.4); }
-
-/* Planet Labels on Desktop */
-.planet-label {
-    position: absolute;
-    top: -20px;
-    left: 100%;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.7;
-    transition: opacity 0.3s, transform 0.3s;
-    pointer-events: none;
-    transform: translateX(10px);
-}
-
-.planet:hover .planet-label {
-    opacity: 1;
-    transform: translateX(15px);
-}
-
-.planet-label .line {
-    width: 30px;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
-}
-
-.planet-label span {
-    background: rgba(15, 23, 42, 0.7);
-    padding: 4px 10px;
-    border-radius: 6px;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #e2e8f0;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-}
-
-/* Base Realistic Planet CSS */
-.planet {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.95);
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 4px rgba(0,0,0,1);
-    pointer-events: auto;
-    transition: transform 0.4s, box-shadow 0.4s;
-    text-decoration: none;
-    z-index: 10;
-    box-shadow: inset -15px -15px 25px rgba(0,0,0,0.9), inset 5px 5px 15px rgba(255,255,255,0.3);
-}
-
-.planet:hover {
-    transform: scale(1.3) !important;
-    z-index: 20;
-}
-
-/* Planet variations */
-.planet-mercury { background: #8e8e8e; width: 55px; height: 55px; }
-.planet-venus { background: #ffab40; }
-.planet-earth { background: #1b5b9c; box-shadow: inset -15px -15px 25px rgba(0,0,0,0.9), inset 5px 5px 15px rgba(255,255,255,0.3), 0 0 20px rgba(79, 172, 254, 0.5); }
-.planet-mars { background: #bc5e3a; }
-.planet-jupiter { background: #c3a171; width: 85px; height: 85px; }
-.planet-saturn { background: #e2c286; width: 75px; height: 75px; }
-.planet-uranus { background: #84ffff; width: 75px; height: 75px; }
-
 </style>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
 <script>
-const planets = document.querySelectorAll(".planet");
-const about = document.querySelector("#about");
-let positions = [];
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        // Desktop Animations
+        gsap.utils.toArray('.lift-deck').forEach((deck) => {
+            ScrollTrigger.create({
+                trigger: deck,
+                start: "top 85%",
+                onEnter: () => deck.classList.add('active'),
+                once: true
+            });
+            gsap.to(deck.querySelector('.glass-terminal'), {
+                y: -30,
+                scrollTrigger: { trigger: deck, start: "top bottom", end: "bottom top", scrub: 1 }
+            });
+        });
 
-function calculateFormation() {
-    const w = about.offsetWidth;
-    const h = about.offsetHeight;
-    const isMobile = window.innerWidth < 768;
-    const rx = isMobile ? w * 0.40 : w * 0.35;
-    const ry = isMobile ? h * 0.38 : h * 0.35;
-    const cx = w / 2;
-    const cy = h / 2;
+        // Mobile Animations
+        gsap.utils.toArray('.mobile-deck').forEach((deck) => {
+            ScrollTrigger.create({
+                trigger: deck,
+                start: "top 90%",
+                onEnter: () => deck.classList.add('revealed'),
+                once: true
+            });
+        });
+    }
 
-    planets.forEach((el, i) => {
-        const a = (i / planets.length) * Math.PI * 2;
-        const elementRadius = el.offsetWidth / 2;
-        if (isMobile) el.style.transform = "scale(0.4)";
-        else el.style.transform = "scale(1)";
-
-        const l = cx + rx * Math.cos(a) - elementRadius;
-        const t = cy + ry * Math.sin(a) - elementRadius;
-        positions[i] = { angle: a, left: l, top: t, radius: elementRadius, isHovered: false };
-        el.style.left = l + "px";
-        el.style.top = t + "px";
-
-        el.addEventListener('mouseenter', () => { positions[i].isHovered = true; });
-        el.addEventListener('mouseleave', () => { positions[i].isHovered = false; });
-    });
-}
-
-function rotatePlanets() {
-    const w = about.offsetWidth;
-    const h = about.offsetHeight;
-    const isMobile = window.innerWidth < 768;
-    const rx = isMobile ? w * 0.40 : w * 0.35;
-    const ry = isMobile ? h * 0.38 : h * 0.35;
-    const cx = w / 2;
-    const cy = h / 2;
-
-    planets.forEach((el, i) => {
-        if(!positions[i] || positions[i].isHovered) return;
-        positions[i].angle += isMobile ? 0.0004 : 0.0002;
-        const radius = positions[i].radius;
-        const l = cx + rx * Math.cos(positions[i].angle) - radius;
-        const t = cy + ry * Math.sin(positions[i].angle) - radius;
-        gsap.to(el, { x: l - positions[i].left, y: t - positions[i].top, duration: 0.3, ease: "none" });
-    });
-    requestAnimationFrame(rotatePlanets);
-}
-
-if (window.innerWidth >= 768) {
-    calculateFormation();
-    rotatePlanets();
-}
-
-window.addEventListener("resize", () => {
-    if (window.innerWidth >= 768) calculateFormation();
-});
-
-// Vertical Timeline Intersection Observer
-const timelineItems = document.querySelectorAll('.timeline-item');
-if (timelineItems.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
+    // Restore Photo Modal Trigger
+    const photoTrigger = document.getElementById('photo-trigger');
+    if (photoTrigger) {
+        photoTrigger.addEventListener('click', () => {
+            if (typeof openProfileModal === 'function') {
+                openProfileModal();
+            } else {
+                console.warn('openProfileModal is not defined. Check layouts/app.blade.php');
             }
         });
-    }, { threshold: 0.2 });
-    timelineItems.forEach(item => observer.observe(item));
-}
-
-// ===================== INTERACTIVE PHOTO (GLOBAL CALL) =====================
-const photoTrigger = document.getElementById('photo-trigger');
-if (photoTrigger) {
-    photoTrigger.addEventListener('click', () => {
-        if (typeof openProfileModal === 'function') {
-            openProfileModal();
-        }
-    });
-}
+    }
+});
 </script>
