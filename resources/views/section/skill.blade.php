@@ -32,21 +32,20 @@ $skillGroups = [
     'Tools & Others' => [
         [
             'name' => 'Git & GitHub',
-            'icon' => 'fa-brands fa-github text-white',
+            'icon' => 'fa-brands fa-github text-[#4b3621] dark:text-white',
             'desc' => 'Version control untuk mengamankan riwayat perubahan kode dan kolaborasi.'
         ],
     ]
 ];
 @endphp
 
-<section id="skill" class="relative min-h-screen py-24 px-5 overflow-hidden">
+<section id="skill" class="relative min-h-screen py-24 px-5 overflow-hidden transition-colors duration-700 bg-transparent dark:bg-transparent">
     
     <div class="relative z-10 max-w-6xl mx-auto w-full">
         
         <!-- SECTION HEADER -->
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 pb-2
-        bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-        Skill
+        <h2 class="text-3xl md:text-5xl font-black text-center mb-16 pb-2 text-[#4b3621] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-emerald-400 dark:to-blue-400 font-playfair tracking-tight">
+            Skills <span class="text-[#115e59] dark:text-emerald-500 italic">&</span> Tools
         </h2>
 
         <!-- CATEGORY GROUPS -->
@@ -54,27 +53,27 @@ $skillGroups = [
             @foreach($skillGroups as $category => $skills)
             <div class="skill-group">
                 <div class="flex items-center gap-4 mb-8">
-                    <h3 class="text-xl md:text-2xl font-black text-white/90 uppercase tracking-widest">{{ $category }}</h3>
-                    <div class="flex-1 h-[1px] bg-white/10"></div>
+                    <h3 class="text-xl md:text-2xl font-black text-[#115e59] dark:text-white/90 uppercase tracking-widest font-playfair">{{ $category }}</h3>
+                    <div class="flex-1 h-[1px] bg-[#4b3621]/10 dark:bg-white/10"></div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($skills as $skill)
-                    <div class="group relative bg-slate-900/60 backdrop-blur-md border border-white/5 rounded-3xl p-6 md:p-8 hover:-translate-y-2 hover:border-emerald-400/50 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_20px_rgba(52,211,153,0.1)] transition-all duration-500">
+                    <div class="group relative bg-[#fbfaf5] dark:bg-slate-900/60 backdrop-blur-md border border-[#4b3621]/10 dark:border-white/5 rounded-3xl p-6 md:p-8 hover:-translate-y-2 hover:border-[#115e59]/40 dark:hover:border-emerald-400/50 shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:shadow-none transition-all duration-500">
                         
                         <!-- Hover Glow -->
                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-blue-400/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
 
                         <div class="flex items-center gap-5 mb-5">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl md:text-3xl shrink-0 group-hover:scale-110 group-hover:rotate-3 transition duration-500 shadow-xl">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white dark:bg-white/5 border border-[#4b3621]/10 dark:border-white/10 flex items-center justify-center text-2xl md:text-3xl shrink-0 group-hover:scale-110 group-hover:rotate-3 transition duration-500 shadow-xl">
                                 <i class="{{ $skill['icon'] }}"></i>
                             </div>
-                            <h4 class="text-lg md:text-xl font-bold text-slate-100 group-hover:text-emerald-400 transition duration-300">
+                            <h4 class="text-lg md:text-xl font-bold text-[#4b3621] dark:text-slate-100 group-hover:text-[#115e59] transition duration-300">
                                 {{ $skill['name'] }}
                             </h4>
                         </div>
                         
-                        <p class="text-indigo-200/70 leading-relaxed text-sm font-light">
+                        <p class="text-[#4b3621]/70 dark:text-indigo-200/70 leading-relaxed text-sm font-light">
                             {{ $skill['desc'] }}
                         </p>
 

@@ -4,17 +4,63 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
+    <!-- SEO & META TAGS -->
+    <meta name="description" content="Farrel Azam - Web Developer Portfolio. Pelajar SMK TI Airlangga dengan ketertarikan besar di dunia teknologi dan pengembangan web modern.">
+    <meta name="keywords" content="Farrel Azam, Web Developer, Portfolio, Laravel, Tailwind CSS, Frontend, Backend">
+    <meta name="author" content="Farrel Azam">
+    
+    <!-- OPEN GRAPH / SOCIAL SHARE -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Farrel Azam | Web Developer">
+    <meta property="og:description" content="Eksplorasi perjalanan karir, keahlian, dan proyek web development saya.">
+    <meta property="og:image" content="/profile.png">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%23115e59%22>F</text></svg>">
+    
+    <!-- GOOGLE FONTS: Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Dancing+Script:wght@400..700&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Farrel Azam | Portfolio</title>
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 
+    <!-- THEME MANAGER: Premium Global Theme Control -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            // Default to 'light' if no preference is set
+            const theme = savedTheme || 'light';
+            
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            // Sync localStorage if it was empty
+            if (!savedTheme) localStorage.setItem('theme', 'light');
+        })();
+    </script>
+
 </head>
-<body class="font-sans antialiased bg-slate-950 text-slate-200 overflow-x-hidden">
+<body class="font-sans antialiased bg-[#F8F5EC] dark:bg-slate-950 text-[#4b3621] dark:text-slate-200 overflow-x-hidden transition-colors duration-700 relative">
+    
     @include('components.preloader')
+    
+    <!-- UNIVERSAL PAPER CRAFT TEXTURE (Light Mode Only) -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] opacity-50 dark:hidden" 
+         style="background-image: 
+            linear-gradient(#4b3621 1px, transparent 1px), 
+            linear-gradient(90deg, #4b3621 1px, transparent 1px); 
+            background-size: 40px 40px;
+            opacity: 0.05;">
+    </div>
     @include('components.page-transition')
     
-    <div id="content-wrapper" class="opacity-0 transition-opacity duration-1000 min-h-screen bg-slate-950">
+    <div id="content-wrapper" class="opacity-0 transition-opacity duration-1000 min-h-screen">
         @if(!Route::is('dashboard'))
             @include('components.navbar')
         @endif
@@ -30,6 +76,8 @@
         <main>
             @yield('content')
         </main>
+        
+        @include('components.footer')
     </div>
 
     <!-- IMMERSIVE PROFILE REVEAL OVERLAY -->

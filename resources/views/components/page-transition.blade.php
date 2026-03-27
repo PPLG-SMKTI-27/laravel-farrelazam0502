@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Same-page links: scroll instead of launching rocket
             try {
                 const linkUrl = new URL(href, window.location.origin);
-                if (linkUrl.pathname === window.location.pathname) {
+                const path = linkUrl.pathname;
+
+                if (path === window.location.pathname) {
                     e.preventDefault();
                     // Scroll to top smoothly if no hash, otherwise let anchor scroll handle it
                     if (!linkUrl.hash) {
@@ -50,6 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     return;
                 }
+
+                // DISABLE ROCKET FOR DASHBOARD & ADMIN ROUTES
+                // If it goes to /dashboard, /profile, or /project/edit...
+                if (path.startsWith('/dashboard') || path.startsWith('/profile') || (path.startsWith('/project') && !path.includes('project-detail'))) {
+                    return; // Standard fast browser navigation instead
+                }
+
             } catch(err) {
                 return; // Invalid URL, skip
             }
