@@ -26,13 +26,15 @@ class ProjectController extends Controller
         $nama = 'Farrel';
         $umur = "20 Tahun";
         $totalProjects = Project::count();
+        $totalCertificates = Certificate::count();
 
         return view('pages.Portofolio', [
             'projects' => $projects,
             'certificates' => $certificates,
             'nama' => $nama,
             'umur' => $umur,
-            'totalProjects' => $totalProjects
+            'totalProjects' => $totalProjects,
+            'totalCertificates' => $totalCertificates
         ]);
     }
 

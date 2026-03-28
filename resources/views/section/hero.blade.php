@@ -54,19 +54,16 @@
                 </a>
             </div>
 
-            <!-- Stats Row -->
-            @php $projectCount = \App\Models\Project::count(); $certCount = \App\Models\Certificate::count(); @endphp
+            {{-- Stats Row --}}
             <div class="hero-stats flex items-center gap-5 md:gap-7 px-8 md:px-10 py-4 md:py-5 rounded-[1.8rem] bg-white/70 dark:bg-slate-800/60 backdrop-blur-xl border border-white dark:border-white/10 shadow-[0_8px_30px_rgba(65,49,35,0.06)] w-max max-w-full overflow-x-auto opacity-0 translate-y-6">
-                <!-- Projects -->
                 <div class="flex items-baseline gap-1.5 flex-none">
-                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $projectCount }}</span>
+                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $totalProjects }}</span>
                     <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Projects</span>
                 </div>
                 <div class="w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 flex-none mx-2"></div>
                 
-                <!-- Certificates -->
                 <div class="flex items-baseline gap-1.5 flex-none">
-                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $certCount }}</span>
+                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $totalCertificates }}</span>
                     <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Certificates</span>
                 </div>
                 <div class="w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 flex-none mx-2"></div>
@@ -123,7 +120,7 @@
             <div class="absolute bottom-[16%] right-[-18%] pl-2 pr-6 py-2 rounded-[1.5rem] bg-[#f8f6f0] dark:bg-slate-800 backdrop-blur-md shadow-[0_20px_40px_rgba(65,49,35,0.12)] flex items-center gap-3 z-30 animate-[float_5.5s_ease-in-out_infinite_0.7s] border border-white">
                 <div class="w-10 h-10 rounded-[1rem] bg-[#dfb85b]/20 flex items-center justify-center text-[#d3a647] text-[20px] shadow-inner"><i class="fa-solid fa-folder"></i></div>
                 <div class="flex flex-col mt-0.5">
-                    <span class="text-[#413123] dark:text-white font-black text-[15px] font-playfair leading-tight">{{ $projectCount }}</span>
+                    <span class="text-[#413123] dark:text-white font-black text-[15px] font-playfair leading-tight">{{ $totalProjects }}</span>
                     <span class="text-[#413123]/70 dark:text-slate-400 text-[12px] font-medium leading-tight mt-0.5">Projects</span>
                 </div>
             </div>

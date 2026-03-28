@@ -64,7 +64,7 @@
                         <span class="text-[9px] md:text-xs font-bold uppercase tracking-widest opacity-90">Projects</span>
                     </div>
                     <div class="p-6 rounded-3xl bg-gradient-to-br from-[#115e59]/70 to-emerald-600/70 text-white shadow-xl flex flex-col items-center justify-center text-center transform hover:-translate-y-1 transition-transform">
-                        <span class="text-3xl font-black mb-1">3+</span>
+                        <span class="text-3xl font-black mb-1">{{ $totalCertificates }}</span>
                         <span class="text-[9px] md:text-xs font-bold uppercase tracking-widest opacity-90">Certifications</span>
                     </div>
                 </div>
