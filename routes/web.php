@@ -25,8 +25,9 @@ use App\Models\Certificate;
 
 Route::get('/dashboard', function () {
     $projects = Project::all();
-    $certificates = Certificate::latest()->get();
-    return view('dashboard', compact('projects', 'certificates'));
+    $certificates = Certificate::all();
+    $totalSkills = 6; // From skill.blade.php
+    return view('dashboard', compact('projects', 'certificates', 'totalSkills'));
 })->middleware(['auth', 'verified'])->name('dashboard');    
 
 // profile routes

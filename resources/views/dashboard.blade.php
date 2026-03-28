@@ -63,11 +63,39 @@
         {{-- Statistik Grid --}}
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto mb-16 fade-in-up">
 
-            {{-- Stat 1 --}}
+            {{-- Stat 1: Skills --}}
             <div class="stat-card bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-8 rounded-[2rem] border border-[#4b3621]/10 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
                 <div class="flex items-center justify-between mb-6">
                     <h4 class="text-[#4b3621]/60 dark:text-slate-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
-                        Total Project
+                        Total Keahlian
+                    </h4>
+                    <div class="w-10 h-10 rounded-full bg-blue-600/10 dark:bg-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                </div>
+                <p class="text-4xl md:text-6xl font-black text-[#4b3621] dark:text-white font-playfair mt-auto count" data-target="{{ $totalSkills }}">0</p>
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+            </div>
+
+            {{-- Stat 2: Certificates --}}
+            <div class="stat-card bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-8 rounded-[2rem] border border-[#4b3621]/10 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
+                <div class="flex items-center justify-between mb-6">
+                    <h4 class="text-[#4b3621]/60 dark:text-slate-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
+                        Total Sertifikat
+                    </h4>
+                    <div class="w-10 h-10 rounded-full bg-amber-500/10 dark:bg-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                </div>
+                <p class="text-4xl md:text-6xl font-black text-[#4b3621] dark:text-white font-playfair mt-auto count" data-target="{{ $certificates->count() }}">0</p>
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500/20 to-transparent"></div>
+            </div>
+
+            {{-- Stat 3: Projects --}}
+            <div class="stat-card bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-8 rounded-[2rem] border border-[#4b3621]/10 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
+                <div class="flex items-center justify-between mb-6">
+                    <h4 class="text-[#4b3621]/60 dark:text-slate-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
+                        Total Proyek
                     </h4>
                     <div class="w-10 h-10 rounded-full bg-[#115e59]/10 dark:bg-emerald-500/20 flex items-center justify-center text-[#115e59] dark:text-emerald-400 group-hover:scale-110 group-hover:bg-[#115e59] group-hover:text-white dark:group-hover:bg-emerald-500 dark:group-hover:text-slate-900 transition-all duration-300">
                         <i class="fa-solid fa-layer-group"></i>
@@ -75,34 +103,6 @@
                 </div>
                 <p class="text-4xl md:text-6xl font-black text-[#4b3621] dark:text-white font-playfair mt-auto count" data-target="{{ $projects->count() }}">0</p>
                 <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#115e59]/20 to-transparent dark:from-emerald-400/20"></div>
-            </div>
-
-            {{-- Stat 2 --}}
-            <div class="stat-card bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-8 rounded-[2rem] border border-[#4b3621]/10 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
-                <div class="flex items-center justify-between mb-6">
-                    <h4 class="text-[#4b3621]/60 dark:text-slate-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
-                        Skills
-                    </h4>
-                    <div class="w-10 h-10 rounded-full bg-blue-600/10 dark:bg-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                </div>
-                <p class="text-4xl md:text-6xl font-black text-[#4b3621] dark:text-white font-playfair mt-auto count" data-target="8">0</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-            </div>
-
-            {{-- Stat 3 --}}
-            <div class="stat-card bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-8 rounded-[2rem] border border-[#4b3621]/10 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
-                <div class="flex items-center justify-between mb-6">
-                    <h4 class="text-[#4b3621]/60 dark:text-slate-400 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
-                        Contacts
-                    </h4>
-                    <div class="w-10 h-10 rounded-full bg-amber-500/10 dark:bg-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                </div>
-                <p class="text-4xl md:text-6xl font-black text-[#4b3621] dark:text-white font-playfair mt-auto count" data-target="5">0</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500/20 to-transparent"></div>
             </div>
 
         </div>
@@ -228,5 +228,40 @@
     </div>
 </div>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.count');
+    const speed = 200; // The lower the slower
+
+    const startCount = (counter) => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + inc);
+                setTimeout(updateCount, 1);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        updateCount();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCount(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
+});
+</script>
 
 @endsection
