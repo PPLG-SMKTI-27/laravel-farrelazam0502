@@ -47,6 +47,7 @@
         @include('section.hero')
         @include('section.about')
         @include('section.skill')
+        @include('section.certificate')
         @include('section.project')
         @include('section.contact')
     </div>

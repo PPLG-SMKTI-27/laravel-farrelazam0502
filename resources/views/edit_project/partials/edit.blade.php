@@ -66,7 +66,7 @@
                         {{ $project->id ? 'Edit Project' : 'Add New Project' }}
                     </h3>
 
-                    <form action="{{ $project->id ? route('project.update', $project->id) : route('project.store') }}" method="POST" class="space-y-6 relative z-10">
+                    <form action="{{ $project->id ? route('project.update', $project->id) : route('project.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 relative z-10">
                         @csrf
                         @if($project->id)
                             @method('PUT')
@@ -95,6 +95,17 @@
                             <label class="text-gray-400 text-sm font-medium ml-1">Demo link (Optional)</label>
                             <input type="url" name="demo_link" value="{{ old('demo_link', $project->demo_link) }}" placeholder="https://example.com"
                                 class="w-full bg-[#1f2937] border border-gray-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-300">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-gray-400 text-sm font-medium ml-1">Project Image (Optional)</label>
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                @if($project->image)
+                                    <img src="{{ Storage::url($project->image) }}" alt="Project Image" class="w-24 h-24 object-cover rounded-xl border border-gray-700 shrink-0">
+                                @endif
+                                <input type="file" name="image" accept="image/*"
+                                    class="w-full bg-[#1f2937] border border-gray-700 rounded-2xl px-6 py-4 text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-purple-500/10 file:text-purple-400 hover:file:bg-purple-500/20 transition duration-300">
+                            </div>
                         </div>
 
                         <div class="flex items-center gap-3 p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl">

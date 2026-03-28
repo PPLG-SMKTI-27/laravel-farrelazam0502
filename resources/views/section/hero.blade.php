@@ -1,80 +1,77 @@
 <section id="home" 
     class="min-h-screen relative flex items-center justify-center overflow-hidden pt-24 pb-16 px-6 transition-colors duration-700 bg-transparent dark:bg-transparent">
     
-    <!-- 100% EXACT MATCH BACKGROUND ELEMENTS (Light Mode Only) -->
+    <!-- Elegant Background Elements (Light Mode Only) -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center dark:hidden">
-        <!-- Thin Dotted/Dashed Orbital Lines -->
-        <svg class="absolute w-[200%] h-[200%] md:w-[150%] md:h-[150%] lg:w-[120%] lg:h-[120%] stroke-[#4b3621]/15 dark:stroke-emerald-500/10 fill-none" style="stroke-dasharray: 4 6; stroke-width: 0.8;">
-            <circle cx="50%" cy="50%" r="20%" />
-            <circle cx="50%" cy="50%" r="30%" />
-            <circle cx="50%" cy="50%" r="40%" />
-            <circle cx="50%" cy="50%" r="50%" />
-            <!-- Organic Wavy Lines -->
-            <path d="M-10,800 C150,600 550,1100 1200,800" stroke-width="1.5"></path>
-            <path d="M-10,200 C350,450 650,-50 1200,300" stroke-width="0.8"></path>
-            <path d="M-50,900 C350,750 850,1150 1400,600" stroke-width="0.5"></path>
+        <!-- Thin Dotted Orbital Lines -->
+        <svg class="absolute w-[200%] h-[200%] md:w-[150%] md:h-[150%] lg:w-[120%] lg:h-[120%] stroke-[#4b3621]/10 fill-none" style="stroke-dasharray: 4 6; stroke-width: 0.6;">
+            <circle cx="50%" cy="50%" r="22%" />
+            <circle cx="50%" cy="50%" r="35%" />
+            <circle cx="50%" cy="50%" r="48%" />
         </svg>
         
-        <!-- Soft Organic Blobs & Gradients (Rich Cream Tones) -->
-        <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[70%] bg-[#e5eee2]/60 dark:bg-emerald-900/10 blur-[120px] rounded-[100%]"></div>
-        <div class="absolute top-[20%] left-[-10%] w-[70%] h-[80%] bg-[#eedebf]/50 dark:bg-amber-900/10 blur-[150px] rounded-[100%]"></div>
-        <div class="absolute bottom-[-10%] left-[20%] w-[50%] h-[60%] bg-[#e5ece5]/60 dark:bg-emerald-900/10 blur-[120px] rounded-[100%]"></div>
-        <div class="absolute top-[5%] right-[-10%] w-[50%] h-[70%] bg-[#f2e2be]/50 dark:bg-amber-900/10 blur-[140px] rounded-[100%]"></div>
-        <div class="absolute bottom-[0%] right-[5%] w-[40%] h-[50%] bg-[#f9f3e8]/90 dark:bg-white/5 blur-[100px] rounded-[100%]"></div>
+        <!-- Soft Organic Blobs -->
+        <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[70%] bg-[#e5eee2]/50 blur-[130px] rounded-[100%]"></div>
+        <div class="absolute top-[20%] left-[-10%] w-[70%] h-[80%] bg-[#eedebf]/40 blur-[150px] rounded-[100%]"></div>
+        <div class="absolute bottom-[-10%] left-[20%] w-[50%] h-[60%] bg-[#e5ece5]/50 blur-[120px] rounded-[100%]"></div>
+        <div class="absolute top-[5%] right-[-10%] w-[50%] h-[70%] bg-[#f2e2be]/40 blur-[140px] rounded-[100%]"></div>
 
-        <!-- Cream Wave Overlay (Hero-specific bottom transition) -->
-        <svg class="absolute bottom-0 left-0 w-full h-[35%] opacity-100 dark:opacity-10" viewBox="0 0 1440 500" preserveAspectRatio="none" fill="none">
-            <path d="M-100,500 L-100,350 C50,300 200,380 350,340 C500,300 550,250 750,280 C950,310 1050,350 1200,320 C1350,290 1450,340 1550,350 L1550,500 Z" fill="#e8dfc8" fill-opacity="0.35"/>
-            <path d="M-100,500 L-100,400 C100,360 250,420 400,380 C550,340 700,390 850,370 C1000,350 1150,410 1300,380 C1450,350 1550,390 1600,400 L1600,500 Z" fill="#d6cfb8" fill-opacity="0.25"/>
-            <path d="M-100,500 L-100,430 C100,400 350,450 550,420 C750,390 900,440 1100,410 C1300,380 1450,430 1600,420 L1600,500 Z" fill="#cec5a8" fill-opacity="0.18"/>
+        <!-- Bottom Cream Wave -->
+        <svg class="absolute bottom-0 left-0 w-full h-[30%] opacity-100" viewBox="0 0 1440 500" preserveAspectRatio="none" fill="none">
+            <path d="M-100,500 L-100,350 C50,300 200,380 350,340 C500,300 550,250 750,280 C950,310 1050,350 1200,320 C1350,290 1450,340 1550,350 L1550,500 Z" fill="#e8dfc8" fill-opacity="0.30"/>
+            <path d="M-100,500 L-100,400 C100,360 250,420 400,380 C550,340 700,390 850,370 C1000,350 1150,410 1300,380 C1450,350 1550,390 1600,400 L1600,500 Z" fill="#d6cfb8" fill-opacity="0.20"/>
         </svg>
     </div>
 
     <!-- MAIN CONTENT CONTAINER -->
     <div class="relative z-10 max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 mx-auto mt-6">
         
-        <!-- LEFT: TYPOGRAPHY, BUTTONS, & STATS -->
+        <!-- LEFT: TYPOGRAPHY & CTA -->
         <div class="hero-content text-center lg:text-left flex flex-col items-center lg:items-start z-20 w-full lg:w-[55%] relative">
-            
 
             <!-- Title -->
-            <h1 class="hero-title text-[5.5rem] md:text-[7rem] lg:text-[7.5rem] font-black mb-6 leading-[0.9] tracking-tight font-playfair flex flex-col opacity-0 translate-x-[-30px] drop-shadow-sm">
-                <span class="text-[#413123] dark:text-slate-100 mb-0">Elevating</span>
-                <span class="text-[#215a49] dark:text-emerald-400 italic font-bold md:pt-1">Digital</span>
-                <span class="text-[#215a49] dark:text-emerald-400 italic font-bold md:pt-1">Craft</span>
+            <h1 class="hero-title text-[4rem] md:text-[5.5rem] lg:text-[6.5rem] font-black mb-6 leading-[0.9] tracking-tight font-playfair flex flex-col opacity-0 translate-y-6">
+                <span class="text-[#413123] dark:text-slate-100 mb-1">Hello, I'm</span>
+                <span class="text-[#215a49] dark:text-emerald-400 italic">Farrel</span>
+                <span class="text-[#215a49] dark:text-emerald-400 italic">Azam</span>
             </h1>
 
             <!-- Subtitle -->
-            <p class="hero-subtitle text-[#413123]/70 dark:text-slate-400 text-base md:text-[1.1rem] font-light max-w-lg mb-10 leading-[1.7] opacity-0 translate-x-[-30px]">
-                I'm <span class="text-[#413123] dark:text-white font-bold">Farrel Azam</span>. 
-                A Web Developer dedicated to building high-performance, visually stunning interfaces with a <br class="hidden md:block" /> <span class="italic font-dancing text-[#286050] dark:text-emerald-400 text-[1.6rem] font-medium leading-none mb-[-5px] inline-block">premium touch.</span>
+            <p class="hero-subtitle text-[#413123]/70 dark:text-slate-400 text-base md:text-[1.1rem] font-light max-w-lg mb-10 leading-[1.7] opacity-0 translate-y-4">
+                A Web Developer crafting <span class="text-[#413123] dark:text-white font-semibold">high-performance</span>, 
+                visually stunning digital experiences with a 
+                <span class="italic font-dancing text-[#286050] dark:text-emerald-400 text-[1.5rem] font-medium leading-none inline-block">premium touch.</span>
             </p>
 
             <!-- CTA Buttons -->
             <div class="hero-cta flex flex-wrap justify-center lg:justify-start gap-4 mb-14 w-full opacity-0 translate-y-6">
-                <!-- View Projects (Green Pill) -->
                 <a href="#project" class="group relative px-8 py-3.5 rounded-full bg-[#286050] dark:bg-[#1e5c4a] text-white font-semibold transition-all duration-300 hover:scale-[1.03] shadow-[0_12px_25px_rgba(40,96,80,0.25)] hover:shadow-[0_15px_30px_rgba(40,96,80,0.35)] flex items-center justify-center gap-2">
                     View My Projects <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                 </a>
                 
-                <!-- Get In Touch (Frosted Pill) -->
                 <a href="#contact" class="px-8 py-3.5 rounded-full bg-[#fdfcf8]/80 dark:bg-slate-800/50 backdrop-blur-xl border border-[#4b3621]/10 dark:border-white/10 text-[#413123] dark:text-white font-semibold hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-sm flex items-center justify-center hover:shadow-md">
                     Get In Touch
                 </a>
             </div>
 
             <!-- Stats Row -->
-            @php $projectCount = \App\Models\Project::count(); @endphp
+            @php $projectCount = \App\Models\Project::count(); $certCount = \App\Models\Certificate::count(); @endphp
             <div class="hero-stats flex items-center gap-5 md:gap-7 px-8 md:px-10 py-4 md:py-5 rounded-[1.8rem] bg-white/70 dark:bg-slate-800/60 backdrop-blur-xl border border-white dark:border-white/10 shadow-[0_8px_30px_rgba(65,49,35,0.06)] w-max max-w-full overflow-x-auto opacity-0 translate-y-6">
-                <!-- Projects (Dynamic) -->
+                <!-- Projects -->
                 <div class="flex items-baseline gap-1.5 flex-none">
                     <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $projectCount }}</span>
                     <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Projects</span>
                 </div>
-                <!-- Divider -->
                 <div class="w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 flex-none mx-2"></div>
                 
-                <!-- 2+ Years -->
+                <!-- Certificates -->
+                <div class="flex items-baseline gap-1.5 flex-none">
+                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $certCount }}</span>
+                    <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Certificates</span>
+                </div>
+                <div class="w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 flex-none mx-2"></div>
+
+                <!-- Years -->
                 <div class="flex items-center gap-1.5 flex-none">
                     <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">2+</span>
                     <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 leading-[1.2]">Years<br>Experience</span>
@@ -82,17 +79,16 @@
             </div>
         </div>
 
-        <!-- RIGHT: VISUAL FRAME & FLOATING ICONS -->
+        <!-- RIGHT: VISUAL FRAME -->
         <div class="hero-visual hidden lg:flex relative items-center justify-center min-h-[600px] z-10 w-[45%] lg:pr-6 opacity-0 scale-95 translate-y-10">
             
-            <!-- Central Profile Frame (Thick White Border) -->
+            <!-- Central Profile Frame -->
             <div class="relative w-[340px] h-[520px] rounded-[3.5rem] bg-[#fbfaf5] dark:bg-slate-800 border-[8px] border-white dark:border-slate-700 shadow-[0_30px_60px_rgba(65,49,35,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden z-20 group cursor-pointer" id="hero-photo-trigger">
                 <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_20%] transition-transform duration-1000 group-hover:scale-105" />
                 <span class="absolute top-6 left-6 text-[8px] font-mono text-[#4b3621]/40 dark:text-emerald-400/80 tracking-widest uppercase">V.2026</span>
             </div>
 
-            <!-- FLOATING BADGES (Positions exactly matched, Colors fine-tuned) -->
-            <!-- ALL BADGES USE SIMILAR SHADOWS AND FROSTED BORDERS -->
+            <!-- FLOATING BADGES -->
 
             <!-- Pink </> (Top Left) -->
             <div class="absolute top-[16%] left-[-8%] w-14 h-14 rounded-[1rem] bg-[#eab7b8] dark:bg-pink-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(234,183,184,0.4)] flex items-center justify-center z-30 animate-[float_4s_ease-in-out_infinite] border border-white/60">
@@ -104,7 +100,7 @@
                 <span class="text-white font-bold text-sm tracking-widest">HTML</span>
             </div>
 
-            <!-- Brown Briefcase "3+ Years Experience" (Top Right) -->
+            <!-- Brown Briefcase "2+ Years Experience" (Top Right) -->
             <div class="absolute top-[10%] right-[-15%] pl-2 pr-6 py-2 rounded-full bg-[#f1ebd8] dark:bg-amber-900/40 backdrop-blur-md shadow-[0_15px_30px_rgba(65,49,35,0.1)] flex items-center gap-3 z-10 animate-[float_6s_ease-in-out_infinite_0.5s] border border-white">
                 <div class="w-8 h-8 rounded-full bg-[#b89574] flex items-center justify-center text-white text-[11px] shadow-sm"><i class="fa-solid fa-briefcase"></i></div>
                 <div class="flex flex-col mt-0.5">
@@ -132,10 +128,9 @@
                 </div>
             </div>
 
-            <!-- SCROLL INDICATOR (Precisely centered under photo frame) -->
+            <!-- SCROLL INDICATOR -->
             <div class="absolute -bottom-16 left-0 right-0 flex justify-center z-20 pr-6" id="hero-scroll">
                 <div class="flex flex-col items-center gap-2">
-                    <!-- Minimal Mouse Icon -->
                     <div class="w-[24px] h-[38px] rounded-full border-[2px] border-[#4b3621]/20 dark:border-white/20 flex justify-center pt-[5px] shadow-sm bg-[#F8F5EC]/60 dark:bg-black/20 backdrop-blur-sm">
                         <div class="w-[3px] h-[6px] bg-[#4b3621]/60 dark:bg-white/60 rounded-full animate-[mouse-dot_2s_infinite]"></div>
                     </div>
@@ -170,9 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined') {
         const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.2 }});
 
-        tl.to(".focus-badge", { opacity: 1, y: 0, delay: 0.2 })
-          .to(".hero-title", { opacity: 1, x: 0 }, "-=0.8")
-          .to(".hero-subtitle", { opacity: 1, x: 0 }, "-=1")
+        tl.to(".hero-greeting", { opacity: 1, y: 0, delay: 0.2 })
+          .to(".hero-title", { opacity: 1, y: 0 }, "-=0.8")
+          .to(".hero-subtitle", { opacity: 1, y: 0 }, "-=1")
           .to(".hero-cta", { opacity: 1, y: 0 }, "-=1.1")
           .to(".hero-stats", { opacity: 1, y: 0 }, "-=1.1")
           .to(".hero-visual", { opacity: 1, y: 0, scale: 1 }, "-=1.2")

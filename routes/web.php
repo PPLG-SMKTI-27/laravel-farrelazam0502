@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\CertificateController;
 
 
 // Home route
@@ -20,10 +21,12 @@ Route::get('/Project', [ProjectController::class, 'index'])->name('project');
 
 // route for dashboard
 use App\Models\Project;
+use App\Models\Certificate;
 
 Route::get('/dashboard', function () {
     $projects = Project::all();
-    return view('dashboard', compact('projects'));
+    $certificates = Certificate::latest()->get();
+    return view('dashboard', compact('projects', 'certificates'));
 })->middleware(['auth', 'verified'])->name('dashboard');    
 
 // profile routes
@@ -46,5 +49,18 @@ Route::put('/project/{id}', [ProjectController::class, 'update'])
 
 Route::delete('/project/{id}', [ProjectController::class, 'destroy'])
     ->name('project.destroy');
+
+// Certificate CRUD routes
+Route::get('/certificate/edit/{id?}', [CertificateController::class, 'editForm'])
+    ->name('certificate.editForm');
+
+Route::post('/certificate', [CertificateController::class, 'store'])
+    ->name('certificate.store');
+
+Route::put('/certificate/{id}', [CertificateController::class, 'update'])
+    ->name('certificate.update');
+
+Route::delete('/certificate/{id}', [CertificateController::class, 'destroy'])
+    ->name('certificate.destroy');
 
 require __DIR__.'/auth.php';

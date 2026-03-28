@@ -46,6 +46,13 @@
               </li>
 
               <li>
+                  <a href="{{ route('home') }}#certificate"
+                    class="hover:text-emerald-400 transition">
+                    Sertifikat
+                  </a>
+              </li>
+
+              <li>
                   <a href="{{ route('home') }}#project"
                     class="hover:text-emerald-400 transition">
                     Project
@@ -145,6 +152,7 @@
               <li><a href="{{ route('home') }}" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Home</a></li>
               <li><a href="{{ route('home') }}#tentang-saya" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Tentang Saya</a></li>
               <li><a href="{{ route('home') }}#skill" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Skill</a></li>
+              <li><a href="{{ route('home') }}#certificate" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Sertifikat</a></li>
               <li><a href="{{ route('home') }}#project" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Project</a></li>
               <li><a href="{{ route('home') }}#contact" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Kontak</a></li>
               @auth
