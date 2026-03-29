@@ -88,7 +88,16 @@
             <!-- Central Profile Frame -->
             <div class="relative w-[340px] h-[520px] rounded-[3.5rem] bg-[#fbfaf5] dark:bg-slate-800 border-[8px] border-white dark:border-slate-700 shadow-[0_30px_60px_rgba(65,49,35,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden z-20 group cursor-pointer" id="hero-photo-trigger">
                 <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_20%] transition-transform duration-1000 group-hover:scale-105" />
-                <span class="absolute top-6 left-6 text-[8px] font-mono text-[#4b3621]/40 dark:text-emerald-400/80 tracking-widest uppercase">V.2026</span>
+                
+                <!-- Hover Overlay (Desktop) -->
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+
+                <!-- Persistent Expand Icon -->
+                <div class="absolute bottom-5 right-5 z-30 w-10 h-10 flex items-center justify-center bg-black/30 dark:bg-black/50 backdrop-blur-md rounded-full border border-white/20 shadow-lg group-hover:scale-110 transition-all duration-300">
+                    <i class="fa-solid fa-expand text-white text-sm"></i>
+                </div>
+
+                <span class="absolute top-6 left-6 text-[8px] font-mono text-[#4b3621]/40 dark:text-emerald-400/80 tracking-widest uppercase z-20">V.2026</span>
             </div>
 
             <!-- FLOATING BADGES -->

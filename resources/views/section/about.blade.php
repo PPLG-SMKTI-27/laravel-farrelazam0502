@@ -9,10 +9,19 @@
             <!-- LEFT COLUMN: Profile & Identity Card -->
             <div class="w-full md:w-[35%] flex flex-col gap-6">
                 <!-- MAIN PHOTO CARD -->
-                <div class="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white dark:border-white/5 group bg-white/10" id="photo-trigger">
+                <div class="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white dark:border-white/5 group bg-white/10 cursor-pointer" id="photo-trigger">
                     <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 object-[center_35%]" />
+                    
+                    <!-- Hover Overlay (Desktop) -->
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+
+                    <!-- Persistent Expand Icon -->
+                    <div class="absolute bottom-5 right-5 z-30 w-10 h-10 flex items-center justify-center bg-black/30 dark:bg-black/50 backdrop-blur-md rounded-full border border-white/20 shadow-lg group-hover:scale-110 transition-all duration-300 pointer-events-none">
+                        <i class="fa-solid fa-expand text-white text-sm"></i>
+                    </div>
+
                     <!-- Subtle Scanline for Dark Mode -->
-                    <div class="absolute inset-0 pointer-events-none overflow-hidden hidden dark:block">
+                    <div class="absolute inset-0 pointer-events-none overflow-hidden hidden dark:block z-20">
                         <div class="w-full h-[1px] bg-emerald-400/20 animate-[scan_6s_linear_infinite]"></div>
                     </div>
                 </div>
