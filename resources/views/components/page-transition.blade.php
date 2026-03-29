@@ -8,7 +8,7 @@
 
     <div class="overflow-hidden">
         <p id="transition-subtitle" class="text-[9px] md:text-[10px] font-bold text-[#4b3621]/40 dark:text-slate-500 tracking-[0.4em] uppercase translate-y-full opacity-0">
-            LADING...
+            LOADING...
         </p>
     </div>
 
