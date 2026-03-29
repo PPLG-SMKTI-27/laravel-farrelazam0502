@@ -50,29 +50,31 @@
                 </a>
                 
                 <a href="#contact" class="px-8 py-3.5 rounded-full bg-[#fdfcf8]/80 dark:bg-slate-800/50 backdrop-blur-xl border border-[#4b3621]/10 dark:border-white/10 text-[#413123] dark:text-white font-semibold hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-sm flex items-center justify-center hover:shadow-md">
-                    Get In Touch
+                    Hire Me
                 </a>
             </div>
 
             {{-- Stats Row --}}
-            <div class="hero-stats flex items-center gap-5 md:gap-7 px-8 md:px-10 py-4 md:py-5 rounded-[1.8rem] bg-white/70 dark:bg-slate-800/60 backdrop-blur-xl border border-white dark:border-white/10 shadow-[0_8px_30px_rgba(65,49,35,0.06)] w-max max-w-full overflow-x-auto opacity-0 translate-y-6">
-                <div class="flex items-baseline gap-1.5 flex-none">
-                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $totalProjects }}</span>
-                    <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Projects</span>
-                </div>
-                <div class="w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 flex-none mx-2"></div>
+            <div class="hero-stats grid grid-cols-3 divide-x divide-[#413123]/15 dark:divide-white/10 items-center px-4 md:px-8 py-4 md:py-5 rounded-[1.5rem] md:rounded-[1.8rem] bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl border border-white dark:border-white/10 shadow-[0_8px_30px_rgba(65,49,35,0.06)] w-full max-w-xl mx-auto lg:mx-0 opacity-0 translate-y-6">
                 
-                <div class="flex items-baseline gap-1.5 flex-none">
-                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">{{ $totalCertificates }}</span>
-                    <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Certificates</span>
+                <!-- Projects -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2">
+                    <span class="text-[1.8rem] md:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none mt-1">{{ $totalProjects }}</span>
+                    <span class="text-[10px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 text-center sm:text-left leading-tight mt-1 sm:mt-0">Projects</span>
                 </div>
-                <div class="w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 flex-none mx-2"></div>
+                
+                <!-- Certificates -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2">
+                    <span class="text-[1.8rem] md:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none mt-1">{{ $totalCertificates }}</span>
+                    <span class="text-[10px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 text-center sm:text-left leading-tight mt-1 sm:mt-0">Certificates</span>
+                </div>
 
                 <!-- Years -->
-                <div class="flex items-center gap-1.5 flex-none">
-                    <span class="text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 mt-1 mr-1">2+</span>
-                    <span class="text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 leading-[1.2]">Years<br>Experience</span>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2">
+                    <span class="text-[1.8rem] md:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none mt-1">2+</span>
+                    <span class="text-[10px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 text-center sm:text-left leading-tight mt-1 sm:mt-0">Years<br class="hidden sm:block"> Exp.</span>
                 </div>
+
             </div>
         </div>
 
@@ -97,8 +99,8 @@
                 <span class="text-white font-bold text-sm tracking-widest">HTML</span>
             </div>
 
-            <!-- Brown Briefcase "2+ Years Experience" (Top Right) -->
-            <div class="absolute top-[10%] right-[-15%] pl-2 pr-6 py-2 rounded-full bg-[#f1ebd8] dark:bg-amber-900/40 backdrop-blur-md shadow-[0_15px_30px_rgba(65,49,35,0.1)] flex items-center gap-3 z-10 animate-[float_6s_ease-in-out_infinite_0.5s] border border-white">
+            <!-- Brown Briefcase "2+ Years Experience" (Bottom Left) -->
+            <div class="absolute bottom-[20%] left-[-18%] pl-2 pr-6 py-2 rounded-full bg-[#f1ebd8] dark:bg-amber-900/40 backdrop-blur-md shadow-[0_15px_30px_rgba(65,49,35,0.1)] flex items-center gap-3 z-10 animate-[float_6s_ease-in-out_infinite_0.5s] border border-white">
                 <div class="w-8 h-8 rounded-full bg-[#b89574] flex items-center justify-center text-white text-[11px] shadow-sm"><i class="fa-solid fa-briefcase"></i></div>
                 <div class="flex flex-col mt-0.5">
                     <span class="text-[#413123] dark:text-white font-bold text-[13px] leading-tight">2+ Years</span>
@@ -106,8 +108,8 @@
                 </div>
             </div>
 
-            <!-- Blue {} (Middle Right) -->
-            <div class="absolute top-[34%] right-[-12%] w-14 h-14 rounded-[1.2rem] bg-[#60aadd] dark:bg-blue-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(96,170,221,0.4)] flex items-center justify-center z-30 animate-[float_4.5s_ease-in-out_infinite_1s] border border-white/60">
+            <!-- Blue {} (Top Right) -->
+            <div class="absolute top-[16%] right-[-12%] w-14 h-14 rounded-[1.2rem] bg-[#60aadd] dark:bg-blue-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(96,170,221,0.4)] flex items-center justify-center z-30 animate-[float_4.5s_ease-in-out_infinite_1s] border border-white/60">
                 <span class="text-white font-mono font-bold text-xl">{ }</span>
             </div>
 

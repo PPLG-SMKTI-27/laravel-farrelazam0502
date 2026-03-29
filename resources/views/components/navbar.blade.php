@@ -12,9 +12,9 @@
           {{-- LOGO --}}
           @if(!(isset($inline) && $inline))
           <a href="{{ route('home') }}"
-            class="text-2xl font-black
-                    bg-gradient-to-r from-emerald-400 to-blue-400
-                    bg-clip-text text-transparent hover:scale-105 transition duration-300">
+            class="text-2xl font-black font-playfair italic
+                   text-[#4b3621] dark:text-slate-300
+                   hover:scale-105 transition duration-300 drop-shadow-sm">
               Farrel
           </a>
           @endif
@@ -72,10 +72,11 @@
                   <li>
                       <a href="{{ route('login') }}"
                         class="px-5 py-2 rounded-full
-                                bg-gradient-to-r from-emerald-400 to-blue-400
-                                text-slate-900 font-semibold
-                                hover:scale-105 hover:shadow-lg
-                                hover:shadow-emerald-400/30 transition">
+                                bg-[#215a49]/10 dark:bg-emerald-500/10
+                                border border-[#215a49]/30 dark:border-emerald-500/30
+                                text-[#215a49] dark:text-emerald-400 font-bold text-sm
+                                hover:bg-[#215a49] hover:text-[#fbfaf5] dark:hover:bg-emerald-500 dark:hover:text-slate-900
+                                hover:scale-105 hover:shadow-md transition-all duration-300">
                           Login
                       </a>
                   </li>
@@ -97,10 +98,11 @@
                           @csrf
                           <button type="submit"
                                 class="px-5 py-2 rounded-full
-                                      bg-gradient-to-r from-red-500 to-pink-500
-                                      text-sm font-semibold text-white
-                                      hover:scale-105 transition shadow-lg
-                                      flex items-center justify-center leading-none">
+                                      bg-rose-500/10 dark:bg-rose-500/10
+                                      border border-rose-500/30
+                                      text-rose-600 dark:text-rose-400 text-sm font-bold
+                                      hover:bg-rose-600 hover:text-white dark:hover:bg-rose-500 dark:hover:text-white
+                                      hover:scale-105 transition-all shadow-sm flex items-center justify-center leading-none">
                                 Logout
                           </button>
                       </form>

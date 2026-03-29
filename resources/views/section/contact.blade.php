@@ -64,17 +64,17 @@
             
             <!-- Social Media -->
             <div class="mt-10 pt-8 border-t border-white/5 w-full text-center">
-                <p class="text-slate-500 text-sm mb-5 font-medium">
+                <p class="text-[#4b3621]/60 dark:text-slate-500 text-sm mb-5 font-medium tracking-wide">
                     Jelajahi profil saya lainnya
                 </p>
                 <div class="flex justify-center gap-4">
-                    <a href="https://instagram.com/farctyl" target="_blank" class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-400 hover:text-pink-400 hover:bg-pink-500/10 hover:border-pink-500/30 border border-white/5 transition-all duration-300 hover:scale-110 shadow-lg">
+                    <a href="https://instagram.com/farctyl" target="_blank" class="w-12 h-12 rounded-full bg-[#4b3621]/5 dark:bg-slate-800/80 flex items-center justify-center text-[#4b3621]/70 dark:text-slate-400 hover:text-pink-600 dark:hover:text-pink-400 hover:bg-pink-500/10 hover:border-pink-500/30 border border-[#4b3621]/10 dark:border-white/5 transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md">
                         <i class="fa-brands fa-instagram text-xl"></i>
                     </a>
-                    <a href="#" target="_blank" class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 border border-white/5 transition-all duration-300 hover:scale-110 shadow-lg">
+                    <a href="#" target="_blank" class="w-12 h-12 rounded-full bg-[#4b3621]/5 dark:bg-slate-800/80 flex items-center justify-center text-[#4b3621]/70 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 border border-[#4b3621]/10 dark:border-white/5 transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md">
                         <i class="fa-brands fa-linkedin-in text-xl"></i>
                     </a>
-                    <a href="https://github.com/PPLG-SMKTI-27/laravel-farrelazam0502" target="_blank" class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/30 border border-white/5 transition-all duration-300 hover:scale-110 shadow-lg">
+                    <a href="https://github.com/PPLG-SMKTI-27/laravel-farrelazam0502" target="_blank" class="w-12 h-12 rounded-full bg-[#4b3621]/5 dark:bg-slate-800/80 flex items-center justify-center text-[#4b3621]/70 dark:text-slate-400 hover:text-[#115e59] dark:hover:text-white hover:bg-[#115e59]/10 dark:hover:bg-white/10 hover:border-[#115e59]/30 dark:hover:border-white/30 border border-[#4b3621]/10 dark:border-white/5 transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md">
                         <i class="fa-brands fa-github text-xl"></i>
                     </a>
                 </div>
