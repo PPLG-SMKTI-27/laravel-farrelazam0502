@@ -55,24 +55,28 @@
             </div>
 
             {{-- Stats Row --}}
-            <div class="hero-stats grid grid-cols-3 divide-x divide-[#413123]/15 dark:divide-white/10 items-center px-4 md:px-8 py-4 md:py-5 rounded-[1.5rem] md:rounded-[1.8rem] bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl border border-white dark:border-white/10 shadow-[0_8px_30px_rgba(65,49,35,0.06)] w-full max-w-xl mx-auto lg:mx-0 opacity-0 translate-y-6">
+            <div class="hero-stats flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-start gap-5 sm:gap-6 md:gap-8 px-6 md:px-10 py-5 rounded-[1.5rem] md:rounded-[1.8rem] bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl border border-white dark:border-white/10 shadow-[0_8px_30px_rgba(65,49,35,0.06)] w-fit mx-auto lg:mx-0 opacity-0 translate-y-6">
                 
                 <!-- Projects -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2">
-                    <span class="text-[1.8rem] md:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none mt-1">{{ $totalProjects }}</span>
-                    <span class="text-[10px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 text-center sm:text-left leading-tight mt-1 sm:mt-0">Projects</span>
+                <div class="flex items-baseline gap-1.5">
+                    <span class="text-[1.8rem] sm:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none">{{ $totalProjects }}</span>
+                    <span class="text-[11px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Projects</span>
                 </div>
                 
+                <div class="hidden sm:block w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 mx-1"></div>
+                
                 <!-- Certificates -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2">
-                    <span class="text-[1.8rem] md:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none mt-1">{{ $totalCertificates }}</span>
-                    <span class="text-[10px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 text-center sm:text-left leading-tight mt-1 sm:mt-0">Certificates</span>
+                <div class="flex items-baseline gap-1.5">
+                    <span class="text-[1.8rem] sm:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none">{{ $totalCertificates }}</span>
+                    <span class="text-[11px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400">Certificates</span>
                 </div>
+                
+                <div class="hidden sm:block w-[1px] h-10 bg-[#413123]/15 dark:bg-white/10 mx-1"></div>
 
                 <!-- Years -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2">
-                    <span class="text-[1.8rem] md:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none mt-1">2+</span>
-                    <span class="text-[10px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 text-center sm:text-left leading-tight mt-1 sm:mt-0">Years<br class="hidden sm:block"> Exp.</span>
+                <div class="flex items-center gap-1.5">
+                    <span class="text-[1.8rem] sm:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none">2+</span>
+                    <span class="text-[11px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 leading-[1.2]">Years<br>Experience</span>
                 </div>
 
             </div>
