@@ -149,7 +149,7 @@
         <!-- PERJALANAN KARIR: SYMMETRICAL REVERT -->
         <div class="mt-48" id="karir">
             <div class="text-center mb-24">
-                <h3 class="text-4xl md:text-6xl font-black text-[#4b3621] dark:text-white mb-6 tracking-tight font-playfair">Perjalanan <span class="text-[#115e59] dark:text-emerald-500 italic">Karir</span></h3>
+                <h3 class="text-4xl md:text-6xl font-black text-[#4b3621] dark:text-white mb-6 tracking-tight font-playfair">Perjalanan <span class="text-[#115e59] dark:text-emerald-500 italic">pendidikan</span></h3>
                 <p class="text-[#4b3621]/40 dark:text-slate-400 max-w-xl mx-auto text-sm md:text-base font-light tracking-wide px-4">
                     Melihat kembali lintasan pendidikan saya selama 11 tahun terakhir melalui Digital Star-Log.
                 </p>

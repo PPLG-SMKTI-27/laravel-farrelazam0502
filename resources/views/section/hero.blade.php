@@ -83,21 +83,70 @@
         </div>
 
         <!-- RIGHT: VISUAL FRAME -->
-        <div class="hero-visual hidden lg:flex relative items-center justify-center min-h-[600px] z-10 w-[45%] lg:pr-6 opacity-0 scale-95 translate-y-10">
+        <div class="hero-visual hidden lg:flex relative items-center justify-center min-h-[660px] z-10 w-[45%] lg:pr-6 opacity-0 scale-95 translate-y-10">
             
-            <!-- Central Profile Frame -->
-            <div class="relative w-[340px] h-[520px] rounded-[3.5rem] bg-[#fbfaf5] dark:bg-slate-800 border-[8px] border-white dark:border-slate-700 shadow-[0_30px_60px_rgba(65,49,35,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden z-20 group cursor-pointer" id="hero-photo-trigger">
-                <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_20%] transition-transform duration-1000 group-hover:scale-105" />
+            <!-- Premium 3D Phone Mockup Frame -->
+            <div data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-glare="true" data-tilt-max-glare="0.2" class="relative w-[320px] h-[550px] rounded-[3.5rem] bg-gradient-to-br from-[#d4d4d4] via-[#f5f5f5] to-[#a3a3a3] dark:from-[#3a3a3a] dark:via-[#5c5c5c] dark:to-[#222222] p-[4px] shadow-[0_30px_60px_rgba(65,49,35,0.2)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] z-20 group cursor-pointer" id="hero-photo-trigger" style="transform-style: preserve-3d;">
                 
-                <!-- Hover Overlay (Desktop) -->
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                <!-- Phone Side Buttons (Metallic) -->
+                <div class="absolute top-28 -left-[2px] w-[3px] h-10 bg-[#a3a3a3] dark:bg-[#333] rounded-l-md shadow-sm"></div>
+                <div class="absolute top-44 -left-[2px] w-[3px] h-10 bg-[#a3a3a3] dark:bg-[#333] rounded-l-md shadow-sm"></div>
+                <div class="absolute top-32 -right-[2px] w-[3px] h-14 bg-[#a3a3a3] dark:bg-[#333] rounded-r-md shadow-sm"></div>
 
-                <!-- Persistent Expand Icon -->
-                <div class="absolute bottom-5 right-5 z-30 w-10 h-10 flex items-center justify-center bg-black/30 dark:bg-black/50 backdrop-blur-md rounded-full border border-white/20 shadow-lg group-hover:scale-110 transition-all duration-300">
-                    <i class="fa-solid fa-expand text-white text-sm"></i>
+                <!-- Black Screen Bezel -->
+                <div class="relative w-full h-full rounded-[3.2rem] bg-black p-[8px] shadow-[inset_0_0_10px_rgba(255,255,255,0.05)] border border-black/20">
+                    
+                    <!-- Inner Screen -->
+                    <div class="relative w-full h-full rounded-[2.8rem] overflow-hidden bg-slate-900">
+                        <!-- Dynamic Island / Notch -->
+                        <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-28 h-[26px] bg-black rounded-[1.2rem] z-40 flex items-center justify-between px-3 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#1b1b1b] border border-white/5 relative overflow-hidden">
+                                <div class="absolute top-0.5 right-0.5 w-1 h-1 bg-blue-500/30 rounded-full blur-[1px]"></div>
+                            </div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
+                        </div>
+
+                        <!-- Photo with Warm/Cinematic Overlay -->
+                        <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_20%] transition-transform duration-1000 group-hover:scale-[1.03]" />
+                        <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-transparent to-transparent pointer-events-none mix-blend-overlay"></div>
+                        
+                        <!-- Camera UI Overlay -->
+                        <div class="absolute inset-x-0 top-11 px-6 flex justify-between items-center z-30 pointer-events-none opacity-90 transition-transform duration-500 group-hover:translate-z-10" style="transform: translateZ(10px);">
+                            <span class="text-white text-[10px] tracking-widest font-semibold drop-shadow-md">30mm</span>
+                            <div class="flex gap-2.5 text-white/90 items-center drop-shadow-md">
+                                <i class="fa-solid fa-wifi text-[9px]"></i>
+                                <i class="fa-solid fa-battery-full text-[11px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Camera Controls -->
+                        <div class="absolute inset-x-0 bottom-6 flex justify-center z-30 pointer-events-none transition-transform duration-500 group-hover:translate-z-20" style="transform: translateZ(20px);">
+                            <div class="bg-black/30 backdrop-blur-xl rounded-[2rem] px-5 py-3.5 flex items-center gap-6 border border-white/10 text-white shadow-2xl">
+                                <div class="flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity">
+                                    <i class="fa-solid fa-circle-half-stroke text-[11px]"></i>
+                                    <span class="text-[8px] mt-1 font-mono">30</span>
+                                </div>
+                                <div class="w-[38px] h-[38px] rounded-full border-[2.5px] border-white/90 flex items-center justify-center p-0.5">
+                                    <div class="w-full h-full bg-white rounded-full"></div>
+                                </div>
+                                <div class="flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity">
+                                    <div class="w-[12px] h-[12px] rounded border-[1.5px] border-white flex items-center justify-center">
+                                        <div class="w-0.5 h-0.5 bg-white rounded-full"></div>
+                                    </div>
+                                    <span class="text-[8px] mt-1 font-mono">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Expand Icon (Always Visible) -->
+                        <div class="absolute bottom-[80px] right-6 z-30 w-8 h-8 flex items-center justify-center bg-black/40 backdrop-blur-md rounded-full border border-white/20 shadow-lg transition-all duration-300 hover:bg-black/60 hover:scale-110" style="transform: translateZ(30px);">
+                            <i class="fa-solid fa-expand text-white text-[10px]"></i>
+                        </div>
+
+                        <!-- Hover Overlay -->
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                    </div>
                 </div>
-
-                <span class="absolute top-6 left-6 text-[8px] font-mono text-[#4b3621]/40 dark:text-emerald-400/80 tracking-widest uppercase z-20">V.2026</span>
             </div>
 
             <!-- FLOATING BADGES -->
@@ -141,7 +190,7 @@
             </div>
 
             <!-- SCROLL INDICATOR -->
-            <div class="absolute -bottom-16 left-0 right-0 flex justify-center z-20 pr-6" id="hero-scroll">
+            <div class="absolute -bottom-24 left-0 right-0 flex justify-center z-20 pr-6" id="hero-scroll">
                 <div class="flex flex-col items-center gap-2">
                     <div class="w-[24px] h-[38px] rounded-full border-[2px] border-[#4b3621]/20 dark:border-white/20 flex justify-center pt-[5px] shadow-sm bg-[#F8F5EC]/60 dark:bg-black/20 backdrop-blur-sm">
                         <div class="w-[3px] h-[6px] bg-[#4b3621]/60 dark:bg-white/60 rounded-full animate-[mouse-dot_2s_infinite]"></div>
