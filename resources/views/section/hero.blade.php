@@ -77,7 +77,7 @@
                 <div class="flex items-center gap-1.5">
                     <span class="text-[1.8rem] sm:text-[2.2rem] font-black text-[#215a49] dark:text-emerald-400 leading-none">2+</span>
                     <span class="text-[11px] sm:text-[12px] font-medium text-[#413123]/70 dark:text-slate-400 leading-[1.2]">Years<br>Experience</span>
-                </div>
+                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
             </div>
         </div>
