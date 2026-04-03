@@ -25,7 +25,7 @@
               <li>
                 <a href="{{ route('home') }}"
                 class="hover:text-emerald-400 transition">
-                Home
+                {{ __('Beranda') }}
             </a>
             
             </li>
@@ -34,35 +34,35 @@
               <li>
                   <a href="{{ route('home') }}#tentang-saya"
                     class="hover:text-emerald-400 transition">
-                    Tentang
+                    {{ __('Tentang Saya') }}
                   </a>
               </li>
 
               <li>
                   <a href="{{ route('home') }}#skill"
                     class="hover:text-emerald-400 transition">
-                    Skill
+                    {{ __('Skill') }}
                   </a>
               </li>
 
               <li>
                   <a href="{{ route('home') }}#certificate"
                     class="hover:text-emerald-400 transition">
-                    Sertifikat
+                    {{ __('Sertifikat') }}
                   </a>
               </li>
 
               <li>
                   <a href="{{ route('home') }}#project"
                     class="hover:text-emerald-400 transition">
-                    Project
+                    {{ __('Projek') }}
                   </a>
               </li>
 
               <li>
                   <a href="{{ route('home') }}#contact"
                     class="hover:text-emerald-400 transition">
-                    Kontak
+                    {{ __('Kontak') }}
                   </a>
               </li>
 
@@ -77,7 +77,7 @@
                                 text-[#215a49] dark:text-emerald-400 font-bold text-sm
                                 hover:bg-[#215a49] hover:text-[#fbfaf5] dark:hover:bg-emerald-500 dark:hover:text-slate-900
                                 hover:scale-105 hover:shadow-md transition-all duration-300">
-                          Login
+                          {{ __('Masuk') }}
                       </a>
                   </li>
               @endguest
@@ -103,7 +103,7 @@
                                       text-rose-600 dark:text-rose-400 text-sm font-bold
                                       hover:bg-rose-600 hover:text-white dark:hover:bg-rose-500 dark:hover:text-white
                                       hover:scale-105 transition-all shadow-sm flex items-center justify-center leading-none">
-                                Logout
+                                {{ __('Keluar') }}
                           </button>
                       </form>
                   </li>
@@ -125,7 +125,23 @@
                           <i class="fa-solid fa-sun text-[10px] text-yellow-500"></i>
                       </div>
                   </button>
-                  <span class="text-[9px] font-bold text-[#115e59] dark:text-emerald-400 ml-2 uppercase tracking-tighter hidden lg:block">Theme</span>
+                  <span class="text-[9px] font-bold text-[#115e59] dark:text-emerald-400 ml-2 uppercase tracking-tighter hidden lg:block">{{ __('Tema') }}</span>
+              </li>
+
+              {{-- Language Switcher --}}
+              <li class="flex items-center ml-4">
+                  <div class="flex items-center gap-1.5 bg-[#4b3621]/5 dark:bg-white/5 rounded-full p-0.5 border border-[#4b3621]/10 dark:border-white/10 shadow-inner">
+                      <a href="{{ route('lang.switch', 'id') }}" 
+                         class="relative w-5 h-5 rounded-full overflow-hidden flex items-center justify-center transition-all duration-500 {{ App::getLocale() == 'id' ? 'ring-1 ring-[#115e59] dark:ring-emerald-400 shadow-md scale-110 z-10' : 'grayscale opacity-40 hover:grayscale-0 hover:opacity-100' }}" 
+                         title="Bahasa Indonesia">
+                          <img src="https://flagcdn.com/id.svg" alt="ID" class="w-full h-full object-cover">
+                      </a>
+                      <a href="{{ route('lang.switch', 'en') }}" 
+                         class="relative w-5 h-5 rounded-full overflow-hidden flex items-center justify-center transition-all duration-500 {{ App::getLocale() == 'en' ? 'ring-1 ring-[#115e59] dark:ring-emerald-400 shadow-lg scale-110 z-10' : 'grayscale opacity-40 hover:grayscale-0 hover:opacity-100' }}" 
+                         title="English">
+                          <img src="https://flagcdn.com/us.svg" alt="US" class="w-full h-full object-cover">
+                      </a>
+                  </div>
               </li>
 
           </ul>
@@ -151,17 +167,28 @@
       {{-- MOBILE MENU DROPDOWN --}}
       <div id="mobile-menu" class="hidden md:hidden absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-[90%] z-50 transition-all duration-300">
           <ul class="backdrop-blur-2xl bg-[#fbfaf5]/95 dark:bg-slate-950/95 border border-[#4b3621]/10 dark:border-white/10 rounded-2xl p-6 flex flex-col gap-4 text-center text-[#4b3621] dark:text-slate-300 font-medium shadow-2xl">
-              <li><a href="{{ route('home') }}" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Home</a></li>
-              <li><a href="{{ route('home') }}#tentang-saya" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Tentang Saya</a></li>
-              <li><a href="{{ route('home') }}#skill" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Skill</a></li>
-              <li><a href="{{ route('home') }}#certificate" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Sertifikat</a></li>
-              <li><a href="{{ route('home') }}#project" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Project</a></li>
-              <li><a href="{{ route('home') }}#contact" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Kontak</a></li>
+              <li><a href="{{ route('home') }}" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">{{ __('Beranda') }}</a></li>
+              <li><a href="{{ route('home') }}#tentang-saya" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">{{ __('Tentang Saya') }}</a></li>
+              <li><a href="{{ route('home') }}#skill" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">{{ __('Keahlian') }}</a></li>
+              <li><a href="{{ route('home') }}#certificate" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">{{ __('Sertifikat') }}</a></li>
+              <li><a href="{{ route('home') }}#project" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">{{ __('Projek') }}</a></li>
+              <li><a href="{{ route('home') }}#contact" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">{{ __('Kontak') }}</a></li>
               @auth
               <li><a href="{{ route('dashboard') }}" class="hover:text-[#115e59] dark:hover:text-emerald-400 block py-2 transition-colors">Dashboard</a></li>
               @endauth
               <li class="pt-4 border-t border-[#4b3621]/10 dark:border-white/5 md:hidden">
-                  <p class="text-[10px] uppercase tracking-widest text-[#4b3621]/60 dark:text-slate-500 mb-2">Switch Theme</p>
+                  <p class="text-[10px] uppercase tracking-widest text-[#4b3621]/60 dark:text-slate-500 mb-2">{{ __('Ganti Bahasa') }}</p>
+                  <div class="flex justify-center gap-3">
+                      <a href="{{ route('lang.switch', 'id') }}" class="w-7 h-7 rounded-lg bg-[#4b3621]/5 dark:bg-white/5 overflow-hidden flex items-center justify-center shadow-sm {{ App::getLocale() == 'id' ? 'ring-1 ring-emerald-500 scale-110' : 'grayscale opacity-60' }}">
+                          <img src="https://flagcdn.com/id.svg" alt="ID" class="w-full h-full object-cover">
+                      </a>
+                      <a href="{{ route('lang.switch', 'en') }}" class="w-7 h-7 rounded-lg bg-[#4b3621]/5 dark:bg-white/5 overflow-hidden flex items-center justify-center shadow-sm {{ App::getLocale() == 'en' ? 'ring-1 ring-emerald-500 scale-110' : 'grayscale opacity-60' }}">
+                          <img src="https://flagcdn.com/us.svg" alt="US" class="w-full h-full object-cover">
+                      </a>
+                  </div>
+              </li>
+              <li class="pt-4 border-t border-[#4b3621]/10 dark:border-white/5 md:hidden">
+                  <p class="text-[10px] uppercase tracking-widest text-[#4b3621]/60 dark:text-slate-500 mb-2">{{ __('Tema') }}</p>
                   <div class="flex justify-center gap-4">
                       <button class="w-10 h-10 rounded-xl bg-[#4b3621]/5 dark:bg-white/5 flex items-center justify-center text-yellow-600 dark:text-yellow-400 hover:bg-white dark:hover:bg-white/10 transition-colors shadow-sm" onclick="setTheme('light')"><i class="fa-solid fa-sun"></i></button>
                       <button class="w-10 h-10 rounded-xl bg-[#4b3621]/5 dark:bg-white/5 flex items-center justify-center text-[#115e59] dark:text-blue-400 hover:bg-white dark:hover:bg-white/10 transition-colors shadow-sm" onclick="setTheme('dark')"><i class="fa-solid fa-moon"></i></button>

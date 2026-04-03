@@ -7,10 +7,10 @@
     {{-- TITLE --}}
     <div class="text-center mb-12 relative z-20">
         <h2 class="text-3xl md:text-5xl font-bold mb-4 text-[#4b3621] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-emerald-400 dark:to-blue-400 drop-shadow-sm">
-            Kontak Saya
+            {{ __('Kontak Saya') }}
         </h2>
         <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto px-4 md:px-0 font-light">
-            Punya ide proyek menarik atau ingin berdiskusi seputar web development? Jangan ragu untuk menghubungi saya!
+            {{ __('Punya ide proyek menarik atau ingin berdiskusi seputar web development? Jangan ragu untuk menghubungi saya!') }}
         </p>
     </div>
 
@@ -28,7 +28,7 @@
             </div>
 
             <h3 class="text-2xl md:text-3xl font-bold text-[#4b3621] dark:text-white mb-8 text-center drop-shadow-md font-playfair">
-                Mari Berkolaborasi!
+                {{ __('Mari Berkolaborasi!') }}
             </h3>
             
             <!-- Contact Cards -->
@@ -39,7 +39,7 @@
                         <i class="fa-solid fa-envelope text-rose-400 text-2xl"></i>
                     </div>
                     <div class="flex-1">
-                        <p class="text-[#4b3621]/40 dark:text-slate-400 text-[11px] uppercase tracking-wider font-semibold mb-1">Kirim Pesan via</p>
+                        <p class="text-[#4b3621]/40 dark:text-slate-400 text-[11px] uppercase tracking-wider font-semibold mb-1">{{ __('Kirim Pesan via') }}</p>
                         <p class="text-[#4b3621] dark:text-white font-bold text-lg group-hover:text-[#115e59] dark:group-hover:text-emerald-400 transition-colors">Email</p>
                     </div>
                     <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20">
@@ -53,7 +53,7 @@
                         <i class="fa-brands fa-whatsapp text-green-400 text-3xl"></i>
                     </div>
                     <div class="flex-1">
-                        <p class="text-[#4b3621]/40 dark:text-slate-400 text-[11px] uppercase tracking-wider font-semibold mb-1">Mengobrol di</p>
+                        <p class="text-[#4b3621]/40 dark:text-slate-400 text-[11px] uppercase tracking-wider font-semibold mb-1">{{ __('Mengobrol di') }}</p>
                         <p class="text-[#4b3621] dark:text-white font-bold text-lg group-hover:text-[#115e59] dark:group-hover:text-emerald-400 transition-colors">WhatsApp</p>
                     </div>
                     <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">

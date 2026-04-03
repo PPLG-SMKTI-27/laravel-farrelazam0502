@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="relative text-slate-200 font-sans min-h-screen">
+<div class="relative text-slate-200 font-sans min-h-screen overflow-x-hidden">
 
     <!-- Starry Night Background (Fixed) -->
     <div id="starry-sky" class="fixed inset-0 z-0 bg-[#F8F5EC] dark:bg-gradient-to-b dark:from-[#0f172a] dark:to-[#020617] pointer-events-none overflow-hidden transition-colors duration-700">
@@ -53,7 +53,6 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const sky = document.getElementById('starry-sky');
@@ -136,6 +135,111 @@
 
     // Initialize shooting star cycle
     setTimeout(spawnMeteors, 2000);
+
+    // ==========================================
+    // CINEMATIC SECTION REVEALS (Varied & Slow)
+    // ==========================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Hero Section Timeline (Immediate & Sequential)
+    const heroTl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.8 }});
+    
+    heroTl.from(".hero-part-1", { y: 40, opacity: 0, duration: 1.6 })
+          .from(".hero-part-2", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
+          .from(".hero-part-3", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
+          .from(".hero-subtitle", { y: 20, opacity: 0, duration: 1.4 }, "-=1.0")
+          .from(".hero-cta", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
+          .from(".hero-stats", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
+          .from(".hero-visual", { y: 40, scale: 0.98, opacity: 0, duration: 2 }, "-=1.4")
+          .to("#hero-scroll", { opacity: 1, duration: 1.2 }, "-=0.8");
+
+    // Helper for Section Reveals
+    const revealSettings = (trigger, direction = 'x', value = 100) => {
+        const config = {
+            opacity: 0,
+            duration: 1.8,
+            ease: "expo.out",
+            scrollTrigger: {
+                trigger: trigger,
+                start: "top 85%",
+                once: true
+            }
+        };
+        config[direction] = value;
+        return config;
+    };
+
+    // 2. About Section: Slide from RIGHT
+    if(document.querySelector("#tentang-saya")) {
+        gsap.from("#tentang-saya", revealSettings("#tentang-saya", "x", 150));
+    }
+
+    // 3. Education Timeline: Slide from LEFT
+    if(document.querySelector("#karir")) {
+        gsap.from("#karir", revealSettings("#karir", "x", -150));
+    }
+
+    // 4. Skills Section: Staggered Fade Up
+    if(document.querySelector("#skills-grid")) {
+        gsap.from("#skills-grid > div", {
+            y: 60,
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: "#skills-grid",
+                start: "top 85%",
+                once: true
+            }
+        });
+    }
+
+    // 5. Certificates: Fade Up
+    if(document.querySelector("#certCarousel")) {
+        gsap.from("#certCarousel", {
+            y: 80,
+            opacity: 0,
+            duration: 1.8,
+            ease: "expo.out",
+            scrollTrigger: {
+                trigger: "#certificate",
+                start: "top 80%",
+                once: true
+            }
+        });
+    }
+
+    // 6. Projects Section: Slide from RIGHT
+    if(document.querySelector("#projectCarousel")) {
+        gsap.from("#projectCarousel", {
+            x: 150,
+            opacity: 0,
+            duration: 1.8,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: "#project",
+                start: "top 80%",
+                once: true
+            }
+        });
+    }
+
+    // 7. Contact Section: Zoom Out into View
+    if(document.querySelector("#contact")) {
+        gsap.from("#contact", {
+            scale: 1.05,
+            y: 40,
+            opacity: 0,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 85%",
+                once: true
+            }
+        });
+    }
 });
 </script>
 

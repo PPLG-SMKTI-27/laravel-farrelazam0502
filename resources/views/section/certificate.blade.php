@@ -5,10 +5,10 @@
     <div class="relative z-10 max-w-7xl w-full">
 
         <h2 class="text-3xl md:text-4xl font-black text-center mb-3 text-[#4b3621] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-emerald-400 dark:to-blue-400 font-playfair tracking-tight">
-            Sertifikat
+            {{ __('Sertifikat') }}
         </h2>
         <p class="text-center text-[#4b3621]/60 dark:text-slate-400 text-sm mb-12 max-w-md mx-auto font-light">
-            Bukti kompetensi dan pencapaian yang telah saya raih.
+            {{ __('Bukti kompetensi dan pencapaian yang telah saya raih.') }}
         </p>
 
         @if($certificates->isEmpty())
@@ -16,7 +16,7 @@
                 <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-[#4b3621]/5 dark:bg-white/5 flex items-center justify-center">
                     <i class="fa-solid fa-award text-2xl text-[#4b3621]/30 dark:text-white/30"></i>
                 </div>
-                <p class="text-[#4b3621]/50 dark:text-slate-500 text-sm italic">Belum ada sertifikat yang ditambahkan.</p>
+                <p class="text-[#4b3621]/50 dark:text-slate-500 text-sm italic">{{ __('Belum ada sertifikat yang ditambahkan.') }}</p>
             </div>
         @else
             {{-- CHARACTER SELECT CAROUSEL --}}
@@ -76,7 +76,7 @@
                                     {{-- View Detail Link --}}
                                     <div class="mt-auto">
                                         <span class="inline-flex items-center gap-2 text-[#4b3621] dark:text-white font-bold text-[11px] uppercase tracking-[0.12em] hover:text-[#115e59] dark:hover:text-emerald-400 transition-colors duration-300">
-                                            <span>View Detail</span>
+                                            <span>Lihat Detail</span>
                                             <i class="fa-solid fa-arrow-right text-[9px]"></i>
                                         </span>
                                     </div>

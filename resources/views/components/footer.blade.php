@@ -8,7 +8,7 @@
         
         <!-- Made with -->
         <div class="text-[#4b3621]/50 dark:text-slate-500 text-xs font-medium tracking-widest flex items-center gap-1.5 uppercase hidden md:flex">
-            Crafted with Laravel
+            {{ __('Dibuat dengan Laravel') }}
         </div>
     </div>
 </footer>

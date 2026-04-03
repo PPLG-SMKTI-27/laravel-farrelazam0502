@@ -6,6 +6,14 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CertificateController;
 
 
+// Language Switch Route
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'id'])) {
+        session()->put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
 // Home route
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 

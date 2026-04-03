@@ -61,20 +61,15 @@ $skills = [
         
         <!-- SECTION HEADER -->
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-5xl font-black mb-4 pb-2 text-[#4b3621] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-emerald-400 dark:to-blue-400 font-playfair tracking-tight drop-shadow-sm">
-                Skills <span class="text-[#115e59] dark:text-emerald-500 italic">Tools</span>
-            </h2>
-            <p class="text-[#4b3621]/60 dark:text-slate-400 max-w-xl mx-auto text-sm md:text-base font-medium">
-                Bahasa pemrograman & Tools yang saya gunakan untuk mengembangkan ide menjadi solusi digital fungsional.
-            </p>
+            <h2 class="text-3xl md:text-5xl font-black text-[#4b3621] dark:text-slate-100 tracking-tight font-playfair leading-tight">{{ __('Skill & Alat') }}</h2>
         </div>
-
-        <!-- TABS (Template Aesthetic) -->
-        <div class="flex flex-wrap justify-center gap-3 mb-10">
-            <button class="skill-tab active px-6 py-2.5 rounded-full text-sm font-black tracking-wide bg-[#115e59] text-white shadow-[0_5px_15px_rgba(17,94,89,0.2)] transition-all duration-300" data-filter="all">All Skills</button>
-            <button class="skill-tab px-6 py-2.5 rounded-full text-sm font-black tracking-wide bg-[#fbfaf5]/80 dark:bg-slate-800/80 text-[#4b3621]/70 dark:text-slate-300 border border-[#4b3621]/10 dark:border-white/10 hover:border-[#115e59] dark:hover:border-emerald-500 hover:text-[#115e59] dark:hover:text-emerald-400 transition-all duration-300" data-filter="front-end">Front-End</button>
-            <button class="skill-tab px-6 py-2.5 rounded-full text-sm font-black tracking-wide bg-[#fbfaf5]/80 dark:bg-slate-800/80 text-[#4b3621]/70 dark:text-slate-300 border border-[#4b3621]/10 dark:border-white/10 hover:border-[#115e59] dark:hover:border-emerald-500 hover:text-[#115e59] dark:hover:text-emerald-400 transition-all duration-300" data-filter="back-end">Back-End</button>
-            <button class="skill-tab px-6 py-2.5 rounded-full text-sm font-black tracking-wide bg-[#fbfaf5]/80 dark:bg-slate-800/80 text-[#4b3621]/70 dark:text-slate-300 border border-[#4b3621]/10 dark:border-white/10 hover:border-[#115e59] dark:hover:border-emerald-500 hover:text-[#115e59] dark:hover:text-emerald-400 transition-all duration-300" data-filter="tools">Tools</button>
+        
+        <!-- Filter Tabs (Premium UI) -->
+        <div class="flex flex-wrap gap-2 md:gap-4 mb-12 justify-center">
+            <button class="skill-tab active px-6 py-2.5 rounded-2xl text-xs font-bold transition-all duration-500 bg-[#115e59] text-white shadow-[0_5px_15px_rgba(17,94,89,0.2)] hover:scale-105 active:scale-95" data-filter="all">{{ __('Semua') }}</button>
+            <button class="skill-tab px-6 py-2.5 rounded-2xl text-xs font-bold transition-all duration-500 bg-[#fbfaf5]/80 dark:bg-slate-800/80 text-[#4b3621]/70 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-md hover:scale-105 active:scale-95" data-filter="front-end">Front-end</button>
+            <button class="skill-tab px-6 py-2.5 rounded-2xl text-xs font-bold transition-all duration-500 bg-[#fbfaf5]/80 dark:bg-slate-800/80 text-[#4b3621]/70 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-md hover:scale-105 active:scale-95" data-filter="back-end">Back-end</button>
+            <button class="skill-tab px-6 py-2.5 rounded-2xl text-xs font-bold transition-all duration-500 bg-[#fbfaf5]/80 dark:bg-slate-800/80 text-[#4b3621]/70 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-md hover:scale-105 active:scale-95" data-filter="tools">{{ __('Alat') }}</button>
         </div>
 
         <!-- SKILLS GRID (Compact & Clean) -->
@@ -103,11 +98,54 @@ $skills = [
     </div>
 </section>
 
-<!-- Tabs Filtering Logic -->
+<!-- Tabs Filtering Logic & Animations -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.skill-tab');
     const cards = document.querySelectorAll('.skill-card');
+
+    // INITIAL REVEAL ANIMATION (Coordinated with Preloader)
+    function initSkillReveal() {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            // First, briefly refresh ScrollTrigger to be sure of positions
+            ScrollTrigger.refresh();
+
+            gsap.from(".skill-card", {
+                scrollTrigger: {
+                    trigger: "#skill",
+                    start: "top 85%", // Trigger slightly earlier for safety
+                    toggleActions: "play none none none",
+                    // onEnter: () => console.log("Skill reveal entered") // Debugging
+                },
+                opacity: 0,
+                y: 50,
+                scale: 0.9,
+                stagger: 0.08,
+                duration: 0.8,
+                ease: "power2.out",
+                clearProps: "all",
+                overwrite: 'auto'
+            });
+
+            // FAIL-SAFE: If the user is already scrolled to this section, or it's missed,
+            // ensure the cards show up after a short delay.
+            setTimeout(() => {
+                gsap.to(".skill-card", { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.05 });
+            }, 2000);
+        } else {
+            // GSAP not found fallback
+            cards.forEach(card => card.style.opacity = '1');
+        }
+    }
+
+    // COORDINATE WITH PRELOADER (same as Hero Section)
+    if (sessionStorage.getItem('preloader_played')) {
+        // Short delay to allow layout to settle
+        setTimeout(initSkillReveal, 200);
+    } else {
+        // Wait for preloader animation to finish (approx 4s)
+        setTimeout(initSkillReveal, 4200);
+    }
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -126,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cards.forEach(card => {
                 if (filter === 'all' || card.getAttribute('data-category') === filter) {
                     card.style.display = 'flex';
-                    // Trigger a smooth animation using GSAP (which is globally available in your app.blade.php)
                     if (typeof gsap !== 'undefined') {
                         gsap.fromTo(card, 
                             { opacity: 0, scale: 0.8, y: 15 }, 

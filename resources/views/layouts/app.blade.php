@@ -171,6 +171,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
   
     <script>
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
     const lyricsData = [
         { time: 14.2, text: "I could say I never dare" },
         { time: 16.1, text: "To think about you in that way" },
@@ -320,29 +324,30 @@
         const wrapper = document.getElementById('content-wrapper');
         if (!wrapper) return;
         
-        if (sessionStorage.getItem('preloader_played')) {
+        // Ensure we start at the top for first-time play to avoid ScrollTrigger calculation issues
+        if (!sessionStorage.getItem('preloader_played')) {
+            window.scrollTo(0, 0);
+        }
+
+        const revealContent = () => {
             wrapper.classList.remove('opacity-0');
-        } else {
+            // Allow layout to settle, then refresh ScrollTrigger positions
             setTimeout(() => {
-                wrapper.classList.remove('opacity-0');
-            }, 3800);
+                if (typeof ScrollTrigger !== 'undefined') {
+                    ScrollTrigger.refresh();
+                }
+            }, 500);
+        };
+
+        if (sessionStorage.getItem('preloader_played')) {
+            revealContent();
+        } else {
+            setTimeout(revealContent, 3800);
         }
     });
 
-    // Scroll Animations
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray("section").forEach(section => {
-        gsap.from(section, {
-            scrollTrigger: {
-                trigger: section,
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power2.out"
-        });
-    });
+    // Open Profile Modal manually if needed
+    window.openProfileModal = openProfileModal;
+    window.closeProfileModal = closeProfileModal;
     </script>
 </body>
