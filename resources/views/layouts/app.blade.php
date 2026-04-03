@@ -177,15 +177,19 @@
         <source src="{{ asset('audio/dhruv  double take (Lyrics).mp3') }}" type="audio/mpeg">
     </audio>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <!-- 3D Tilt Effect Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+    
+    <!-- GSAP & ScrollTrigger: Loaded with defer to ensure availability for stacks -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    
     <script>
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
+    });
 
     const lyricsData = [
         { time: 14.2, text: "I could say I never dare" },
@@ -300,9 +304,13 @@
 
         if (closeBtn) closeBtn.addEventListener('click', closeProfileModal);
         
+        const photoTrigger = document.getElementById('hero-photo-trigger');
+        if (photoTrigger) photoTrigger.addEventListener('click', openProfileModal);
+
         if (overlay) {
             overlay.addEventListener('click', (e) => {
-                if (!musicBadge.contains(e.target) && !lyricsList.contains(e.target)) {
+                const badge = document.getElementById('reveal-music-badge');
+                if (badge && !badge.contains(e.target) && !lyricsList.contains(e.target)) {
                     closeProfileModal();
                 }
             });
@@ -336,32 +344,40 @@
         const wrapper = document.getElementById('content-wrapper');
         if (!wrapper) return;
 
+        // Aggressive Reveal Logic
         const revealContent = () => {
-            if (wrapper.classList.contains('opacity-0')) {
-                wrapper.classList.remove('opacity-0');
-            }
-            // Allow layout to settle, then refresh ScrollTrigger positions
+            if (!wrapper || !wrapper.classList.contains('opacity-0')) return;
+            
+            wrapper.classList.remove('opacity-0');
+            // Dispatch event for other scripts (Hero/Skill)
+            document.dispatchEvent(new CustomEvent('content-revealed'));
+
+            // Refresh ScrollTrigger after layout settle
             if (typeof ScrollTrigger !== 'undefined') {
-                ScrollTrigger.refresh();
+                setTimeout(() => ScrollTrigger.refresh(), 100);
+                setTimeout(() => ScrollTrigger.refresh(), 1000);
             }
-            // Second refresh for safety after stability
-            setTimeout(() => {
-                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-            }, 500);
         };
 
         if (sessionStorage.getItem('preloader_played')) {
-            // Already played? Reveal ASAP (DOMContentLoaded is enough)
-            document.addEventListener('DOMContentLoaded', revealContent);
-            // Backup for window.load
+            // ALREADY PLAYED: Show immediately if possible
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', revealContent);
+            } else {
+                revealContent();
+            }
             window.addEventListener('load', revealContent);
-            // Immediate attempt (might be before DOM, but worth it if script is end-of-body)
-            revealContent();
         } else {
-            // First time? Wait for preloader timing
+            // FIRST VISIT: Wait for preloader animation (3.8s)
+            // But use a fallback to ensure we NEVER stay blank
+            const fallbackReveal = setTimeout(revealContent, 1000); // 1s absolute limit
+            
             window.addEventListener('load', () => {
                 window.scrollTo(0, 0);
-                setTimeout(revealContent, 3800);
+                setTimeout(() => {
+                    clearTimeout(fallbackReveal);
+                    revealContent();
+                }, 3800);
             });
         }
     })();
@@ -370,4 +386,5 @@
     window.openProfileModal = openProfileModal;
     window.closeProfileModal = closeProfileModal;
     </script>
+    @stack('scripts')
 </body>

@@ -53,6 +53,7 @@
     </div>
 </div>
 
+@push('scripts')
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const sky = document.getElementById('starry-sky');
@@ -72,29 +73,32 @@
             
             sky.appendChild(star);
             
-            // GSAP Twinkling animation
-            gsap.to(star, {
-                opacity: Math.random() * 0.8 + 0.2, // brighter
-                scale: Math.random() * 1.5 + 1,
-                duration: Math.random() * 2 + 1,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: Math.random() * 2
-            });
+            if (typeof gsap !== 'undefined') {
+                // GSAP Twinkling animation
+                gsap.to(star, {
+                    opacity: Math.random() * 0.8 + 0.2, // brighter
+                    scale: Math.random() * 1.5 + 1,
+                    duration: Math.random() * 2 + 1,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: Math.random() * 2
+                });
 
-            // GSAP Slow drift
-            gsap.to(star, {
-                y: "-=30",
-                x: "+=" + (Math.random() * 20 - 10),
-                duration: Math.random() * 10 + 10,
-                repeat: -1,
-                ease: "none"
-            });
+                // GSAP Slow drift
+                gsap.to(star, {
+                    y: "-=30",
+                    x: "+=" + (Math.random() * 20 - 10),
+                    duration: Math.random() * 10 + 10,
+                    repeat: -1,
+                    ease: "none"
+                });
+            }
         }
         
     // Ultra-Realistic Light Streak Meteor (Multi-Spawn)
     function spawnMeteors() {
+        if (typeof gsap === 'undefined') return;
         const count = Math.floor(Math.random() * 2) + 2; // Spawns 2 or 3 meteors
         
         for(let i = 0; i < count; i++) {
@@ -139,119 +143,126 @@
     // ==========================================
     // CINEMATIC SECTION REVEALS (Varied & Slow)
     // ==========================================
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
 
-    // 1. Hero Section Timeline (Immediate & Sequential)
-    const heroTl = gsap.timeline({ 
-        defaults: { ease: "power4.out", duration: 1.8 },
-        onComplete: () => {
-            if (typeof ScrollTrigger !== 'undefined') {
-                ScrollTrigger.refresh();
+        // 1. Hero Section Timeline (Immediate & Sequential)
+    const startHeroAnim = () => {
+        if (typeof gsap === 'undefined') return;
+        
+        const heroTl = gsap.timeline({ 
+            defaults: { ease: "power4.out", duration: 1.8 },
+            onComplete: () => {
+                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
             }
-        }
-    });
-    
-    // Add a small initial delay if preloader was skipped to allow layout settlement
-    const startDelay = sessionStorage.getItem('preloader_played') ? 0.3 : 4.0;
+        });
+        
+        // Slightly tighter delay after reveal for premium feel
+        const delay = 0.2;
 
-    heroTl.from(".hero-part-1", { y: 40, opacity: 0, duration: 1.6 }, startDelay)
-          .from(".hero-part-2", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
-          .from(".hero-part-3", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
-          .from(".hero-subtitle", { y: 20, opacity: 0, duration: 1.4 }, "-=1.0")
-          .from(".hero-cta", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
-          .from(".hero-stats", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
-          .from(".hero-visual", { x: 50, opacity: 0, duration: 2, ease: "power4.out" }, "-=1.4")
-          .from(".animate-float", { scale: 0.8, opacity: 0, duration: 1.2, stagger: 0.1, ease: "back.out(1.7)" }, "-=1.6")
-          .to("#hero-scroll", { opacity: 1, duration: 1.2 }, "-=0.8");
-
-    // Helper for Section Reveals
-    const revealSettings = (trigger, direction = 'x', value = 100) => {
-        const config = {
-            opacity: 0,
-            duration: 1.8,
-            ease: "expo.out",
-            scrollTrigger: {
-                trigger: trigger,
-                start: "top 85%",
-                once: true
-            }
-        };
-        config[direction] = value;
-        return config;
+        heroTl.from(".hero-part-1", { y: 40, opacity: 0, duration: 1.6 }, delay)
+              .from(".hero-part-2", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
+              .from(".hero-part-3", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
+              .from(".hero-subtitle", { y: 20, opacity: 0, duration: 1.4 }, "-=1.0")
+              .from(".hero-cta", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
+              .from(".hero-stats", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
+              .from(".hero-visual", { x: 50, opacity: 0, duration: 2, ease: "power4.out" }, "-=1.4")
+              .from(".animate-float", { scale: 0.8, opacity: 0, duration: 1.2, stagger: 0.1, ease: "back.out(1.7)" }, "-=1.6")
+              .to("#hero-scroll", { opacity: 1, duration: 1.2 }, "-=0.8");
     };
 
-    // 2. About Section: Slide from RIGHT
-    if(document.querySelector("#tentang-saya")) {
-        gsap.from("#tentang-saya", revealSettings("#tentang-saya", "x", 150));
+    // Coordination: Start only after content is revealed by app.blade.php
+    if (document.getElementById('content-wrapper') && !document.getElementById('content-wrapper').classList.contains('opacity-0')) {
+        startHeroAnim();
+    } else {
+        document.addEventListener('content-revealed', startHeroAnim);
     }
 
-    // 3. Education Timeline: Slide from LEFT
-    if(document.querySelector("#karir")) {
-        gsap.from("#karir", revealSettings("#karir", "x", -150));
-    }
+        // Helper for Section Reveals
+        const revealSettings = (trigger, direction = 'x', value = 100) => {
+            const config = {
+                opacity: 0,
+                duration: 1.8,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: trigger,
+                    start: "top 85%",
+                    once: true
+                }
+            };
+            config[direction] = value;
+            return config;
+        };
 
-    // 4. Skills Section: Staggered Fade Up
-    if(document.querySelector("#skills-grid")) {
-        gsap.from("#skills-grid > div", {
-            y: 60,
-            opacity: 0,
-            duration: 1.5,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: "#skills-grid",
-                start: "top 85%",
-                once: true
-            }
-        });
-    }
+        // 2. About Section: Slide from RIGHT
+        if(document.querySelector("#tentang-saya")) {
+            gsap.from("#tentang-saya", {
+                ...revealSettings("#tentang-saya", "x", 150),
+                onComplete: function() { gsap.set(this.targets(), { clearProps: "all" }); }
+            });
+        }
 
-    // 5. Certificates: Fade Up
-    if(document.querySelector("#certCarousel")) {
-        gsap.from("#certCarousel", {
-            y: 80,
-            opacity: 0,
-            duration: 1.8,
-            ease: "expo.out",
-            scrollTrigger: {
-                trigger: "#certificate",
-                start: "top 80%",
-                once: true
-            }
-        });
-    }
+        // 3. Education Timeline: Slide from LEFT
+        if(document.querySelector("#karir")) {
+            gsap.from("#karir", {
+                ...revealSettings("#karir", "x", -150),
+                onComplete: function() { gsap.set(this.targets(), { clearProps: "all" }); }
+            });
+        }
 
-    // 6. Projects Section: Slide from RIGHT
-    if(document.querySelector("#projectCarousel")) {
-        gsap.from("#projectCarousel", {
-            x: 150,
-            opacity: 0,
-            duration: 1.8,
-            ease: "power4.out",
-            scrollTrigger: {
-                trigger: "#project",
-                start: "top 80%",
-                once: true
-            }
-        });
-    }
 
-    // 7. Contact Section: Zoom Out into View
-    if(document.querySelector("#contact")) {
-        gsap.from("#contact", {
-            scale: 1.05,
-            y: 40,
-            opacity: 0,
-            duration: 2,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: "#contact",
-                start: "top 85%",
-                once: true
-            }
-        });
+        // 5. Certificates: Fade Up
+        if(document.querySelector("#certCarousel")) {
+            gsap.from("#certCarousel", {
+                y: 80,
+                opacity: 0,
+                duration: 1.8,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: "#certificate",
+                    start: "top 80%",
+                    once: true,
+                    onRefresh: self => { if(self.progress > 0) self.animation.progress(1); }
+                },
+                onComplete: function() { gsap.set(this.targets(), { clearProps: "all" }); }
+            });
+        }
+
+        // 6. Projects Section: Slide from RIGHT
+        if(document.querySelector("#projectCarousel")) {
+            gsap.from("#projectCarousel", {
+                x: 150,
+                opacity: 0,
+                duration: 1.8,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: "#project",
+                    start: "top 80%",
+                    once: true,
+                    onRefresh: self => { if(self.progress > 0) self.animation.progress(1); }
+                },
+                onComplete: function() { gsap.set(this.targets(), { clearProps: "all" }); }
+            });
+        }
+
+        // 7. Contact Section: Zoom Out into View
+        if(document.querySelector("#contact")) {
+            gsap.from("#contact", {
+                scale: 1.05,
+                y: 40,
+                opacity: 0,
+                duration: 2,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: "#contact",
+                    start: "top 85%",
+                    once: true
+                }
+            });
+        }
     }
 });
 </script>
+@endpush
 
 @endsection

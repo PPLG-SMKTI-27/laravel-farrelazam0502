@@ -99,57 +99,18 @@ $skills = [
 </section>
 
 <!-- Tabs Filtering Logic & Animations -->
+@push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+(function() {
+    // Tab filtering logic - scoped to avoid global conflicts
     const tabs = document.querySelectorAll('.skill-tab');
     const cards = document.querySelectorAll('.skill-card');
 
-    // INITIAL REVEAL ANIMATION (Coordinated with Preloader)
-    function initSkillReveal() {
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-            // First, briefly refresh ScrollTrigger to be sure of positions
-            ScrollTrigger.refresh();
-
-            gsap.from(".skill-card", {
-                scrollTrigger: {
-                    trigger: "#skill",
-                    start: "top 85%", // Trigger slightly earlier for safety
-                    toggleActions: "play none none none",
-                    // onEnter: () => console.log("Skill reveal entered") // Debugging
-                },
-                opacity: 0,
-                y: 50,
-                scale: 0.9,
-                stagger: 0.08,
-                duration: 0.8,
-                ease: "power2.out",
-                clearProps: "all",
-                overwrite: 'auto'
-            });
-
-            // FAIL-SAFE: If the user is already scrolled to this section, or it's missed,
-            // ensure the cards show up after a short delay.
-            setTimeout(() => {
-                gsap.to(".skill-card", { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.05 });
-            }, 2000);
-        } else {
-            // GSAP not found fallback
-            cards.forEach(card => card.style.opacity = '1');
-        }
-    }
-
-    // COORDINATE WITH PRELOADER (same as Hero Section)
-    if (sessionStorage.getItem('preloader_played')) {
-        // Short delay to allow layout to settle
-        setTimeout(initSkillReveal, 200);
-    } else {
-        // Wait for preloader animation to finish (approx 4s)
-        setTimeout(initSkillReveal, 4200);
-    }
+    if (tabs.length === 0) return;
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Remove active styles from all tabs
+            // Remove active styles
             tabs.forEach(t => {
                 t.classList.remove('active', 'bg-[#115e59]', 'text-white', 'shadow-[0_5px_15px_rgba(17,94,89,0.2)]');
                 t.classList.add('bg-[#fbfaf5]/80', 'dark:bg-slate-800/80', 'text-[#4b3621]/70', 'dark:text-slate-300');
@@ -162,19 +123,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const filter = tab.getAttribute('data-filter');
 
             cards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                const isMatch = filter === 'all' || card.getAttribute('data-category') === filter;
+                
+                if (isMatch) {
                     card.style.display = 'flex';
-                    if (typeof gsap !== 'undefined') {
-                        gsap.fromTo(card, 
-                            { opacity: 0, scale: 0.8, y: 15 }, 
-                            { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)", overwrite: true }
-                        );
-                    }
+                    card.style.opacity = '1';
+                    card.style.transform = 'none';
                 } else {
                     card.style.display = 'none';
                 }
             });
+
+            // Re-calculate ScrollTrigger positions after grid changes
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
         });
     });
-});
+})();
 </script>
+@endpush

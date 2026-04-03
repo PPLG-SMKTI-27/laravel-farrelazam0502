@@ -85,8 +85,8 @@
         <!-- RIGHT: VISUAL FRAME -->
         <div class="hero-visual hidden lg:flex relative items-center justify-center min-h-[660px] z-10 w-[45%] lg:pr-6">
             
-            <!-- Premium 3D Phone Mockup Frame -->
-            <div data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-glare="true" data-tilt-max-glare="0.2" class="relative w-[320px] h-[550px] rounded-[3.5rem] bg-gradient-to-br from-[#d4d4d4] via-[#f5f5f5] to-[#a3a3a3] dark:from-[#3a3a3a] dark:via-[#5c5c5c] dark:to-[#222222] p-[4px] shadow-[0_30px_60px_rgba(65,49,35,0.2)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] z-20 group cursor-pointer" id="hero-photo-trigger" style="transform-style: preserve-3d;">
+            <!-- Premium 3D Phone Mockup Frame (Increased Z-Index for clickability) -->
+            <div data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-glare="true" data-tilt-max-glare="0.2" class="relative w-[320px] h-[550px] rounded-[3.5rem] bg-gradient-to-br from-[#d4d4d4] via-[#f5f5f5] to-[#a3a3a3] dark:from-[#3a3a3a] dark:via-[#5c5c5c] dark:to-[#222222] p-[4px] shadow-[0_30px_60px_rgba(65,49,35,0.2)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] z-40 group cursor-pointer hover:shadow-[0_40px_80px_rgba(0,0,0,0.3)] transition-all duration-500" id="hero-photo-trigger" style="transform-style: preserve-3d;">
                 
                 <!-- Phone Side Buttons (Metallic) -->
                 <div class="absolute top-28 -left-[2px] w-[3px] h-10 bg-[#a3a3a3] dark:bg-[#333] rounded-l-md shadow-sm"></div>
@@ -171,12 +171,12 @@
             </div>
 
             <!-- Blue {} (Top Right) -->
-            <div class="absolute top-[16%] right-[-12%] w-14 h-14 rounded-[1.2rem] bg-[#60aadd] dark:bg-blue-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(96,170,221,0.4)] flex items-center justify-center z-30 animate-[float_4.5s_ease-in-out_infinite_1s] border border-white/60 animate-float">
+            <div class="absolute top-[16%] right-[-12%] w-14 h-14 rounded-[1.2rem] bg-[#60aadd] dark:bg-blue-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(96,170,221,0.4)] flex items-center justify-center z-20 animate-[float_4.5s_ease-in-out_infinite_1s] border border-white/60 animate-float">
                 <span class="text-white font-mono font-bold text-xl">{ }</span>
             </div>
 
             <!-- Yellow JS (Bottom Right) -->
-            <div class="absolute top-[52%] right-[-7%] w-14 h-14 rounded-[1.2rem] bg-[#d3a647] dark:bg-yellow-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(211,166,71,0.4)] flex items-center justify-center z-30 animate-[float_5s_ease-in-out_infinite_0.2s] border border-white/60 animate-float">
+            <div class="absolute top-[52%] right-[-7%] w-14 h-14 rounded-[1.2rem] bg-[#d3a647] dark:bg-yellow-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(211,166,71,0.4)] flex items-center justify-center z-20 animate-[float_5s_ease-in-out_infinite_0.2s] border border-white/60 animate-float">
                 <span class="text-white font-bold text-xl">JS</span>
             </div>
 
