@@ -240,41 +240,5 @@
 .font-dancing { font-family: 'Dancing Script', cursive; }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    if (typeof gsap !== 'undefined') {
-        const tl = gsap.timeline({
-            defaults: { ease: "power4.out", duration: 1.2 }
-        });
-
-        // Hide initially to prevent flash
-        gsap.set(".hero-part-1, .hero-part-2, .hero-part-3, .hero-subtitle, .hero-cta, .hero-stats", { 
-            opacity: 0, 
-            y: 40 
-        });
-        gsap.set(".hero-visual", { opacity: 0, x: 50 });
-        gsap.set(".animate-float", { opacity: 0, scale: 0.8 });
-
-        const startHeroAnim = () => {
-             tl.to(".hero-part-1", { opacity: 1, y: 0, delay: 0.2 })
-               .to(".hero-part-2", { opacity: 1, y: 0 }, "-=1")
-               .to(".hero-part-3", { opacity: 1, y: 0 }, "-=1")
-               .to(".hero-subtitle", { opacity: 1, y: 0 }, "-=0.8")
-               .to(".hero-cta", { opacity: 1, y: 0 }, "-=0.8")
-               .to(".hero-stats", { opacity: 1, y: 0 }, "-=0.8")
-               .to(".hero-visual", { opacity: 1, x: 0 }, "-=1.2")
-               .to(".animate-float", { opacity: 1, scale: 1, stagger: 0.1 }, "-=1")
-               .to("#hero-scroll", { opacity: 1, duration: 1.5, ease: "power2.inOut" }, "-=0.5");
-        };
-
-        if (sessionStorage.getItem('preloader_played')) {
-            startHeroAnim();
-        } else {
-            // Coordinate with preloader finish
-            setTimeout(startHeroAnim, 4000); 
-        }
-    }
-});
-</script>
 
 

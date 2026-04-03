@@ -142,15 +142,26 @@
     gsap.registerPlugin(ScrollTrigger);
 
     // 1. Hero Section Timeline (Immediate & Sequential)
-    const heroTl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.8 }});
+    const heroTl = gsap.timeline({ 
+        defaults: { ease: "power4.out", duration: 1.8 },
+        onComplete: () => {
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
+        }
+    });
     
-    heroTl.from(".hero-part-1", { y: 40, opacity: 0, duration: 1.6 })
+    // Add a small initial delay if preloader was skipped to allow layout settlement
+    const startDelay = sessionStorage.getItem('preloader_played') ? 0.3 : 4.0;
+
+    heroTl.from(".hero-part-1", { y: 40, opacity: 0, duration: 1.6 }, startDelay)
           .from(".hero-part-2", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
           .from(".hero-part-3", { y: 40, opacity: 0, duration: 1.6 }, "-=1.2")
           .from(".hero-subtitle", { y: 20, opacity: 0, duration: 1.4 }, "-=1.0")
           .from(".hero-cta", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
           .from(".hero-stats", { y: 20, opacity: 0, duration: 1.4 }, "-=1.2")
-          .from(".hero-visual", { y: 40, scale: 0.98, opacity: 0, duration: 2 }, "-=1.4")
+          .from(".hero-visual", { x: 50, opacity: 0, duration: 2, ease: "power4.out" }, "-=1.4")
+          .from(".animate-float", { scale: 0.8, opacity: 0, duration: 1.2, stagger: 0.1, ease: "back.out(1.7)" }, "-=1.6")
           .to("#hero-scroll", { opacity: 1, duration: 1.2 }, "-=0.8");
 
     // Helper for Section Reveals

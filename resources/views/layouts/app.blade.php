@@ -27,11 +27,10 @@
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 
-    <!-- THEME MANAGER: Premium Global Theme Control -->
+    <!-- THEME & RELIABILITY MANAGER: Premium Global Control -->
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme');
-            // Default to 'light' if no preference is set
             const theme = savedTheme || 'light';
             
             if (theme === 'dark') {
@@ -40,10 +39,23 @@
                 document.documentElement.classList.remove('dark');
             }
 
-            // Sync localStorage if it was empty
             if (!savedTheme) localStorage.setItem('theme', 'light');
+
+            // Early check for preloader
+            if (sessionStorage.getItem('preloader_played')) {
+                document.documentElement.classList.add('preloader-done');
+            }
         })();
     </script>
+
+    <style>
+        /* Force immediate visibility if preloader already played */
+        .preloader-done #content-wrapper { 
+            opacity: 1 !important; 
+            visibility: visible !important;
+            transition: none !important; 
+        }
+    </style>
 
 </head>
 <body class="font-sans antialiased bg-[#F8F5EC] dark:bg-slate-950 text-[#4b3621] dark:text-slate-200 overflow-x-hidden transition-colors duration-700 relative">
@@ -320,31 +332,39 @@
     });
 
     // Reveal page after big bang preloader finishes
-    window.addEventListener('load', () => {
+    (function() {
         const wrapper = document.getElementById('content-wrapper');
         if (!wrapper) return;
-        
-        // Ensure we start at the top for first-time play to avoid ScrollTrigger calculation issues
-        if (!sessionStorage.getItem('preloader_played')) {
-            window.scrollTo(0, 0);
-        }
 
         const revealContent = () => {
-            wrapper.classList.remove('opacity-0');
+            if (wrapper.classList.contains('opacity-0')) {
+                wrapper.classList.remove('opacity-0');
+            }
             // Allow layout to settle, then refresh ScrollTrigger positions
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
+            // Second refresh for safety after stability
             setTimeout(() => {
-                if (typeof ScrollTrigger !== 'undefined') {
-                    ScrollTrigger.refresh();
-                }
+                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
             }, 500);
         };
 
         if (sessionStorage.getItem('preloader_played')) {
+            // Already played? Reveal ASAP (DOMContentLoaded is enough)
+            document.addEventListener('DOMContentLoaded', revealContent);
+            // Backup for window.load
+            window.addEventListener('load', revealContent);
+            // Immediate attempt (might be before DOM, but worth it if script is end-of-body)
             revealContent();
         } else {
-            setTimeout(revealContent, 3800);
+            // First time? Wait for preloader timing
+            window.addEventListener('load', () => {
+                window.scrollTo(0, 0);
+                setTimeout(revealContent, 3800);
+            });
         }
-    });
+    })();
 
     // Open Profile Modal manually if needed
     window.openProfileModal = openProfileModal;
