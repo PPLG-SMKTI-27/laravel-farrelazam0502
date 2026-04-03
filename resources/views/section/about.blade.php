@@ -10,7 +10,7 @@
             <div class="w-full md:w-[40%] flex flex-col gap-6 md:items-start items-center">
                 <!-- MAIN PHOTO CARD - NAMETAG STYLE -->
                 <!-- MAIN PHOTO CARD - NAMETAG STYLE -->
-                <div class="relative w-full flex flex-col items-center md:items-start mt-20 md:mt-64 mb-12 group cursor-grab active:cursor-grabbing overflow-visible z-20" id="nametag-container" style="perspective: 2500px; touch-action: none;">
+                <div class="relative w-full flex flex-col items-center md:items-start mt-20 md:mt-64 mb-12 group overflow-visible z-20" id="nametag-container" style="perspective: 2500px;">
                     
                     <!-- WRAPPER FOR SYNCED ORIGIN -->
                     <div class="relative w-[300px] md:w-[360px] h-full flex justify-center">
@@ -21,7 +21,7 @@
                             <path id="lanyard-path-shadow" d="" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="6" stroke-linecap="round" filter="blur(5px)" />
                         </svg>
 
-                        <div id="nametag-card" class="relative transition-shadow duration-300 preserve-3d select-none z-20 h-fit">
+                        <div id="nametag-card" class="relative transition-shadow duration-300 preserve-3d select-none z-20 h-fit cursor-grab active:cursor-grabbing" style="touch-action: none;">
                             <!-- ID BADGE CARD -->
                             <div class="relative w-[300px] md:w-[360px] aspect-[3/4.2] bg-[#fbfaf5] dark:bg-slate-900/60 dark:backdrop-blur-2xl rounded-[3rem] p-3 shadow-2xl border border-[#4b3621]/15 dark:border-emerald-500/30 z-20 overflow-hidden transform-style-3d shadow-[0_30px_100px_rgba(75,54,33,0.4)] dark:shadow-[0_0_50px_rgba(16,185,129,0.2)] pointer-events-auto group">
                                 <!-- Full Image Container -->
@@ -335,47 +335,34 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(updatePhysics);
         };
         
-        container.addEventListener('mousedown', (e) => {
+        const startDrag = (e) => {
             isDragging = true;
-            startX = e.clientX - currentX;
-            startY = e.clientY - currentY;
-        });
-        
-        window.addEventListener('mousemove', (e) => {
+            const pos = e.type.includes('touch') ? e.touches[0] : e;
+            startX = pos.clientX - currentX;
+            startY = pos.clientY - currentY;
+            container.classList.add('grabbing');
+        };
+
+        const onDrag = (e) => {
             if (!isDragging) return;
-            const x = e.clientX - startX;
-            const y = e.clientY - startY;
-            
-            vX = (x - currentX);
-            vY = (y - currentY);
-            currentX = x;
-            currentY = y;
-        });
-        
-        window.addEventListener('mouseup', () => {
+            const pos = e.type.includes('touch') ? e.touches[0] : e;
+            currentX = pos.clientX - startX;
+            currentY = pos.clientY - startY;
+            vX = 0; vY = 0;
+        };
+
+        const stopDrag = () => {
             isDragging = false;
-        });
+            container.classList.remove('grabbing');
+        };
 
-        // Touch support
-        container.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            const touch = e.touches[0];
-            startX = touch.clientX - currentX;
-            startY = touch.clientY - currentY;
-        }, { passive: true });
+        card.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', onDrag);
+        window.addEventListener('mouseup', stopDrag);
 
-        window.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const touch = e.touches[0];
-            const x = touch.clientX - startX;
-            const y = touch.clientY - startY;
-            vX = (x - currentX);
-            vY = (y - currentY);
-            currentX = x;
-            currentY = y;
-        }, { passive: false });
-
-        window.addEventListener('touchend', () => isDragging = false);
+        card.addEventListener('touchstart', startDrag, { passive: false });
+        window.addEventListener('touchmove', onDrag, { passive: false });
+        window.addEventListener('touchend', stopDrag);
         
         requestAnimationFrame(updatePhysics);
     }
