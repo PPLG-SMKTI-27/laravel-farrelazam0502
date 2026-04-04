@@ -31,9 +31,25 @@
 
             <!-- Title -->
             <h1 class="hero-title text-[4rem] md:text-[5.5rem] lg:text-[6.5rem] font-black mb-6 leading-[0.9] tracking-tight font-playfair flex flex-col">
-                <span class="hero-part-1 text-[#413123] dark:text-slate-100 mb-1">{{ __('Halo, saya') }}</span>
-                <span class="hero-part-2 text-[#215a49] dark:text-emerald-400 italic">Farrel</span>
-                <span class="hero-part-3 text-[#215a49] dark:text-emerald-400 italic">Azam</span>
+                <span class="hero-part-1 text-[#413123] dark:text-slate-100 mb-1 leading-tight flex flex-wrap justify-center lg:justify-start gap-[0.2em]">
+                    @foreach(explode(' ', "Halo, saya") as $word)
+                        <span class="flex">
+                            @foreach(str_split($word) as $char)
+                                <span class="pixar-char inline-block origin-bottom">{{ $char }}</span>
+                            @endforeach
+                        </span>
+                    @endforeach
+                </span>
+                <span class="hero-part-2 text-[#215a49] dark:text-emerald-400 italic flex flex-wrap justify-center lg:justify-start">
+                    @foreach(str_split("Farrel") as $char)
+                        <span class="pixar-char inline-block origin-bottom">{{ $char }}</span>
+                    @endforeach
+                </span>
+                <span class="hero-part-3 text-[#215a49] dark:text-emerald-400 italic flex flex-wrap justify-center lg:justify-start">
+                    @foreach(str_split("Azam") as $char)
+                        <span class="pixar-char inline-block origin-bottom">{{ $char }}</span>
+                    @endforeach
+                </span>
             </h1>
 
             <!-- Subtitle -->
@@ -239,6 +255,66 @@
 .font-playfair { font-family: 'Playfair Display', serif; }
 .font-dancing { font-family: 'Dancing Script', cursive; }
 </style>
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait for GSAP to be available
+    const initPixarAnimation = () => {
+        if (typeof gsap === 'undefined') return;
+
+        const chars = document.querySelectorAll('.pixar-char');
+        
+        // Create a persistent timeline for better performance and smoothness
+        const tl = gsap.timeline({
+            repeat: -1,
+            repeatDelay: 0.5,
+            delay: 4 // Wait for preloader
+        });
+
+        // Pixar sequence: Jump + Squash & Stretch + Random rotation
+        tl.to(chars, {
+            duration: 0.8,
+            y: (i) => -20 - (Math.random() * 15), // Random jump height
+            scaleY: 1.25,
+            scaleX: 0.85,
+            rotation: () => (Math.random() - 0.5) * 15, // Random tilt
+            stagger: {
+                each: 0.08,
+                from: "random" // Randomized sequence
+            },
+            ease: "elastic.out(1, 0.4)",
+            yoyo: true,
+            repeat: 1
+        });
+
+        // Add a slight hover response
+        chars.forEach(char => {
+            char.addEventListener('mouseenter', () => {
+                gsap.to(char, {
+                    duration: 0.6,
+                    y: -25,
+                    scaleY: 1.4,
+                    scaleX: 0.75,
+                    rotation: (Math.random() - 0.5) * 20,
+                    ease: "back.out(3)",
+                    yoyo: true,
+                    repeat: 1,
+                    overwrite: "auto"
+                });
+            });
+        });
+    };
+
+    // The layout has GSAP with defer, so we wait for window load or check existence
+    if (document.readyState === 'complete') {
+        initPixarAnimation();
+    } else {
+        window.addEventListener('load', initPixarAnimation);
+    }
+});
+</script>
+@endpush
 
 
 
