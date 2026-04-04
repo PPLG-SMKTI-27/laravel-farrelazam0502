@@ -4,10 +4,10 @@
     <div class="relative z-10 max-w-7xl w-full">
 
         <h2 class="text-3xl md:text-4xl font-black text-center mb-3 text-[#4b3621] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-emerald-400 dark:to-blue-400 font-playfair tracking-tight">
-            Project
+            {{ __('Project') }}
         </h2>
         <p class="text-center text-[#4b3621]/60 dark:text-slate-400 text-sm mb-12 max-w-md mx-auto font-light">
-            Karya terbaik yang telah saya bangun.
+            {{ __('Karya terbaik yang telah saya bangun.') }}
         </p>
 
         {{-- CHARACTER SELECT CAROUSEL --}}
@@ -99,7 +99,7 @@
         <div class="text-center mt-10 relative z-20">
             <a href="{{ route('project_detail') }}"
                class="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full border border-[#4b3621]/15 dark:border-white/15 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md text-[#4b3621] dark:text-white font-bold text-xs tracking-widest uppercase hover:bg-[#115e59] hover:text-white dark:hover:bg-emerald-500 dark:hover:text-slate-900 hover:border-transparent transition-all duration-500 hover:scale-105 shadow-lg group">
-                Lihat Semua Projek
+                {{ __('Lihat Semua Projek') }}
                 <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
