@@ -175,7 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const linkUrl = new URL(href, window.location.origin);
                 if (linkUrl.pathname === window.location.pathname) { if (!linkUrl.hash) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } return; }
-                if (linkUrl.pathname.startsWith('/dashboard') || linkUrl.pathname.startsWith('/profile')) return;
+                // Skip transition for all admin/dashboard pages
+                const adminPaths = ['/dashboard', '/profile', '/project', '/certificate', '/education', '/skill', '/login', '/register'];
+                const isFromAdmin = adminPaths.some(p => window.location.pathname.startsWith(p));
+                const isToAdmin = adminPaths.some(p => linkUrl.pathname.startsWith(p));
+                if (isFromAdmin || isToAdmin) return;
             } catch(err) { return; }
 
             e.preventDefault();
@@ -185,15 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
             transitionScreen.style.display = 'flex';
             transitionScreen.style.pointerEvents = 'auto';
 
-            tl.to(transitionScreen, { opacity: 1, duration: 0.4, ease: "power2.inOut" })
-              .to(['.transition-corner', '.transition-corner-dark'], { opacity: 1, duration: 0.4, stagger: 0.05, ease: "back.out(1.2)" }, "-=0.2")
-              .to('.transition-frame', { opacity: 1, duration: 0.3, stagger: 0.1, ease: "power2.out" }, "-=0.3")
-              .to('.transition-edge', { opacity: 1, duration: 0.3, stagger: 0.04, ease: "power2.out" }, "-=0.2")
-              .to('.transition-mid', { opacity: 1, duration: 0.3, stagger: 0.04, ease: "power2.out" }, "-=0.2")
-              .to('.transition-scatter', { opacity: 1, duration: 0.4, stagger: 0.03, ease: "power2.out" }, "-=0.2")
-              .to([title, subtitle], { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power4.out" }, "-=0.2")
-              .to(barContainer, { opacity: 1, duration: 0.3 }, "-=0.4")
-              .to(bar, { width: '100%', duration: 0.6, ease: "power2.inOut" }, "-=0.3");
+            tl.to(transitionScreen, { opacity: 1, duration: 0.2, ease: "power2.inOut" })
+              .to(['.transition-corner', '.transition-corner-dark'], { opacity: 1, duration: 0.2, stagger: 0.02, ease: "back.out(1.2)" }, "-=0.1")
+              .to('.transition-frame', { opacity: 1, duration: 0.2, stagger: 0.04, ease: "power2.out" }, "-=0.15")
+              .to('.transition-edge', { opacity: 1, duration: 0.2, stagger: 0.02, ease: "power2.out" }, "-=0.15")
+              .to('.transition-mid', { opacity: 1, duration: 0.2, stagger: 0.02, ease: "power2.out" }, "-=0.15")
+              .to('.transition-scatter', { opacity: 1, duration: 0.2, stagger: 0.01, ease: "power2.out" }, "-=0.15")
+              .to([title, subtitle], { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power4.out" }, "-=0.1")
+              .to(barContainer, { opacity: 1, duration: 0.15 }, "-=0.2")
+              .to(bar, { width: '100%', duration: 0.4, ease: "power2.inOut" }, "-=0.15");
         });
     });
 });

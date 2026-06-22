@@ -27,10 +27,14 @@ class ProjectController extends Controller
         $umur = "20 Tahun";
         $totalProjects = Project::count();
         $totalCertificates = Certificate::count();
+        $educations = \App\Models\Education::orderBy('id', 'asc')->get();
+        $skills = \App\Models\Skill::all();
 
         return view('pages.Portofolio', [
             'projects' => $projects,
             'certificates' => $certificates,
+            'educations' => $educations,
+            'skills' => $skills,
             'nama' => $nama,
             'umur' => $umur,
             'totalProjects' => $totalProjects,

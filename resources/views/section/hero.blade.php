@@ -165,20 +165,20 @@
                 </div>
             </div>
 
-            <!-- FLOATING BADGES -->
+            <!-- FLOATING BADGES (with orbital movement) -->
 
-            <!-- Pink </> (Top Left) -->
-            <div class="absolute top-[16%] left-[-8%] w-14 h-14 rounded-[1rem] bg-[#eab7b8] dark:bg-pink-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(234,183,184,0.4)] flex items-center justify-center z-30 animate-[float_4s_ease-in-out_infinite] border border-white/60">
-                <span class="text-white font-mono font-bold text-lg">&lt;/&gt;</span>
-            </div>
+            <!-- GitHub (Top Left) -->
+            <a href="https://github.com/farrelazam" target="_blank" rel="noopener noreferrer" class="hero-float-badge absolute top-[16%] left-[-8%] w-14 h-14 rounded-[1rem] backdrop-blur-md flex items-center justify-center z-30 border border-white/20 hover:scale-110 transition-transform duration-300" style="background-color: #24292e; box-shadow: 0 15px 30px rgba(36,41,46,0.4); animation: orbit1 8s ease-in-out infinite;">
+                <i class="fa-brands fa-github text-white text-2xl"></i>
+            </a>
 
-            <!-- Teal HTML (Middle Left, Overlapping) -->
-            <div class="absolute top-[48%] left-[-4%] px-4 py-3 rounded-[1rem] bg-[#76b0ab] dark:bg-teal-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(118,176,171,0.4)] flex items-center justify-center z-30 animate-[float_5s_ease-in-out_infinite_reverse] border border-white/60">
-                <span class="text-white font-bold text-sm tracking-widest">HTML</span>
-            </div>
+            <!-- WhatsApp (Middle Left) -->
+            <a href="https://wa.me/6285123456789" target="_blank" rel="noopener noreferrer" class="hero-float-badge absolute top-[48%] left-[-4%] w-14 h-14 rounded-[1rem] backdrop-blur-md flex items-center justify-center z-30 border border-white/30 hover:scale-110 transition-transform duration-300" style="background-color: #25D366; box-shadow: 0 15px 30px rgba(37,211,102,0.4); animation: orbit2 10s ease-in-out infinite 0.5s;">
+                <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+            </a>
 
-            <!-- Brown Briefcase "2+ Years Experience" (Bottom Left) -->
-            <div class="absolute bottom-[20%] left-[-18%] pl-2 pr-6 py-2 rounded-full bg-[#f1ebd8] dark:bg-amber-900/40 backdrop-blur-md shadow-[0_15px_30px_rgba(65,49,35,0.1)] flex items-center gap-3 z-10 animate-[float_6s_ease-in-out_infinite_0.5s] border border-white">
+            <!-- Brown Briefcase "2+ Years Experience" (Bottom Left) - KEPT -->
+            <div class="hero-float-badge absolute bottom-[20%] left-[-18%] pl-2 pr-6 py-2 rounded-full bg-[#f1ebd8] dark:bg-amber-900/40 backdrop-blur-md shadow-[0_15px_30px_rgba(65,49,35,0.1)] flex items-center gap-3 z-10 border border-white" style="animation: orbit3 12s ease-in-out infinite 1s;">
                 <div class="w-8 h-8 rounded-full bg-[#b89574] flex items-center justify-center text-white text-[11px] shadow-sm"><i class="fa-solid fa-briefcase"></i></div>
                 <div class="flex flex-col mt-0.5">
                     <span class="text-[#413123] dark:text-white font-bold text-[13px] leading-tight">{{ __('2+ Tahun') }}</span>
@@ -186,41 +186,22 @@
                 </div>
             </div>
 
-            <!-- Blue {} (Top Right) -->
-            <div class="absolute top-[16%] right-[-12%] w-14 h-14 rounded-[1.2rem] bg-[#60aadd] dark:bg-blue-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(96,170,221,0.4)] flex items-center justify-center z-20 animate-[float_4.5s_ease-in-out_infinite_1s] border border-white/60 animate-float">
-                <span class="text-white font-mono font-bold text-xl">{ }</span>
-            </div>
+            <!-- LinkedIn (Top Right) -->
+            <a href="https://linkedin.com/in/farrelazam" target="_blank" rel="noopener noreferrer" class="hero-float-badge absolute top-[16%] right-[-12%] w-14 h-14 rounded-[1.2rem] backdrop-blur-md flex items-center justify-center z-20 border border-white/30 hover:scale-110 transition-transform duration-300" style="background-color: #0A66C2; box-shadow: 0 15px 30px rgba(10,102,194,0.4); animation: orbit4 9s ease-in-out infinite 0.3s;">
+                <i class="fa-brands fa-linkedin-in text-white text-2xl"></i>
+            </a>
 
-            <!-- Yellow JS (Bottom Right) -->
-            <div class="absolute top-[52%] right-[-7%] w-14 h-14 rounded-[1.2rem] bg-[#d3a647] dark:bg-yellow-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(211,166,71,0.4)] flex items-center justify-center z-20 animate-[float_5s_ease-in-out_infinite_0.2s] border border-white/60 animate-float">
-                <span class="text-white font-bold text-xl">JS</span>
-            </div>
+            <!-- Instagram (Mid Right) -->
+            <a href="https://instagram.com/farrelazam" target="_blank" rel="noopener noreferrer" class="hero-float-badge absolute top-[52%] right-[-7%] w-14 h-14 rounded-[1.2rem] backdrop-blur-md flex items-center justify-center z-20 border border-white/30 hover:scale-110 transition-transform duration-300" style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); box-shadow: 0 15px 30px rgba(225,48,108,0.4); animation: orbit5 11s ease-in-out infinite 0.8s;">
+                <i class="fa-brands fa-instagram text-white text-2xl"></i>
+            </a>
 
-            <!-- Light Folder "Completed Projects" (Bottom Overlap, Dynamic) -->
-            <div class="absolute bottom-[16%] right-[-18%] pl-2 pr-6 py-2 rounded-[1.5rem] bg-[#f8f6f0] dark:bg-slate-800 backdrop-blur-md shadow-[0_20px_40px_rgba(65,49,35,0.12)] flex items-center gap-3 z-30 animate-[float_5.5s_ease-in-out_infinite_0.7s] border border-white animate-float">
+            <!-- Light Folder "Completed Projects" (Bottom Right) - KEPT -->
+            <div class="hero-float-badge absolute bottom-[16%] right-[-18%] pl-2 pr-6 py-2 rounded-[1.5rem] bg-[#f8f6f0] dark:bg-slate-800 backdrop-blur-md shadow-[0_20px_40px_rgba(65,49,35,0.12)] flex items-center gap-3 z-30 border border-white" style="animation: orbit6 13s ease-in-out infinite 1.5s;">
                 <div class="w-10 h-10 rounded-[1rem] bg-[#dfb85b]/20 flex items-center justify-center text-[#d3a647] text-[20px] shadow-inner"><i class="fa-solid fa-folder"></i></div>
                 <div class="flex flex-col mt-0.5">
                     <span class="text-[#413123] dark:text-white font-black text-[15px] font-playfair leading-tight">{{ $totalProjects }}</span>
                     <span class="text-[#413123]/70 dark:text-slate-400 text-[12px] font-medium leading-tight mt-0.5">{{ __('Projek') }}</span>
-                </div>
-            </div>
-
-            <!-- PINK </> (Top Left) -->
-            <div class="absolute top-[16%] left-[-8%] w-14 h-14 rounded-[1rem] bg-[#eab7b8] dark:bg-pink-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(234,183,184,0.4)] flex items-center justify-center z-30 animate-[float_4s_ease-in-out_infinite] border border-white/60 animate-float">
-                <span class="text-white font-mono font-bold text-lg">&lt;/&gt;</span>
-            </div>
-
-            <!-- TEAL HTML (Middle Left) -->
-            <div class="absolute top-[48%] left-[-4%] px-4 py-3 rounded-[1rem] bg-[#76b0ab] dark:bg-teal-500/20 backdrop-blur-md shadow-[0_15px_30px_rgba(118,176,171,0.4)] flex items-center justify-center z-30 animate-[float_5s_ease-in-out_infinite_reverse] border border-white/60 animate-float">
-                <span class="text-white font-bold text-sm tracking-widest">HTML</span>
-            </div>
-
-            <!-- Brown Briefcase (Bottom Left) -->
-            <div class="absolute bottom-[20%] left-[-18%] pl-2 pr-6 py-2 rounded-full bg-[#f1ebd8] dark:bg-amber-900/40 backdrop-blur-md shadow-[0_15px_30px_rgba(65,49,35,0.1)] flex items-center gap-3 z-10 animate-[float_6s_ease-in-out_infinite_0.5s] border border-white animate-float">
-                <div class="w-8 h-8 rounded-full bg-[#b89574] flex items-center justify-center text-white text-[11px] shadow-sm"><i class="fa-solid fa-briefcase"></i></div>
-                <div class="flex flex-col mt-0.5">
-                    <span class="text-[#413123] dark:text-white font-bold text-[13px] leading-tight">{{ __('2+ Tahun') }}</span>
-                    <span class="text-[#413123]/70 dark:text-slate-300 text-[11px] leading-tight">{{ __('Pengalaman') }}</span>
                 </div>
             </div>
 
@@ -247,9 +228,53 @@
     100% { transform: translateY(12px); opacity: 0; }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
+/* Orbital animations - each badge has a unique elliptical path */
+@keyframes orbit1 {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    25%  { transform: translate(12px, -8px) rotate(3deg); }
+    50%  { transform: translate(-5px, -16px) rotate(-2deg); }
+    75%  { transform: translate(-14px, -4px) rotate(4deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes orbit2 {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    20%  { transform: translate(-10px, 10px) rotate(-3deg); }
+    40%  { transform: translate(8px, 18px) rotate(2deg); }
+    60%  { transform: translate(16px, 4px) rotate(-4deg); }
+    80%  { transform: translate(4px, -8px) rotate(3deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes orbit3 {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    33%  { transform: translate(14px, -6px) rotate(2deg); }
+    66%  { transform: translate(-8px, -14px) rotate(-3deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes orbit4 {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    25%  { transform: translate(-12px, 10px) rotate(-4deg); }
+    50%  { transform: translate(6px, 18px) rotate(2deg); }
+    75%  { transform: translate(14px, 6px) rotate(-3deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes orbit5 {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    20%  { transform: translate(10px, -12px) rotate(3deg); }
+    40%  { transform: translate(-6px, -18px) rotate(-2deg); }
+    60%  { transform: translate(-14px, -6px) rotate(4deg); }
+    80%  { transform: translate(-4px, 8px) rotate(-3deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes orbit6 {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    30%  { transform: translate(-10px, -10px) rotate(-2deg); }
+    60%  { transform: translate(12px, -6px) rotate(3deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
 }
 
 .font-playfair { font-family: 'Playfair Display', serif; }
@@ -265,28 +290,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const chars = document.querySelectorAll('.pixar-char');
         
-        // Create a persistent timeline for better performance and smoothness
-        const tl = gsap.timeline({
-            repeat: -1,
-            repeatDelay: 0.5,
-            delay: 4 // Wait for preloader
-        });
+        const startAnim = () => {
+            // Create a persistent timeline for better performance and smoothness
+            const tl = gsap.timeline({
+                repeat: -1,
+                repeatDelay: 0.5
+            });
 
-        // Pixar sequence: Jump + Squash & Stretch + Random rotation
-        tl.to(chars, {
-            duration: 0.8,
-            y: (i) => -20 - (Math.random() * 15), // Random jump height
-            scaleY: 1.25,
-            scaleX: 0.85,
-            rotation: () => (Math.random() - 0.5) * 15, // Random tilt
-            stagger: {
-                each: 0.08,
-                from: "random" // Randomized sequence
-            },
-            ease: "elastic.out(1, 0.4)",
-            yoyo: true,
-            repeat: 1
-        });
+            // Pixar sequence: Jump + Squash & Stretch + Random rotation
+            tl.to(chars, {
+                duration: 0.8,
+                y: (i) => -20 - (Math.random() * 15), // Random jump height
+                scaleY: 1.25,
+                scaleX: 0.85,
+                rotation: () => (Math.random() - 0.5) * 15, // Random tilt
+                stagger: {
+                    each: 0.08,
+                    from: "random" // Randomized sequence
+                },
+                ease: "elastic.out(1, 0.4)",
+                yoyo: true,
+                repeat: 1
+            });
+        };
+
+        if (sessionStorage.getItem('preloader_played')) {
+            startAnim();
+        } else {
+            document.addEventListener('content-revealed', startAnim, { once: true });
+        }
 
         // Add a slight hover response
         chars.forEach(char => {

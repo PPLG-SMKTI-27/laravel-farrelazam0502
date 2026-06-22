@@ -290,7 +290,7 @@ if (sessionStorage.getItem('preloader_played')) {
                 sessionStorage.setItem('preloader_played', 'true');
                 gsap.to('#preloader', {
                     opacity: 0,
-                    duration: 1.2,
+                    duration: 0.5,
                     ease: "power2.inOut",
                     onComplete: () => {
                         document.getElementById('preloader').style.display = 'none';
@@ -301,24 +301,28 @@ if (sessionStorage.getItem('preloader_played')) {
         });
 
         // Reveal decorative elements
-        tl.to('.preloader-corner', { opacity: 1, scale: 1, duration: 0.7, stagger: 0.08, ease: "back.out(1.2)" })
-          .to('.preloader-corner-dark', { opacity: 1, scale: 1, duration: 0.7, stagger: 0.08, ease: "back.out(1.2)" }, "<")
-          .to(['#preloader-frame-outer', '#preloader-frame-inner'], { opacity: 1, duration: 0.5, stagger: 0.12, ease: "power2.out" }, "-=0.4")
-          .to('.preloader-edge', { opacity: 1, duration: 0.5, stagger: 0.06, ease: "power2.out" }, "-=0.3")
-          .to('.preloader-mid-ornament', { opacity: 1, duration: 0.4, stagger: 0.06, ease: "power2.out" }, "-=0.3")
-          .to('.preloader-scatter', { opacity: 1, duration: 0.5, stagger: 0.04, ease: "power2.out" }, "-=0.3")
+        tl.to('.preloader-corner', { opacity: 1, scale: 1, duration: 0.4, stagger: 0.03, ease: "back.out(1.2)" })
+          .to('.preloader-corner-dark', { opacity: 1, scale: 1, duration: 0.4, stagger: 0.03, ease: "back.out(1.2)" }, "<")
+          .to(['#preloader-frame-outer', '#preloader-frame-inner'], { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power2.out" }, "-=0.3")
+          .to('.preloader-edge', { opacity: 1, duration: 0.3, stagger: 0.03, ease: "power2.out" }, "-=0.2")
+          .to('.preloader-mid-ornament', { opacity: 1, duration: 0.3, stagger: 0.03, ease: "power2.out" }, "-=0.2")
+          .to('.preloader-scatter', { opacity: 1, duration: 0.3, stagger: 0.02, ease: "power2.out" }, "-=0.2")
           // Title
-          .to('#preloader-title', { y: 0, opacity: 1, duration: 1, ease: "power4.out" }, "-=0.2")
-          .to('#preloader-subtitle', { y: 0, opacity: 1, duration: 0.8, ease: "power4.out" }, "-=0.6")
-          .to('#preloader-bar-container', { opacity: 1, duration: 0.5 }, "-=0.2")
-          .to('#preloader-bar', { width: '100%', duration: 1.2, ease: "power2.inOut" })
+          .to('#preloader-title', { y: 0, opacity: 1, duration: 0.5, ease: "power4.out" }, "-=0.15")
+          .to('#preloader-subtitle', { y: 0, opacity: 1, duration: 0.4, ease: "power4.out" }, "-=0.3")
+          .to('#preloader-bar-container', { opacity: 1, duration: 0.3 }, "-=0.15")
+          .to('#preloader-bar', { width: '100%', duration: 0.6, ease: "power2.inOut" })
+          .call(() => {
+              // Dispatch event that preloader is finishing, so content-wrapper can fade in
+              document.dispatchEvent(new CustomEvent('preloader-finish-start'));
+          })
           // Fade out all
           .to(['#preloader-title', '#preloader-subtitle', '#preloader-bar-container',
                '.preloader-corner', '.preloader-corner-dark',
                '#preloader-frame-outer', '#preloader-frame-inner',
                '.preloader-edge', '.preloader-mid-ornament', '.preloader-scatter'], {
-            y: -30, opacity: 0, duration: 0.6, stagger: 0.02, ease: "power2.in"
-          }, "+=0.2");
+            y: -20, opacity: 0, duration: 0.4, stagger: 0.01, ease: "power2.in"
+          }, "+=0.1");
     });
 }
 </script>

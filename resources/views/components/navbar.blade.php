@@ -1,5 +1,5 @@
   {{-- NAVBAR --}}
-  <nav id="main-nav" class="{{ isset($inline) && $inline ? 'relative' : 'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl' }} transition-all duration-500 opacity-100">
+  <nav id="main-nav" class="{{ isset($inline) && $inline ? 'relative' : 'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl' }} transition-all duration-500 opacity-100">
       <div class="relative backdrop-blur-xl bg-[#fbfaf5]/80 dark:bg-slate-950/40 border border-[#4b3621]/10 dark:border-white/10 rounded-full {{ isset($inline) && $inline ? 'px-6 py-2' : 'px-5 py-2 md:px-8 md:py-3' }} 
                    flex items-center {{ isset($inline) && $inline ? 'justify-center' : 'justify-between' }} shadow-[0_8px_32px_rgba(75,54,33,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]
                    group hover:bg-[#fbfaf5] dark:hover:bg-slate-950/80 hover:border-[#115e59]/20 dark:hover:border-white/20 transition-all duration-500">
@@ -20,7 +20,7 @@
           @endif
 
           {{-- MENU --}}
-          <ul class="hidden md:flex items-center gap-7 text-sm font-bold text-[#4b3621] dark:text-slate-300">
+          <ul class="hidden md:flex items-center gap-4 lg:gap-5 text-[13px] font-bold text-[#4b3621] dark:text-slate-300">
 
               <li>
                 <a href="{{ route('home') }}"
@@ -71,10 +71,10 @@
               @guest
                   <li>
                       <a href="{{ route('login') }}"
-                        class="px-5 py-2 rounded-full
+                        class="px-4 py-1.5 rounded-full
                                 bg-[#215a49]/10 dark:bg-emerald-500/10
                                 border border-[#215a49]/30 dark:border-emerald-500/30
-                                text-[#215a49] dark:text-emerald-400 font-bold text-sm
+                                text-[#215a49] dark:text-emerald-400 font-bold text-xs
                                 hover:bg-[#215a49] hover:text-[#fbfaf5] dark:hover:bg-emerald-500 dark:hover:text-slate-900
                                 hover:scale-105 hover:shadow-md transition-all duration-300">
                           {{ __('Masuk') }}
@@ -97,10 +97,10 @@
                       <form method="POST" action="{{ route('logout') }}" class="m-0 flex items-center">
                           @csrf
                           <button type="submit"
-                                class="px-5 py-2 rounded-full
+                                class="px-4 py-1.5 rounded-full
                                       bg-rose-500/10 dark:bg-rose-500/10
                                       border border-rose-500/30
-                                      text-rose-600 dark:text-rose-400 text-sm font-bold
+                                      text-rose-600 dark:text-rose-400 text-xs font-bold
                                       hover:bg-rose-600 hover:text-white dark:hover:bg-rose-500 dark:hover:text-white
                                       hover:scale-105 transition-all shadow-sm flex items-center justify-center leading-none">
                                 {{ __('Keluar') }}
@@ -110,13 +110,13 @@
               @endauth
 
               {{-- THEME TOGGLE --}}
-              <li class="flex items-center ml-4">
+              <li class="flex items-center ml-2">
                   <button id="theme-toggle" 
-                          class="relative w-16 h-8 rounded-full bg-[#4b3621]/20 dark:bg-emerald-500/20 border-2 border-[#115e59]/40 dark:border-emerald-400/40 flex items-center px-1 transition-all duration-500 hover:scale-110 active:scale-95 shadow-lg overflow-hidden group">
+                          class="relative w-14 h-7 rounded-full bg-[#4b3621]/20 dark:bg-emerald-500/20 border-2 border-[#115e59]/40 dark:border-emerald-400/40 flex items-center px-1 transition-all duration-500 hover:scale-110 active:scale-95 shadow-lg overflow-hidden group">
                       <!-- Sliding Knob -->
-                      <div id="theme-knob" class="absolute w-6 h-6 rounded-full bg-white dark:bg-emerald-400 shadow-md transform transition-all duration-500 ease-spring flex items-center justify-center z-10">
-                          <i class="fa-solid fa-moon text-[12px] text-[#115e59] dark:hidden"></i>
-                          <i class="fa-solid fa-sun text-[12px] text-slate-900 hidden dark:block"></i>
+                      <div id="theme-knob" class="absolute w-5 h-5 rounded-full bg-white dark:bg-emerald-400 shadow-md transform transition-all duration-500 ease-spring flex items-center justify-center z-10">
+                          <i class="fa-solid fa-moon text-[10px] text-[#115e59] dark:hidden"></i>
+                          <i class="fa-solid fa-sun text-[10px] text-slate-900 hidden dark:block"></i>
                       </div>
                       
                       <!-- Track Indicators -->
@@ -125,11 +125,11 @@
                           <i class="fa-solid fa-sun text-[10px] text-yellow-500"></i>
                       </div>
                   </button>
-                  <span class="text-[9px] font-bold text-[#115e59] dark:text-emerald-400 ml-2 uppercase tracking-tighter hidden lg:block">{{ __('Tema') }}</span>
+
               </li>
 
               {{-- Language Switcher --}}
-              <li class="flex items-center ml-4">
+              <li class="flex items-center ml-2">
                   <div class="flex items-center gap-1.5 bg-[#4b3621]/5 dark:bg-white/5 rounded-full p-0.5 border border-[#4b3621]/10 dark:border-white/10 shadow-inner">
                       <a href="{{ route('lang.switch', 'id') }}" 
                          class="relative w-5 h-5 rounded-full overflow-hidden flex items-center justify-center transition-all duration-500 {{ App::getLocale() == 'id' ? 'ring-1 ring-[#115e59] dark:ring-emerald-400 shadow-md scale-110 z-10' : 'grayscale opacity-40 hover:grayscale-0 hover:opacity-100' }}" 
@@ -222,7 +222,7 @@
         const knobMobile = document.getElementById('theme-knob-mobile');
         
         const updateKnobs = (isDark) => {
-            if (knob) knob.style.transform = isDark ? 'translateX(28px)' : 'translateX(0)';
+            if (knob) knob.style.transform = isDark ? 'translateX(24px)' : 'translateX(0)';
             if (knobMobile) knobMobile.style.transform = isDark ? 'translateX(20px)' : 'translateX(0)';
         };
 

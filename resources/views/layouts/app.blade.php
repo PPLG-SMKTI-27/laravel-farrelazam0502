@@ -73,7 +73,7 @@
     @include('components.page-transition')
     
     <div id="content-wrapper" class="opacity-0 transition-opacity duration-1000 min-h-screen">
-        @if(!Route::is('dashboard'))
+        @if(!Route::is('dashboard') && !Request::is('project*') && !Request::is('certificate*') && !Request::is('education*') && !Request::is('skill*') && !Request::is('profile*'))
             @include('components.navbar')
         @endif
 
@@ -368,16 +368,17 @@
             }
             window.addEventListener('load', revealContent);
         } else {
-            // FIRST VISIT: Wait for preloader animation (3.8s)
-            // But use a fallback to ensure we NEVER stay blank
-            const fallbackReveal = setTimeout(revealContent, 1000); // 1s absolute limit
+            // FIRST VISIT: Wait for preloader animation to finish
+            // Safety fallback (4s limit in case GSAP fails to load)
+            const fallbackReveal = setTimeout(revealContent, 4000);
+            
+            document.addEventListener('preloader-finish-start', () => {
+                clearTimeout(fallbackReveal);
+                revealContent();
+            });
             
             window.addEventListener('load', () => {
                 window.scrollTo(0, 0);
-                setTimeout(() => {
-                    clearTimeout(fallbackReveal);
-                    revealContent();
-                }, 3800);
             });
         }
     })();

@@ -69,13 +69,32 @@
                                     {{ $p->description }}
                                 </p>
                                 
-                                {{-- Action --}}
-                                <div class="mt-auto pointer-events-none">
-                                    <span class="inline-flex items-center gap-3 text-[#4b3621] dark:text-white font-bold text-[11px] uppercase tracking-[0.15em] hover:text-[#115e59] dark:hover:text-emerald-400 transition-colors duration-300 group/link pointer-events-auto">
-                                        <span>{{ __('Lihat Projek') }}</span>
-                                        <div class="w-8 h-[1px] bg-[#4b3621]/20 dark:bg-white/20 group-hover/link:w-12 group-hover/link:bg-[#115e59] dark:group-hover/link:bg-emerald-400 transition-all duration-500"></div>
-                                        <i class="fa-solid fa-arrow-right text-[9px] -ml-1 group-hover/link:translate-x-1 transition-transform"></i>
+                                {{-- Actions --}}
+                                <div class="mt-auto flex items-center gap-4 pointer-events-none">
+                                    {{-- Lihat Gambar --}}
+                                    <span onclick="event.stopPropagation(); openProjectModal({{ $index }});" 
+                                          class="inline-flex items-center gap-2 text-[#4b3621] dark:text-white font-bold text-[10px] uppercase tracking-[0.12em] hover:text-[#115e59] dark:hover:text-emerald-400 transition-colors duration-300 group/img pointer-events-auto cursor-pointer">
+                                        <i class="fa-regular fa-image text-xs"></i>
+                                        <span>{{ __('Lihat Gambar') }}</span>
                                     </span>
+
+                                    {{-- Divider --}}
+                                    <div class="w-[1px] h-4 bg-[#4b3621]/15 dark:bg-white/15"></div>
+
+                                    {{-- Lihat Projek (Link) --}}
+                                    @if($p->demo_link)
+                                    <a href="{{ $p->demo_link }}" target="_blank" rel="noopener noreferrer"
+                                       onclick="event.stopPropagation();"
+                                       class="inline-flex items-center gap-2 text-[#115e59] dark:text-emerald-400 font-bold text-[10px] uppercase tracking-[0.12em] hover:text-[#0f4d4a] dark:hover:text-emerald-300 transition-colors duration-300 group/link pointer-events-auto">
+                                        <span>{{ __('Lihat Projek') }}</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
+                                    </a>
+                                    @else
+                                    <span class="inline-flex items-center gap-2 text-[#4b3621]/30 dark:text-white/30 font-bold text-[10px] uppercase tracking-[0.12em] pointer-events-auto cursor-default">
+                                        <span>{{ __('No Link') }}</span>
+                                        <i class="fa-solid fa-link-slash text-[9px]"></i>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
