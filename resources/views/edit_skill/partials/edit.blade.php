@@ -81,7 +81,16 @@
                         {{ $skill->id ? 'Edit Skill' : 'Add New Skill' }}
                     </h3>
 
-                    <form action="{{ $skill->id ? route('skill.update', $skill->id) : route('skill.store') }}" method="POST" class="space-y-6 relative z-10">
+                    <form action="{{ $skill->id ? route('skill.update', $skill->id) : route('skill.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 relative z-10">
+                        @if($errors->any())
+                            <div class="bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 p-4 rounded-xl mb-6">
+                                <ul class="list-disc list-inside text-sm font-medium">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @csrf
                         @if($skill->id)
                             @method('PUT')
@@ -105,9 +114,28 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-[#4b3621]/60 dark:text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">Icon Class (FontAwesome classes like: fa-brands fa-laravel text-red-500)</label>
-                            <input type="text" name="icon" value="{{ old('icon', $skill->icon) }}" placeholder="e.g. fa-brands fa-js text-yellow-500" required
+                            <label class="text-[#4b3621]/60 dark:text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">Icon / Logo (Upload Gambar)</label>
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                @if($skill->icon)
+                                    @if(str_starts_with($skill->icon, 'uploads/'))
+                                        <img src="{{ asset($skill->icon) }}" alt="Skill Icon" class="w-16 h-16 object-contain rounded-xl border border-[#4b3621]/10 dark:border-white/10 shrink-0 shadow-md bg-white dark:bg-slate-800 p-1">
+                                    @else
+                                        <div class="w-16 h-16 rounded-xl border border-[#4b3621]/10 dark:border-white/10 flex items-center justify-center text-3xl bg-white dark:bg-slate-800 shadow-md shrink-0">
+                                            <i class="{{ $skill->icon }}"></i>
+                                        </div>
+                                    @endif
+                                @endif
+                                <input type="file" name="icon_file" accept="image/*"
+                                    class="w-full bg-[#fbfaf5]/40 dark:bg-slate-950/40 border border-[#4b3621]/15 dark:border-white/10 rounded-2xl px-6 py-4 text-[#4b3621]/60 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[#115e59]/10 file:text-[#115e59] dark:file:bg-emerald-500/10 dark:file:text-emerald-400 hover:file:bg-[#115e59]/20 dark:hover:file:bg-emerald-500/20 transition duration-300 text-sm">
+                            </div>
+                            <p class="text-[10px] text-[#4b3621]/40 dark:text-slate-500 ml-1 mt-1">Upload logo/gambar skill (PNG/SVG recommended). Atau isi FontAwesome class di bawah sebagai alternatif.</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[#4b3621]/60 dark:text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">Icon Class (Alternatif - FontAwesome)</label>
+                            <input type="text" name="icon_text" value="{{ old('icon_text', str_starts_with($skill->icon ?? '', 'uploads/') ? '' : $skill->icon) }}" placeholder="e.g. fa-brands fa-js text-yellow-500 (kosongkan jika upload gambar)"
                                 class="w-full bg-[#fbfaf5]/40 dark:bg-slate-950/40 border border-[#4b3621]/15 dark:border-white/10 rounded-2xl px-6 py-4 text-[#4b3621] dark:text-white focus:outline-none focus:border-[#115e59]/50 dark:focus:border-blue-500/50 focus:ring-2 focus:ring-[#115e59]/20 dark:focus:ring-blue-500/20 transition duration-300 placeholder:text-[#4b3621]/30 dark:placeholder:text-slate-600 text-sm">
+                            <p class="text-[10px] text-[#4b3621]/40 dark:text-slate-500 ml-1 mt-1">Hanya digunakan jika tidak upload gambar. Contoh: fa-brands fa-laravel text-red-500</p>
                         </div>
 
                         <div class="space-y-2">

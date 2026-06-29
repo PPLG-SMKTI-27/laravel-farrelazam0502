@@ -153,6 +153,8 @@
 // Project data for modal
 const projectData = @json($projects->values());
 
+const projBaseUrl = "{{ asset('') }}";
+
 function openProjectModal(index) {
     const p = projectData[index];
     if (!p) return;
@@ -165,7 +167,7 @@ function openProjectModal(index) {
 
     if (p.image) {
         // Show Image
-        modalImage.src = '/storage/' + p.image;
+        modalImage.src = p.image.startsWith('http') ? p.image : projBaseUrl + p.image;
         modalImage.classList.remove('hidden');
         fallback.classList.add('hidden');
     } else {

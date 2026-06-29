@@ -395,8 +395,12 @@
                                 <p class="text-base font-bold text-[#4b3621] dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-playfair">{{ $item->name }}</p>
                                 <p class="text-xs text-[#4b3621]/60 dark:text-slate-400 font-light max-w-sm truncate">{{ Str::limit(__($item->desc), 50) }}</p>
                             </td>
-                            <td class="px-4 py-6 text-xl">
-                                <i class="{{ $item->icon }}"></i>
+                            <td class="px-4 py-6">
+                                @if(str_starts_with($item->icon, 'uploads/'))
+                                    <img src="{{ asset($item->icon) }}" alt="{{ $item->name }}" class="w-10 h-10 object-contain rounded-lg bg-white dark:bg-slate-800 p-1 border border-[#4b3621]/10 dark:border-white/10">
+                                @else
+                                    <i class="{{ $item->icon }} text-xl"></i>
+                                @endif
                             </td>
                             <td class="px-4 py-6 text-right">
                                 <div class="flex items-center justify-end gap-3 opacity-70 group-hover:opacity-100 transition-opacity">

@@ -128,6 +128,8 @@
     // Certificate data for modal
     const certData = @json($certificates->values());
 
+    const certBaseUrl = "{{ asset('') }}";
+
     function openCertModal(index) {
         const cert = certData[index];
         if (!cert) return;
@@ -141,7 +143,7 @@
 
         if (cert.image) {
             // Show Image
-            modalImage.src = '/storage/' + cert.image;
+            modalImage.src = cert.image.startsWith('http') ? cert.image : certBaseUrl + cert.image;
             modalImage.classList.remove('hidden');
             fallback.classList.add('hidden');
         } else {

@@ -25,10 +25,14 @@
             <div class="skill-card group bg-[#fbfaf5]/90 dark:bg-slate-900/60 backdrop-blur-xl border border-[#4b3621]/10 dark:border-white/5 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center hover:-translate-y-2 hover:border-[#115e59]/40 dark:hover:border-emerald-400/50 shadow-[0_5px_20px_rgba(75,54,33,0.03)] hover:shadow-[0_15px_30px_rgba(17,94,89,0.1)] dark:shadow-none transition-all duration-500" data-category="{{ $skill->category }}">
                 
                 <!-- Inner Icon Frame -->
-                <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white dark:bg-[#0b1121] border border-[#4b3621]/5 dark:border-white/5 flex items-center justify-center text-4xl mb-3 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-md">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white dark:bg-[#0b1121] border border-[#4b3621]/5 dark:border-white/5 flex items-center justify-center text-4xl mb-3 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-md overflow-hidden">
                     <!-- Subtle Glow -->
                     <div class="absolute inset-0 bg-[#115e59]/5 dark:bg-emerald-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <i class="{{ $skill->icon }} relative z-10 drop-shadow-sm group-hover:drop-shadow-lg"></i>
+                    @if(str_starts_with($skill->icon, 'uploads/'))
+                        <img src="{{ asset($skill->icon) }}" alt="{{ $skill->name }}" class="w-full h-full object-contain p-2 relative z-10">
+                    @else
+                        <i class="{{ $skill->icon }} relative z-10 drop-shadow-sm group-hover:drop-shadow-lg"></i>
+                    @endif
                 </div>
                 
                 <h4 class="text-base md:text-lg font-black text-[#4b3621] dark:text-slate-100 mt-2 mb-1.5 font-playfair tracking-wide group-hover:text-[#115e59] dark:group-hover:text-emerald-400 transition-colors">
