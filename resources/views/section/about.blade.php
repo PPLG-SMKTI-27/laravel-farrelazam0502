@@ -94,7 +94,7 @@
                         <!-- ID BADGE CARD -->
                         <div class="relative w-[300px] md:w-[340px] lg:w-[360px] aspect-[3/4.2] bg-[#fbfaf5] dark:bg-slate-900/60 dark:backdrop-blur-2xl rounded-[3rem] p-3 border border-[#4b3621]/15 dark:border-emerald-500/30 z-20 overflow-hidden transform-style-3d shadow-[0_20px_60px_rgba(75,54,33,0.3)] dark:shadow-[0_0_40px_rgba(16,185,129,0.15)] pointer-events-auto">
                             <div class="w-full h-full relative rounded-[2.2rem] overflow-hidden border border-[#4b3621]/10 dark:border-white/10 bg-white dark:bg-slate-800 pointer-events-none">
-                                <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_35%] select-none pointer-events-none" />
+                                <img src="{{ asset('profile.png') }}?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_35%] select-none pointer-events-none" />
                             </div>
                         </div>
                     </div>
@@ -269,7 +269,7 @@
                         <!-- LEFT: LOGO (Desktop) / TOP: LOGO (Mobile) -->
                         <div class="col-span-1 md:col-span-5 flex justify-center md:justify-end animate-on-scroll">
                             <div class="relative w-24 h-24 md:w-52 md:h-52 rounded-full bg-white dark:bg-slate-800 backdrop-blur-xl border border-[#4b3621]/40 dark:border-white/10 overflow-hidden flex items-center justify-center shadow-xl transition-all duration-500 group-hover:border-emerald-500/40">
-                                <img src="{{ Str::startsWith($edu->logo, 'http') || Str::startsWith($edu->logo, 'Screenshot') ? '/' . $edu->logo : asset($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
+                                <img src="{{ Str::startsWith($edu->logo, 'http') ? $edu->logo : asset($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
                             </div>
                         </div>
 
@@ -314,7 +314,7 @@
                         <!-- RIGHT: LOGO (Desktop) / TOP: LOGO (Mobile) -->
                         <div class="col-span-1 md:col-span-5 flex justify-center md:justify-start order-1 md:order-3 animate-on-scroll">
                             <div class="relative w-24 h-24 md:w-52 md:h-52 rounded-full bg-white dark:bg-slate-800 backdrop-blur-xl border border-[#4b3621]/15 dark:border-white/10 overflow-hidden flex items-center justify-center shadow-xl transition-all duration-500 group-hover:border-emerald-500/40">
-                                <img src="{{ Str::startsWith($edu->logo, 'http') || Str::startsWith($edu->logo, 'Screenshot') ? '/' . $edu->logo : asset($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
+                                <img src="{{ Str::startsWith($edu->logo, 'http') ? $edu->logo : asset($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
                             </div>
                         </div>
                     @endif

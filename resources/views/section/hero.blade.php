@@ -123,7 +123,7 @@
                         </div>
 
                         <!-- Photo with Warm/Cinematic Overlay -->
-                        <img src="/profile.png?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_20%] transition-transform duration-1000 group-hover:scale-[1.03]" />
+                        <img src="{{ asset('profile.png') }}?v=2" alt="Farrel" class="w-full h-full object-cover object-[center_20%] transition-transform duration-1000 group-hover:scale-[1.03]" />
                         <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-transparent to-transparent pointer-events-none mix-blend-overlay"></div>
                         
                         <!-- Camera UI Overlay -->

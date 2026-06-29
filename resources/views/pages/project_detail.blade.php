@@ -219,8 +219,9 @@
             const tech = escapeHtml(termRaw);
             const title = escapeHtml(p.title);
             const description = escapeHtml(p.description);
+            const baseUrl = "{{ asset('') }}";
             const imgHtml = p.image 
-                ? `<img src="/storage/${escapeHtml(p.image)}" alt="${title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                ? `<img src="${p.image.startsWith('http') ? escapeHtml(p.image) : baseUrl + escapeHtml(p.image)}" alt="${title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>`
                 : `<div class="absolute inset-0 bg-gradient-to-br from-[#4b3621]/5 to-transparent dark:from-white/5 dark:to-transparent"></div>
                    <div class="absolute inset-0 flex items-center justify-center">

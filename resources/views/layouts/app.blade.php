@@ -96,7 +96,7 @@
     <div id="photo-reveal-overlay" class="fixed inset-0 z-[99999] bg-black hidden items-center justify-center p-8 md:p-4 overflow-hidden">
         <!-- BOKEH BACKGROUND (Dynamic Blurred Background) -->
         <div class="absolute inset-0 z-0">
-            <img src="/profile.png?v=2" class="w-full h-full object-cover scale-110 blur-[80px] opacity-40" />
+            <img src="{{ asset('profile.png') }}?v=2" class="w-full h-full object-cover scale-110 blur-[80px] opacity-40" />
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
         </div>
 
@@ -120,7 +120,7 @@
                 
                 <!-- PREMIUM PHOTO FRAME -->
                 <div class="reveal-img-wrapper relative w-full h-full rounded-[2.5rem] overflow-hidden border-2 border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.5)] bg-slate-900">
-                    <img src="/profile.png?v=2" alt="Full Photo" class="w-full h-full object-cover object-[center_20%] transform transition-transform duration-1000" id="main-profile-img" />
+                    <img src="{{ asset('profile.png') }}?v=2" alt="Full Photo" class="w-full h-full object-cover object-[center_20%] transform transition-transform duration-1000" id="main-profile-img" />
                     
                     <!-- CAMERA UI OVERLAY (Aesthetic) -->
                     <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between z-10">

@@ -130,7 +130,7 @@
                             <label class="text-[#4b3621]/60 dark:text-slate-400 text-xs font-bold uppercase tracking-widest ml-1">Logo / Image</label>
                             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                                 @if($education->logo)
-                                    <img src="{{ Str::startsWith($education->logo, 'http') || Str::startsWith($education->logo, 'Screenshot') ? '/' . $education->logo : asset($education->logo) }}" alt="Logo" class="w-24 h-24 object-cover rounded-xl border border-[#4b3621]/10 dark:border-white/10 shrink-0 shadow-md">
+                                    <img src="{{ Str::startsWith($education->logo, 'http') ? $education->logo : asset($education->logo) }}" alt="Logo" class="w-24 h-24 object-cover rounded-xl border border-[#4b3621]/10 dark:border-white/10 shrink-0 shadow-md">
                                 @endif
                                 <input type="file" name="logo" accept="image/*" {{ $education->id ? '' : 'required' }}
                                     class="w-full bg-[#fbfaf5]/40 dark:bg-slate-950/40 border border-[#4b3621]/15 dark:border-white/10 rounded-2xl px-6 py-4 text-[#4b3621]/60 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[#115e59]/10 file:text-[#115e59] dark:file:bg-emerald-500/10 dark:file:text-emerald-400 hover:file:bg-[#115e59]/20 dark:hover:file:bg-emerald-500/20 transition duration-300 text-sm">

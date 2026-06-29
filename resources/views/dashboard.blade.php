@@ -328,7 +328,7 @@
                         @forelse($educations as $item)
                         <tr class="group hover:bg-white/50 dark:hover:bg-slate-800/30 transition-colors duration-300">
                             <td class="px-4 py-4">
-                                <img src="{{ Str::startsWith($item->logo, 'http') || Str::startsWith($item->logo, 'Screenshot') ? '/' . $item->logo : asset($item->logo) }}" class="w-12 h-12 object-cover rounded-full border border-[#4b3621]/10" alt="Logo" />
+                                <img src="{{ Str::startsWith($item->logo, 'http') ? $item->logo : asset($item->logo) }}" class="w-12 h-12 object-cover rounded-full border border-[#4b3621]/10" alt="Logo" />
                             </td>
                             <td class="px-4 py-6">
                                 <p class="text-base font-bold text-[#4b3621] dark:text-white mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors font-playfair">{{ $item->name }}</p>
