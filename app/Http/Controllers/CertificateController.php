@@ -24,7 +24,7 @@ class CertificateController extends Controller
             'credential_id' => 'nullable|string|max:255',
             'credential_url' => 'nullable|url',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ]);
 
         $data = $request->except('image');
@@ -53,7 +53,7 @@ class CertificateController extends Controller
             'credential_id' => 'nullable|string|max:255',
             'credential_url' => 'nullable|url',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ]);
 
         $data = $request->except('image');

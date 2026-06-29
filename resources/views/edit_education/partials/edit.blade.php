@@ -102,6 +102,15 @@
                     </h3>
 
                     <form action="{{ $education->id ? route('education.update', $education->id) : route('education.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 relative z-10">
+                        @if($errors->any())
+                            <div class="bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 p-4 rounded-xl mb-6">
+                                <ul class="list-disc list-inside text-sm font-medium">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @csrf
                         @if($education->id)
                             @method('PUT')

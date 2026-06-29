@@ -63,7 +63,7 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'technology' => 'required|string',
             'demo_link' => 'nullable|url',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ]);
 
         $data = $request->except('image');
@@ -90,7 +90,7 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'technology' => 'required|string',
             'demo_link' => 'nullable|url',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ]);
 
         $data = $request->except('image');

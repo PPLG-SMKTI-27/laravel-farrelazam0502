@@ -22,7 +22,7 @@ class EducationController extends Controller
             'name' => 'required|string|max:255',
             'year' => 'required|string|max:255',
             'desc' => 'required|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ]);
 
         $data = $request->all();
@@ -47,7 +47,7 @@ class EducationController extends Controller
             'name' => 'required|string|max:255',
             'year' => 'required|string|max:255',
             'desc' => 'required|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ]);
 
         $data = $request->all();
