@@ -7,6 +7,23 @@ use App\Models\Skill;
 
 class SkillController extends Controller
 {
+    /**
+     * Extract class attribute from HTML tag like <i class="fa-brands fa-whatsapp"></i>
+     * If it's already just classes, return as-is.
+     */
+    private function extractIconClass(string $input): string
+    {
+        $input = trim($input);
+        
+        // If input contains HTML tags, extract the class attribute
+        if (preg_match('/class\s*=\s*["\']([^"\']+)["\']/', $input, $matches)) {
+            return $matches[1];
+        }
+        
+        // Otherwise return as-is (already just class names)
+        return $input;
+    }
+
     public function editForm($id = null)
     {
         $skills = Skill::all();
@@ -21,7 +38,7 @@ class SkillController extends Controller
             'category' => 'required|string|in:front-end,back-end,tools',
             'name' => 'required|string|max:255',
             'icon_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
-            'icon_text' => 'nullable|string|max:255',
+            'icon_text' => 'nullable|string|max:500',
             'desc' => 'required|string',
         ]);
 
@@ -32,7 +49,7 @@ class SkillController extends Controller
             $request->file('icon_file')->move(public_path('uploads/skills'), $filename);
             $data['icon'] = 'uploads/skills/' . $filename;
         } elseif ($request->filled('icon_text')) {
-            $data['icon'] = $request->input('icon_text');
+            $data['icon'] = $this->extractIconClass($request->input('icon_text'));
         }
 
         Skill::create($data);
@@ -49,7 +66,7 @@ class SkillController extends Controller
             'category' => 'required|string|in:front-end,back-end,tools',
             'name' => 'required|string|max:255',
             'icon_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
-            'icon_text' => 'nullable|string|max:255',
+            'icon_text' => 'nullable|string|max:500',
             'desc' => 'required|string',
         ]);
 
@@ -68,7 +85,7 @@ class SkillController extends Controller
             if ($skill->icon && str_starts_with($skill->icon, 'uploads/') && file_exists(public_path($skill->icon))) {
                 unlink(public_path($skill->icon));
             }
-            $data['icon'] = $request->input('icon_text');
+            $data['icon'] = $this->extractIconClass($request->input('icon_text'));
         }
 
         $skill->update($data);
