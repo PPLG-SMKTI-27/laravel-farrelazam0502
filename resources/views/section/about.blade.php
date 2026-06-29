@@ -269,7 +269,7 @@
                         <!-- LEFT: LOGO (Desktop) / TOP: LOGO (Mobile) -->
                         <div class="col-span-1 md:col-span-5 flex justify-center md:justify-end animate-on-scroll">
                             <div class="relative w-24 h-24 md:w-52 md:h-52 rounded-full bg-white dark:bg-slate-800 backdrop-blur-xl border border-[#4b3621]/40 dark:border-white/10 overflow-hidden flex items-center justify-center shadow-xl transition-all duration-500 group-hover:border-emerald-500/40">
-                                <img src="{{ Str::startsWith($edu->logo, 'http') || Str::startsWith($edu->logo, 'Screenshot') ? '/' . $edu->logo : Storage::url($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
+                                <img src="{{ Str::startsWith($edu->logo, 'http') || Str::startsWith($edu->logo, 'Screenshot') ? '/' . $edu->logo : asset($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
                             </div>
                         </div>
 
@@ -314,7 +314,7 @@
                         <!-- RIGHT: LOGO (Desktop) / TOP: LOGO (Mobile) -->
                         <div class="col-span-1 md:col-span-5 flex justify-center md:justify-start order-1 md:order-3 animate-on-scroll">
                             <div class="relative w-24 h-24 md:w-52 md:h-52 rounded-full bg-white dark:bg-slate-800 backdrop-blur-xl border border-[#4b3621]/15 dark:border-white/10 overflow-hidden flex items-center justify-center shadow-xl transition-all duration-500 group-hover:border-emerald-500/40">
-                                <img src="{{ Str::startsWith($edu->logo, 'http') || Str::startsWith($edu->logo, 'Screenshot') ? '/' . $edu->logo : Storage::url($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
+                                <img src="{{ Str::startsWith($edu->logo, 'http') || Str::startsWith($edu->logo, 'Screenshot') ? '/' . $edu->logo : asset($edu->logo) }}" class="w-full h-full object-cover scale-[1.3] group-hover:scale-[1.4] transition-all duration-500" alt="{{ $edu->name }}" />
                             </div>
                         </div>
                     @endif

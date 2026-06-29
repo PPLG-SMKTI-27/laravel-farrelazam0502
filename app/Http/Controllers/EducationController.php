@@ -28,8 +28,9 @@ class EducationController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('education', 'public');
-            $data['logo'] = $logoPath;
+            $filename = time() . '_' . $request->file('logo')->getClientOriginalName();
+            $request->file('logo')->move(public_path('uploads/education'), $filename);
+            $data['logo'] = 'uploads/education/' . $filename;
         }
 
         Education::create($data);
@@ -53,11 +54,12 @@ class EducationController extends Controller
 
         if ($request->hasFile('logo')) {
             // Delete old image if it was uploaded (not a default screenshot)
-            if ($education->logo && !str_starts_with($education->logo, 'Screenshot') && Storage::disk('public')->exists($education->logo)) {
-                Storage::disk('public')->delete($education->logo);
+            if ($education->logo && !str_starts_with($education->logo, 'Screenshot') && file_exists(public_path($education->logo))) {
+                unlink(public_path($education->logo));
             }
-            $logoPath = $request->file('logo')->store('education', 'public');
-            $data['logo'] = $logoPath;
+            $filename = time() . '_' . $request->file('logo')->getClientOriginalName();
+            $request->file('logo')->move(public_path('uploads/education'), $filename);
+            $data['logo'] = 'uploads/education/' . $filename;
         }
 
         $education->update($data);
@@ -70,8 +72,8 @@ class EducationController extends Controller
     {
         $education = Education::findOrFail($id);
 
-        if ($education->logo && !str_starts_with($education->logo, 'Screenshot') && Storage::disk('public')->exists($education->logo)) {
-            Storage::disk('public')->delete($education->logo);
+        if ($education->logo && !str_starts_with($education->logo, 'Screenshot') && file_exists(public_path($education->logo))) {
+            unlink(public_path($education->logo));
         }
 
         $education->delete();

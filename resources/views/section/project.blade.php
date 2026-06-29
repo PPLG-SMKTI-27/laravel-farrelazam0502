@@ -36,7 +36,7 @@
                             {{-- Visual Header --}}
                             <div class="relative h-40 md:h-52 w-full overflow-hidden bg-gradient-to-br from-[#f8f6f0] to-[#ede8d8] dark:from-slate-900/80 dark:to-slate-800/60">
                                 @if($p->image)
-                                    <img src="{{ Storage::url($p->image) }}" alt="{{ $p->title }}" class="absolute inset-0 w-full h-full object-cover">
+                                    <img src="{{ asset($p->image) }}" alt="{{ $p->title }}" class="absolute inset-0 w-full h-full object-cover">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
                                 @else
                                     <div class="absolute inset-0 bg-gradient-to-br from-[#4b3621]/5 to-transparent dark:from-white/5 dark:to-transparent"></div>

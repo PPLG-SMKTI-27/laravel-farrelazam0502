@@ -45,7 +45,7 @@
                                 {{-- Visual Header --}}
                                 <div class="relative h-36 md:h-44 w-full overflow-hidden bg-gradient-to-br from-[#f8f6f0] to-[#ede8d8] dark:from-slate-900/80 dark:to-slate-800/60">
                                     @if($cert->image)
-                                        <img src="{{ Storage::url($cert->image) }}" alt="{{ $cert->title }}" class="absolute inset-0 w-full h-full object-cover">
+                                        <img src="{{ asset($cert->image) }}" alt="{{ $cert->title }}" class="absolute inset-0 w-full h-full object-cover">
                                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
                                     @else
                                         <div class="absolute inset-0 opacity-10 dark:opacity-5" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px); color: #4b3621;"></div>

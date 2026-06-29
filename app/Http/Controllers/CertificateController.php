@@ -31,8 +31,9 @@ class CertificateController extends Controller
         $data['is_featured'] = $request->has('is_featured');
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('certificates', 'public');
-            $data['image'] = $imagePath;
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('uploads/certificates'), $filename);
+            $data['image'] = 'uploads/certificates/' . $filename;
         }
 
         Certificate::create($data);
@@ -60,11 +61,12 @@ class CertificateController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($certificate->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($certificate->image)) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($certificate->image);
+            if ($certificate->image && file_exists(public_path($certificate->image))) {
+                unlink(public_path($certificate->image));
             }
-            $imagePath = $request->file('image')->store('certificates', 'public');
-            $data['image'] = $imagePath;
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('uploads/certificates'), $filename);
+            $data['image'] = 'uploads/certificates/' . $filename;
         }
 
         $certificate->update($data);
@@ -78,8 +80,8 @@ class CertificateController extends Controller
         $certificate = Certificate::findOrFail($id);
         
         // Delete image if exists
-        if ($certificate->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($certificate->image)) {
-            \Illuminate\Support\Facades\Storage::disk('public')->delete($certificate->image);
+        if ($certificate->image && file_exists(public_path($certificate->image))) {
+            unlink(public_path($certificate->image));
         }
         
         $certificate->delete();

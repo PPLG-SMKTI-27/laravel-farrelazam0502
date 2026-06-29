@@ -70,8 +70,9 @@ class ProjectController extends Controller
         $data['is_featured'] = $request->has('is_featured');
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('projects', 'public');
-            $data['image'] = $imagePath;
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('uploads/projects'), $filename);
+            $data['image'] = 'uploads/projects/' . $filename;
         }
 
         Project::create($data);
@@ -97,11 +98,12 @@ class ProjectController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($project->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($project->image)) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($project->image);
+            if ($project->image && file_exists(public_path($project->image))) {
+                unlink(public_path($project->image));
             }
-            $imagePath = $request->file('image')->store('projects', 'public');
-            $data['image'] = $imagePath;
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('uploads/projects'), $filename);
+            $data['image'] = 'uploads/projects/' . $filename;
         }
 
         $project->update($data);
@@ -115,8 +117,8 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         
         // Delete image if exists
-        if ($project->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($project->image)) {
-            \Illuminate\Support\Facades\Storage::disk('public')->delete($project->image);
+        if ($project->image && file_exists(public_path($project->image))) {
+            unlink(public_path($project->image));
         }
         
         $project->delete();
